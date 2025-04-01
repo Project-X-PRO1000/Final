@@ -1,1365 +1,1365 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GreenCode | Code Green. Build the Future.</title>
-    <style>
-        :root {
-            --primary-green: #0e9e4a;
-            --secondary-green: #0a7a38;
-            --dark-bg: #111;
-            --light-green-text: #a3f7b5;
-            --white: #fff;
-            --light-gray: #f5f5f5;
-            --medium-gray: #ccc;
-            --dark-gray: #333;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: var(--light-gray);
-            color: var(--dark-gray);
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Header styles */
-        header {
-            background-color: var(--dark-bg);
-            color: var(--white);
-            padding: 20px 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--white);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo span {
-            color: var(--primary-green);
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 20px;
-        }
-        
-        nav ul li a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        nav ul li a:hover {
-            color: var(--primary-green);
-        }
-        
-        .auth-buttons {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .auth-buttons button {
-            padding: 8px 16px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s;
-        }
-        
-        #login-btn {
-            background-color: transparent;
-            color: var(--white);
-            border: 1px solid var(--primary-green);
-        }
-        
-        #login-btn:hover {
-            background-color: rgba(14, 158, 74, 0.1);
-        }
-        
-        #register-btn {
-            background-color: var(--primary-green);
-            color: var(--white);
-        }
-        
-        #register-btn:hover {
-            background-color: var(--secondary-green);
-        }
-        
-        /* Hero section */
-        .hero {
-            height: 80vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/800') center/cover;
-            color: var(--white);
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('/api/placeholder/1200/800') center/cover;
-            opacity: 0.5;
-            z-index: -1;
-        }
-        
-        .binary-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
-            overflow: hidden;
-            z-index: -1;
-        }
-        
-        .binary-text {
-            position: absolute;
-            color: var(--primary-green);
-            font-family: monospace;
-            font-size: 20px;
-            opacity: 0.2;
-            line-height: 1;
-            text-shadow: 0 0 5px var(--primary-green);
-        }
-        
-        .hero-content {
-            max-width: 800px;
-            z-index: 1;
-        }
-        
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            max-width: 600px;
-        }
-        
-        .hero span {
-            color: var(--light-green-text);
-        }
-        
-        .cta-button {
-            display: inline-block;
-            background-color: var(--primary-green);
-            color: var(--white);
-            padding: 12px 30px;
-            border: none;
-            border-radius: 4px;
-            font-size: 1.1rem;
-            font-weight: 500;
-            text-decoration: none;
-            transition: background-color 0.3s;
-            cursor: pointer;
-        }
-        
-        .cta-button:hover {
-            background-color: var(--secondary-green);
-        }
-        
-        /* Features section */
-        .features {
-            padding: 80px 0;
-            background-color: var(--white);
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--dark-gray);
-            margin-bottom: 15px;
-        }
-        
-        .section-title h2 span {
-            color: var(--primary-green);
-        }
-        
-        .section-title p {
-            color: var(--dark-gray);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .feature-card {
-            background-color: var(--light-gray);
-            border-radius: 8px;
-            padding: 30px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .feature-icon {
-            background-color: rgba(14, 158, 74, 0.1);
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-        
-        .feature-icon i {
-            color: var(--primary-green);
-            font-size: 30px;
-        }
-        
-        .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--dark-gray);
-        }
-        
-        .feature-card p {
-            color: var(--dark-gray);
-        }
-        
-        /* Blog section */
-        .blog {
-            padding: 80px 0;
-            background-color: var(--light-gray);
-        }
-        
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .blog-card {
-            background-color: var(--white);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-        
-        .blog-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .blog-image {
-            height: 200px;
-            background-color: var(--medium-gray);
-            overflow: hidden;
-        }
-        
-        .blog-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .blog-card:hover .blog-image img {
-            transform: scale(1.1);
-        }
-        
-        .blog-content {
-            padding: 20px;
-        }
-        
-        .blog-tag {
-            display: inline-block;
-            background-color: rgba(14, 158, 74, 0.1);
-            color: var(--primary-green);
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 10px;
-        }
-        
-        .blog-content h3 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            color: var(--dark-gray);
-        }
-        
-        .blog-content p {
-            color: var(--dark-gray);
-            margin-bottom: 15px;
-        }
-        
-        .blog-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid var(--light-gray);
-            padding-top: 15px;
-        }
-        
-        .blog-author {
-            display: flex;
-            align-items: center;
-        }
-        
-        .author-avatar {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background-color: var(--medium-gray);
-            margin-right: 10px;
-        }
-        
-        .blog-date {
-            color: var(--dark-gray);
-            font-size: 0.9rem;
-        }
-        
-        /* Quiz section */
-        .quiz-section {
-            padding: 80px 0;
-            background-color: var(--white);
-        }
-        
-        .quiz-container {
-            background-color: var(--light-gray);
-            border-radius: 8px;
-            padding: 30px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .quiz-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .quiz-header h3 {
-            font-size: 1.8rem;
-            color: var(--dark-gray);
-            margin-bottom: 10px;
-        }
-        
-        .quiz-progress {
-            height: 10px;
-            background-color: var(--medium-gray);
-            border-radius: 5px;
-            margin-bottom: 30px;
-            overflow: hidden;
-        }
-        
-        .progress-bar {
-            height: 100%;
-            background-color: var(--primary-green);
-            border-radius: 5px;
-            width: 0%;
-            transition: width 0.3s;
-        }
-        
-        .quiz-question {
-            margin-bottom: 20px;
-        }
-        
-        .quiz-question h4 {
-            font-size: 1.2rem;
-            color: var(--dark-gray);
-            margin-bottom: 15px;
-        }
-        
-        .quiz-options {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 10px;
-        }
-        
-        .option {
-            background-color: var(--white);
-            border: 1px solid var(--medium-gray);
-            border-radius: 4px;
-            padding: 15px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .option:hover {
-            background-color: rgba(14, 158, 74, 0.05);
-            border-color: var(--primary-green);
-        }
-        
-        .option.selected {
-            background-color: rgba(14, 158, 74, 0.1);
-            border-color: var(--primary-green);
-        }
-        
-        .quiz-buttons {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 30px;
-        }
-        
-        .quiz-btn {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .prev-btn {
-            background-color: var(--medium-gray);
-            color: var(--dark-gray);
-        }
-        
-        .prev-btn:hover {
-            background-color: #bbb;
-        }
-        
-        .next-btn {
-            background-color: var(--primary-green);
-            color: var(--white);
-        }
-        
-        .next-btn:hover {
-            background-color: var(--secondary-green);
-        }
-        
-        .quiz-result {
-            text-align: center;
-            display: none;
-        }
-        
-        .quiz-result h3 {
-            font-size: 1.8rem;
-            color: var(--dark-gray);
-            margin-bottom: 15px;
-        }
-        
-        .score {
-            font-size: 3rem;
-            color: var(--primary-green);
-            margin-bottom: 20px;
-        }
-        
-        /* Newsletter section */
-        .newsletter {
-            padding: 60px 0;
-            background-color: var(--dark-bg);
-            color: var(--white);
-            text-align: center;
-        }
-        
-        .newsletter h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-        
-        .newsletter p {
-            max-width: 600px;
-            margin: 0 auto 30px;
-        }
-        
-        .newsletter-form {
-            max-width: 500px;
-            margin: 0 auto;
-            display: flex;
-        }
-        
-        .newsletter-form input {
-            flex: 1;
-            padding: 15px;
-            border: none;
-            border-radius: 4px 0 0 4px;
-            font-size: 1rem;
-        }
-        
-        .newsletter-form button {
-            background-color: var(--primary-green);
-            color: var(--white);
-            border: none;
-            padding: 0 20px;
-            border-radius: 0 4px 4px 0;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        .newsletter-form button:hover {
-            background-color: var(--secondary-green);
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--dark-bg);
-            color: var(--white);
-            padding: 40px 0 20px;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-column h3 {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            color: var(--white);
-        }
-        
-        .footer-column p {
-            margin-bottom: 20px;
-            color: #bbb;
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-links a {
-            color: #bbb;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-links a:hover {
-            color: var(--primary-green);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .social-links a {
-            color: var(--white);
-            text-decoration: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: #333;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.3s;
-        }
-        
-        .social-links a:hover {
-            background-color: var(--primary-green);
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid #333;
-            color: #bbb;
-        }
-        
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 200;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .modal-content {
-            background-color: var(--white);
-            border-radius: 8px;
-            width: 90%;
-            max-width: 500px;
-            padding: 30px;
-            position: relative;
-            animation: modalopen 0.3s;
-        }
-        
-        @keyframes modalopen {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>GreenCode | Kode Grønt. Bygg .</title>
+        <style>
+            :root {
+                --primary-green: #0e9e4a;
+                --secondary-green: #0a7a38;
+                --dark-bg: #111;
+                --light-green-text: #a3f7b5;
+                --white: #fff;
+                --light-gray: #f5f5f5;
+                --medium-gray: #ccc;
+                --dark-gray: #333;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             }
-        }
-        
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--dark-gray);
-            transition: color 0.3s;
-        }
-        
-        .close-btn:hover {
-            color: var(--primary-green);
-        }
-        
-        .modal-header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        
-        .modal-header h2 {
-            font-size: 1.8rem;
-            color: var(--dark-gray);
-        }
-        
-        .modal-form .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .modal-form label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--dark-gray);
-        }
-        
-        .modal-form input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid var(--medium-gray);
-            border-radius: 4px;
-            font-size: 1rem;
-        }
-        
-        .modal-form input:focus {
-            outline: none;
-            border-color: var(--primary-green);
-        }
-        
-        .modal-form button {
-            width: 100%;
-            padding: 12px;
-            background-color: var(--primary-green);
-            color: var(--white);
-            border: none;
-            border-radius: 4px;
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        .modal-form button:hover {
-            background-color: var(--secondary-green);
-        }
-        
-        .switch-form {
-            text-align: center;
-            margin-top: 20px;
-            color: var(--dark-gray);
-        }
-        
-        .switch-form a {
-            color: var(--primary-green);
-            text-decoration: none;
-            font-weight: 500;
-            cursor: pointer;
-        }
-        
-        .switch-form a:hover {
-            text-decoration: underline;
-        }
-        
-        /* Responsive design */
-        @media (max-width: 768px) {
+            
+            body {
+                background-color: var(--light-gray);
+                color: var(--dark-gray);
+                line-height: 1.6;
+            }
+            
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+            
+            /* Header styles */
+            header {
+                background-color: var(--dark-bg);
+                color: var(--white);
+                padding: 20px 0;
+                position: sticky;
+                top: 0;
+                z-index: 100;
+            }
+            
             .nav-container {
-                flex-direction: column;
-                gap: 15px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            .logo {
+                font-size: 24px;
+                font-weight: bold;
+                color: var(--white);
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+            }
+            
+            .logo span {
+                color: var(--primary-green);
             }
             
             nav ul {
-                margin-top: 15px;
+                display: flex;
+                list-style: none;
+            }
+            
+            nav ul li {
+                margin-left: 20px;
+            }
+            
+            nav ul li a {
+                color: var(--white);
+                text-decoration: none;
+                font-weight: 500;
+                transition: color 0.3s;
+            }
+            
+            nav ul li a:hover {
+                color: var(--primary-green);
+            }
+            
+            .auth-buttons {
+                display: flex;
+                gap: 10px;
+            }
+            
+            .auth-buttons button {
+                padding: 8px 16px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-weight: 500;
+                transition: all 0.3s;
+            }
+            
+            #login-btn {
+                background-color: transparent;
+                color: var(--white);
+                border: 1px solid var(--primary-green);
+            }
+            
+            #login-btn:hover {
+                background-color: rgba(14, 158, 74, 0.1);
+            }
+            
+            #register-btn {
+                background-color: var(--primary-green);
+                color: var(--white);
+            }
+            
+            #register-btn:hover {
+                background-color: var(--secondary-green);
+            }
+            
+            /* Hero section */
+            .hero {
+                height: 80vh;
+                background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/800') center/cover;
+                color: var(--white);
+                display: flex;
+                align-items: center;
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .hero::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: url('/api/placeholder/1200/800') center/cover;
+                opacity: 0.5;
+                z-index: -1;
+            }
+            
+            .binary-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+                overflow: hidden;
+                z-index: -1;
+            }
+            
+            .binary-text {
+                position: absolute;
+                color: var(--primary-green);
+                font-family: monospace;
+                font-size: 20px;
+                opacity: 0.2;
+                line-height: 1;
+                text-shadow: 0 0 5px var(--primary-green);
+            }
+            
+            .hero-content {
+                max-width: 800px;
+                z-index: 1;
             }
             
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 3.5rem;
+                margin-bottom: 20px;
+                line-height: 1.2;
             }
             
             .hero p {
-                font-size: 1rem;
+                font-size: 1.2rem;
+                margin-bottom: 30px;
+                max-width: 600px;
+            }
+            
+            .hero span {
+                color: var(--light-green-text);
             }
             
             .cta-button {
-                padding: 10px 20px;
-                font-size: 1rem;
+                display: inline-block;
+                background-color: var(--primary-green);
+                color: var(--white);
+                padding: 12px 30px;
+                border: none;
+                border-radius: 4px;
+                font-size: 1.1rem;
+                font-weight: 500;
+                text-decoration: none;
+                transition: background-color 0.3s;
+                cursor: pointer;
+            }
+            
+            .cta-button:hover {
+                background-color: var(--secondary-green);
+            }
+            
+            /* Features section */
+            .features {
+                padding: 80px 0;
+                background-color: var(--white);
+            }
+            
+            .section-title {
+                text-align: center;
+                margin-bottom: 50px;
             }
             
             .section-title h2 {
-                font-size: 2rem;
+                font-size: 2.5rem;
+                color: var(--dark-gray);
+                margin-bottom: 15px;
             }
             
-            .feature-grid, .blog-grid {
-                grid-template-columns: 1fr;
+            .section-title h2 span {
+                color: var(--primary-green);
             }
             
-            .newsletter-form {
-                flex-direction: column;
+            .section-title p {
+                color: var(--dark-gray);
+                max-width: 700px;
+                margin: 0 auto;
             }
             
-            .newsletter-form input {
+            .feature-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 30px;
+            }
+            
+            .feature-card {
+                background-color: var(--light-gray);
+                border-radius: 8px;
+                padding: 30px;
+                transition: transform 0.3s, box-shadow 0.3s;
+            }
+            
+            .feature-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+            
+            .feature-icon {
+                background-color: rgba(14, 158, 74, 0.1);
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+            
+            .feature-icon i {
+                color: var(--primary-green);
+                font-size: 30px;
+            }
+            
+            .feature-card h3 {
+                font-size: 1.5rem;
+                margin-bottom: 15px;
+                color: var(--dark-gray);
+            }
+            
+            .feature-card p {
+                color: var(--dark-gray);
+            }
+            
+            /* Blog section */
+            .blog {
+                padding: 80px 0;
+                background-color: var(--light-gray);
+            }
+            
+            .blog-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 30px;
+            }
+            
+            .blog-card {
+                background-color: var(--white);
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s;
+            }
+            
+            .blog-card:hover {
+                transform: translateY(-10px);
+            }
+            
+            .blog-image {
+                height: 200px;
+                background-color: var(--medium-gray);
+                overflow: hidden;
+            }
+            
+            .blog-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.5s;
+            }
+            
+            .blog-card:hover .blog-image img {
+                transform: scale(1.1);
+            }
+            
+            .blog-content {
+                padding: 20px;
+            }
+            
+            .blog-tag {
+                display: inline-block;
+                background-color: rgba(14, 158, 74, 0.1);
+                color: var(--primary-green);
+                padding: 5px 10px;
                 border-radius: 4px;
+                font-size: 0.8rem;
                 margin-bottom: 10px;
             }
             
-            .newsletter-form button {
+            .blog-content h3 {
+                font-size: 1.3rem;
+                margin-bottom: 10px;
+                color: var(--dark-gray);
+            }
+            
+            .blog-content p {
+                color: var(--dark-gray);
+                margin-bottom: 15px;
+            }
+            
+            .blog-footer {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-top: 1px solid var(--light-gray);
+                padding-top: 15px;
+            }
+            
+            .blog-author {
+                display: flex;
+                align-items: center;
+            }
+            
+            .author-avatar {
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                background-color: var(--medium-gray);
+                margin-right: 10px;
+            }
+            
+            .blog-date {
+                color: var(--dark-gray);
+                font-size: 0.9rem;
+            }
+            
+            /* Quiz section */
+            .quiz-section {
+                padding: 80px 0;
+                background-color: var(--white);
+            }
+            
+            .quiz-container {
+                background-color: var(--light-gray);
+                border-radius: 8px;
+                padding: 30px;
+                max-width: 800px;
+                margin: 0 auto;
+            }
+            
+            .quiz-header {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+            
+            .quiz-header h3 {
+                font-size: 1.8rem;
+                color: var(--dark-gray);
+                margin-bottom: 10px;
+            }
+            
+            .quiz-progress {
+                height: 10px;
+                background-color: var(--medium-gray);
+                border-radius: 5px;
+                margin-bottom: 30px;
+                overflow: hidden;
+            }
+            
+            .progress-bar {
+                height: 100%;
+                background-color: var(--primary-green);
+                border-radius: 5px;
+                width: 0%;
+                transition: width 0.3s;
+            }
+            
+            .quiz-question {
+                margin-bottom: 20px;
+            }
+            
+            .quiz-question h4 {
+                font-size: 1.2rem;
+                color: var(--dark-gray);
+                margin-bottom: 15px;
+            }
+            
+            .quiz-options {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .option {
+                background-color: var(--white);
+                border: 1px solid var(--medium-gray);
                 border-radius: 4px;
                 padding: 15px;
+                cursor: pointer;
+                transition: all 0.3s;
             }
-        }
-    </style>
-</head>
-<body>
-    <!-- Header & Navigation -->
-    <header>
-        <div class="container nav-container">
-            <a href="#" class="logo">GREEN<span>CODE</span></a>
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#blog">Blog</a></li>
-                    <li><a href="#quiz">Quiz</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="auth-buttons">
-                <button id="login-btn">Login</button>
-                <button id="register-btn">Register</button>
-            </div>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="binary-overlay" id="binary-container"></div>
-        <div class="container">
-            <div class="hero-content">
-                <h1>Code <span>Green</span>.<br>Build the Future.</h1>
-                <p>We promote sustainable technology practices that reduce the environmental impact of software development. Learn how your code can contribute to a greener planet.</p>
-                <a href="#features" class="cta-button">Learn More</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div class="container">
-            <div class="section-title">
-                <h2>Why <span>Green</span> Coding Matters</h2>
-                <p>Discover how environmentally friendly coding practices can make a significant difference in reducing carbon footprint and creating sustainable software solutions.</p>
-            </div>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i>🔋</i>
-                    </div>
-                    <h3>Energy Efficiency</h3>
-                    <p>Learn techniques to write code that consumes less energy, reduces server load, and minimizes battery drain on devices.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i>🌱</i>
-                    </div>
-                    <h3>Sustainable Practices</h3>
-                    <p>Implement development workflows that prioritize sustainability through the entire software lifecycle.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i>📊</i>
-                    </div>
-                    <h3>Performance Optimization</h3>
-                    <p>Optimize your code for better performance, which naturally leads to reduced resource consumption and environmental impact.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Blog Section -->
-    <section class="blog" id="blog">
-        <div class="container">
-            <div class="section-title">
-                <h2>Latest from our <span>Blog</span></h2>
-                <p>Read our latest articles on sustainable coding practices, green technologies, and environmental-friendly development.</p>
-            </div>
-            <div class="blog-grid">
-                <div class="blog-card">
-                    <div class="blog-image">
-                        <img src="/api/placeholder/400/300" alt="Blog Image">
-                    </div>
-                    <div class="blog-content">
-                        <span class="blog-tag">Energy Efficiency</span>
-                        <h3>10 Ways to Reduce Your Code's Carbon Footprint</h3>
-                        <p>Learn practical techniques to write energy-efficient code that reduces environmental impact without sacrificing functionality.</p>
-                        <div class="blog-footer">
-                            <div class="blog-author">
-                                <div class="author-avatar"></div>
-                                <span>Emma Johnson</span>
-                            </div>
-                            <div class="blog-date">Mar 15, 2025</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="blog-card">
-                    <div class="blog-image">
-                        <img src="/api/placeholder/400/300" alt="Blog Image">
-                    </div>
-                    <div class="blog-content">
-                        <span class="blog-tag">Best Practices</span>
-                        <h3>Sustainable Web Design Principles for Developers</h3>
-                        <p>Explore how sustainable web design can reduce energy consumption while improving user experience and accessibility.</p>
-                        <div class="blog-footer">
-                            <div class="blog-author">
-                                <div class="author-avatar"></div>
-                                <span>Alex Chen</span>
-                            </div>
-                            <div class="blog-date">Mar 10, 2025</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="blog-card">
-                    <div class="blog-image">
-                        <img src="/api/placeholder/400/300" alt="Blog Image">
-                    </div>
-                    <div class="blog-content">
-                        <span class="blog-tag">Tools</span>
-                        <h3>5 Tools to Measure Your Code's Environmental Impact</h3>
-                        <p>Discover tools and metrics that can help you assess and improve the environmental footprint of your software projects.</p>
-                        <div class="blog-footer">
-                            <div class="blog-author">
-                                <div class="author-avatar"></div>
-                                <span>Maria Garcia</span>
-                            </div>
-                            <div class="blog-date">Mar 5, 2025</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Quiz Section -->
-    <section class="quiz-section" id="quiz">
-        <div class="container">
-            <div class="section-title">
-                <h2>Test Your <span>Green</span> Coding Knowledge</h2>
-                <p>Take our quiz to test your knowledge of environmentally friendly coding practices and learn something new!</p>
-            </div>
-            <div class="quiz-container">
-                <div class="quiz-header">
-                    <h3>Green Coding Quiz</h3>
-                </div>
-                <div class="quiz-content">
-                    <div class="quiz-progress">
-                        <div class="progress-bar" id="quiz-progress"></div>
-                    </div>
-                    <div class="quiz-question">
-                        <h4 id="question-text">Which of the following coding practices contributes most to reducing energy consumption?</h4>
-                        <div class="quiz-options" id="options-container">
-                            <div class="option" data-index="0">Minimizing HTTP requests in web applications</div>
-                            <div class="option" data-index="1">Using dark mode UI by default</div>
-                            <div class="option" data-index="2">Implementing efficient algorithms with lower complexity</div>
-                            <div class="option" data-index="3">All of the above</div>
-                        </div>
-                    </div>
-                    <div class="quiz-buttons">
-                        <button class="quiz-btn prev-btn" id="prev-btn" disabled>Previous</button>
-                        <button class="quiz-btn next-btn" id="next-btn">Next</button>
-                    </div>
-                </div>
-                <div class="quiz-result" id="quiz-result">
-                    <h3>Quiz Result</h3>
-                    <div class="score" id="quiz-score">0/5</div>
-                    <p id="result-message">Great effort! You're on your way to becoming a green coding expert!</p>
-                    <button class="cta-button" id="restart-quiz">Try Again</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Newsletter Section -->
-    <section class="newsletter">
-        <div class="container">
-            <h2>Stay Updated with Green Coding Practices</h2>
-            <p>Subscribe to our newsletter and receive the latest updates, tips, and best practices for environmentally friendly coding.</p>
-            <form class="newsletter-form">
-                <input type="email" placeholder="Enter your email address" required>
-                <button type="submit">Subscribe</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>GREEN<span>CODE</span></h3>
-                    <p>Promoting sustainable and environmentally friendly coding practices to build a greener future through technology.</p>
-                    <div class="social-links">
-                        <a href="#"><span>FB</span></a>
-                        <a href="#"><span>TW</span></a>
-                        <a href="#"><span>IG</span></a>
-                        <a href="#"><span>LI</span></a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#blog">Blog</a></li>
+            
+            .option:hover {
+                background-color: rgba(14, 158, 74, 0.05);
+                border-color: var(--primary-green);
+            }
+            
+            .option.selected {
+                background-color: rgba(14, 158, 74, 0.1);
+                border-color: var(--primary-green);
+            }
+            
+            .quiz-buttons {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 30px;
+            }
+            
+            .quiz-btn {
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                font-weight: 500;
+                cursor: pointer;
+                transition: all 0.3s;
+            }
+            
+            .prev-btn {
+                background-color: var(--medium-gray);
+                color: var(--dark-gray);
+            }
+            
+            .prev-btn:hover {
+                background-color: #bbb;
+            }
+            
+            .next-btn {
+                background-color: var(--primary-green);
+                color: var(--white);
+            }
+            
+            .next-btn:hover {
+                background-color: var(--secondary-green);
+            }
+            
+            .quiz-result {
+                text-align: center;
+                display: none;
+            }
+            
+            .quiz-result h3 {
+                font-size: 1.8rem;
+                color: var(--dark-gray);
+                margin-bottom: 15px;
+            }
+            
+            .score {
+                font-size: 3rem;
+                color: var(--primary-green);
+                margin-bottom: 20px;
+            }
+            
+            /* Newsletter section */
+            .newsletter {
+                padding: 60px 0;
+                background-color: var(--dark-bg);
+                color: var(--white);
+                text-align: center;
+            }
+            
+            .newsletter h2 {
+                font-size: 2rem;
+                margin-bottom: 20px;
+            }
+            
+            .newsletter p {
+                max-width: 600px;
+                margin: 0 auto 30px;
+            }
+            
+            .newsletter-form {
+                max-width: 500px;
+                margin: 0 auto;
+                display: flex;
+            }
+            
+            .newsletter-form input {
+                flex: 1;
+                padding: 15px;
+                border: none;
+                border-radius: 4px 0 0 4px;
+                font-size: 1rem;
+            }
+            
+            .newsletter-form button {
+                background-color: var(--primary-green);
+                color: var(--white);
+                border: none;
+                padding: 0 20px;
+                border-radius: 0 4px 4px 0;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+            
+            .newsletter-form button:hover {
+                background-color: var(--secondary-green);
+            }
+            
+            /* Footer */
+            footer {
+                background-color: var(--dark-bg);
+                color: var(--white);
+                padding: 40px 0 20px;
+            }
+            
+            .footer-content {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 30px;
+                margin-bottom: 40px;
+            }
+            
+            .footer-column h3 {
+                font-size: 1.3rem;
+                margin-bottom: 20px;
+                color: var(--white);
+            }
+            
+            .footer-column p {
+                margin-bottom: 20px;
+                color: #bbb;
+            }
+            
+            .footer-links {
+                list-style: none;
+            }
+            
+            .footer-links li {
+                margin-bottom: 10px;
+            }
+            
+            .footer-links a {
+                color: #bbb;
+                text-decoration: none;
+                transition: color 0.3s;
+            }
+            
+            .footer-links a:hover {
+                color: var(--primary-green);
+            }
+            
+            .social-links {
+                display: flex;
+                gap: 15px;
+            }
+            
+            .social-links a {
+                color: var(--white);
+                text-decoration: none;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background-color: #333;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: background-color 0.3s;
+            }
+            
+            .social-links a:hover {
+                background-color: var(--primary-green);
+            }
+            
+            .footer-bottom {
+                text-align: center;
+                padding-top: 20px;
+                border-top: 1px solid #333;
+                color: #bbb;
+            }
+            
+            /* Modal */
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 200;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .modal-content {
+                background-color: var(--white);
+                border-radius: 8px;
+                width: 90%;
+                max-width: 500px;
+                padding: 30px;
+                position: relative;
+                animation: modalopen 0.3s;
+            }
+            
+            @keyframes modalopen {
+                from {
+                    opacity: 0;
+                    transform: translateY(-50px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            .close-btn {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                font-size: 1.5rem;
+                cursor: pointer;
+                color: var(--dark-gray);
+                transition: color 0.3s;
+            }
+            
+            .close-btn:hover {
+                color: var(--primary-green);
+            }
+            
+            .modal-header {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            
+            .modal-header h2 {
+                font-size: 1.8rem;
+                color: var(--dark-gray);
+            }
+            
+            .modal-form .form-group {
+                margin-bottom: 20px;
+            }
+            
+            .modal-form label {
+                display: block;
+                margin-bottom: 8px;
+                color: var(--dark-gray);
+            }
+            
+            .modal-form input {
+                width: 100%;
+                padding: 12px;
+                border: 1px solid var(--medium-gray);
+                border-radius: 4px;
+                font-size: 1rem;
+            }
+            
+            .modal-form input:focus {
+                outline: none;
+                border-color: var(--primary-green);
+            }
+            
+            .modal-form button {
+                width: 100%;
+                padding: 12px;
+                background-color: var(--primary-green);
+                color: var(--white);
+                border: none;
+                border-radius: 4px;
+                font-size: 1rem;
+                font-weight: 500;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+            
+            .modal-form button:hover {
+                background-color: var(--secondary-green);
+            }
+            
+            .switch-form {
+                text-align: center;
+                margin-top: 20px;
+                color: var(--dark-gray);
+            }
+            
+            .switch-form a {
+                color: var(--primary-green);
+                text-decoration: none;
+                font-weight: 500;
+                cursor: pointer;
+            }
+            
+            .switch-form a:hover {
+                text-decoration: underline;
+            }
+            
+            /* Responsive design */
+            @media (max-width: 768px) {
+                .nav-container {
+                    flex-direction: column;
+                    gap: 15px;
+                }
+                
+                nav ul {
+                    margin-top: 15px;
+                }
+                
+                .hero h1 {
+                    font-size: 2.5rem;
+                }
+                
+                .hero p {
+                    font-size: 1rem;
+                }
+                
+                .cta-button {
+                    padding: 10px 20px;
+                    font-size: 1rem;
+                }
+                
+                .section-title h2 {
+                    font-size: 2rem;
+                }
+                
+                .feature-grid, .blog-grid {
+                    grid-template-columns: 1fr;
+                }
+                
+                .newsletter-form {
+                    flex-direction: column;
+                }
+                
+                .newsletter-form input {
+                    border-radius: 4px;
+                    margin-bottom: 10px;
+                }
+                
+                .newsletter-form button {
+                    border-radius: 4px;
+                    padding: 15px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Header & Navigation -->
+        <header>
+            <div class="container nav-container">
+                <a href="#" class="logo">GRØNN<span>KODE</span></a>
+                <nav>
+                    <ul>
+                        <li><a href="#">Hjem</a></li>
+                        <li><a href="#features">Funksjoner</a></li>
+                        <li><a href="#blog">Blogg</a></li>
                         <li><a href="#quiz">Quiz</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#contact">Kontakt</a></li>
                     </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Resources</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Documentation</a></li>
-                        <li><a href="#">Tutorials</a></li>
-                <li><a href="#">Cases Studies</a></li>
-                        <li><a href="#">Research Papers</a></li>
-                        <li><a href="#">Community Forum</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Contact Us</h3>
-                    <ul class="footer-links">
-                        <li><a href="mailto:info@greencode.org">info@greencode.org</a></li>
-                        <li><a href="tel:+1234567890">+1 (234) 567-890</a></li>
-                        <li>123 Green Street, Eco City</li>
-                    </ul>
+                </nav>
+                <div class="auth-buttons">
+                    <button id="login-btn">Logg inn</button>
+                    <button id="register-btn">Registrer</button>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 GreenCode. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Login Modal -->
-    <div class="modal" id="login-modal">
-        <div class="modal-content">
-            <span class="close-btn" id="close-login">&times;</span>
-            <div class="modal-header">
-                <h2>Login</h2>
-            </div>
-            <form class="modal-form" id="login-form">
-                <div class="form-group">
-                    <label for="login-email">Email</label>
-                    <input type="email" id="login-email" required>
-                </div>
-                <div class="form-group">
-                    <label for="login-password">Password</label>
-                    <input type="password" id="login-password" required>
-                </div>
-                <button type="submit">Login</button>
-            </form>
-            <div class="switch-form">
-                <p>Don't have an account? <a id="switch-to-register">Register</a></p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Register Modal -->
-    <div class="modal" id="register-modal">
-        <div class="modal-content">
-            <span class="close-btn" id="close-register">&times;</span>
-            <div class="modal-header">
-                <h2>Register</h2>
-            </div>
-            <form class="modal-form" id="register-form">
-                <div class="form-group">
-                    <label for="register-name">Full Name</label>
-                    <input type="text" id="register-name" required>
-                </div>
-                <div class="form-group">
-                    <label for="register-email">Email</label>
-                    <input type="email" id="register-email" required>
-                </div>
-                <div class="form-group">
-                    <label for="register-password">Password</label>
-                    <input type="password" id="register-password" required>
-                </div>
-                <div class="form-group">
-                    <label for="register-confirm-password">Confirm Password</label>
-                    <input type="password" id="register-confirm-password" required>
-                </div>
-                <button type="submit">Register</button>
-            </form>
-            <div class="switch-form">
-                <p>Already have an account? <a id="switch-to-login">Login</a></p>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Binary animation
-        function createBinaryBackground() {
-            const container = document.getElementById('binary-container');
-            const containerWidth = container.offsetWidth;
-            const containerHeight = container.offsetHeight;
-            
-            // Create binary texts
-            for (let i = 0; i < 20; i++) {
-                const binaryText = document.createElement('div');
-                binaryText.className = 'binary-text';
-                
-                // Random position
-                const left = Math.random() * containerWidth;
-                const top = Math.random() * containerHeight;
-                
-                binaryText.style.left = `${left}px`;
-                binaryText.style.top = `${top}px`;
-                
-                // Generate binary content
-                let binary = '';
-                const length = 50 + Math.floor(Math.random() * 100);
-                for (let j = 0; j < length; j++) {
-                    binary += Math.random() > 0.5 ? '1' : '0';
-                }
-                
-                binaryText.textContent = binary;
-                container.appendChild(binaryText);
-                
-                // Animate falling
-                animateBinary(binaryText, containerHeight);
-            }
-        }
+        </header>
         
-        function animateBinary(element, maxHeight) {
-            let pos = parseFloat(element.style.top);
-            const speed = 0.5 + Math.random() * 1.5;
-            
-            function frame() {
-                pos += speed;
-                if (pos > maxHeight) {
-                    pos = -100;
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="binary-overlay" id="binary-container"></div>
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Kode <span>Grønt</span>.<br>Bygg Fremtiden.</h1>
+                    <p>Vi fremmer bærekraftig teknologipraksis som reduserer miljøpåvirkningen av programvareutvikling. Lær hvordan din kode kan bidra til en grønnere planet.</p>
+                    <a href="#features" class="cta-button">Lær Mer</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Features Section -->
+        <section class="features" id="features">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Hvorfor <span>Grønn</span> Koding Betyr Noe</h2>
+                    <p>Oppdag hvordan miljøvennlig kodepraksis kan gjøre en betydelig forskjell i å redusere karbonavtrykk og skape bærekraftige programvareløsninger.</p>
+                </div>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i>🔋</i>
+                        </div>
+                        <h3>Energieffektivitet</h3>
+                        <p>Lær teknikker for å skrive kode som bruker mindre energi, reduserer serverbelastning og minimerer batteriforbruk på enheter.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i>🌱</i>
+                        </div>
+                        <h3>Bærekraftig Praksis</h3>
+                        <p>Implementer utviklingsarbeidsflyt som prioriterer bærekraft gjennom hele programvarens livssyklus.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i>📊</i>
+                        </div>
+                        <h3>Ytelsesoptimalisering</h3>
+                        <p>Optimaliser koden din for bedre ytelse, som naturlig fører til redusert ressursforbruk og miljøpåvirkning.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Blog Section -->
+        <section class="blog" id="blog">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Siste fra vår <span>Blogg</span></h2>
+                    <p>Les våre nyeste artikler om bærekraftig kodepraksis, grønne teknologier og miljøvennlig utvikling.</p>
+                </div>
+                <div class="blog-grid">
+                    <div class="blog-card">
+                        <div class="blog-image">
+                            <img src="/api/placeholder/400/300" alt="Blogg Bilde">
+                        </div>
+                        <div class="blog-content">
+                            <span class="blog-tag">Energieffektivitet</span>
+                            <h3>10 Måter å Redusere Kodens Karbonavtrykk</h3>
+                            <p>Lær praktiske teknikker for å skrive energieffektiv kode som reduserer miljøpåvirkning uten å ofre funksjonalitet.</p>
+                            <div class="blog-footer">
+                                <div class="blog-author">
+                                    <div class="author-avatar"></div>
+                                    <span>Emma Johnson</span>
+                                </div>
+                                <div class="blog-date">15. Mar 2025</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-card">
+                        <div class="blog-image">
+                            <img src="/api/placeholder/400/300" alt="Blogg Bilde">
+                        </div>
+                        <div class="blog-content">
+                            <span class="blog-tag">Beste Praksis</span>
+                            <h3>Bærekraftige Webdesign-Prinsipper for Utviklere</h3>
+                            <p>Utforsk hvordan bærekraftig webdesign kan redusere energiforbruk samtidig som det forbedrer brukeropplevelse og tilgjengelighet.</p>
+                            <div class="blog-footer">
+                                <div class="blog-author">
+                                    <div class="author-avatar"></div>
+                                    <span>Alex Chen</span>
+                                </div>
+                                <div class="blog-date">10. Mar 2025</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-card">
+                        <div class="blog-image">
+                            <img src="/api/placeholder/400/300" alt="Blogg Bilde">
+                        </div>
+                        <div class="blog-content">
+                            <span class="blog-tag">Verktøy</span>
+                            <h3>5 Verktøy for å Måle Kodens Miljøpåvirkning</h3>
+                            <p>Oppdag verktøy og målemetoder som kan hjelpe deg med å vurdere og forbedre miljøavtrykket til dine programvareprosjekter.</p>
+                            <div class="blog-footer">
+                                <div class="blog-author">
+                                    <div class="author-avatar"></div>
+                                    <span>Maria Garcia</span>
+                                </div>
+                                <div class="blog-date">5. Mar 2025</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Quiz Section -->
+        <section class="quiz-section" id="quiz">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Test Din <span>Grønne</span> Kodekunnskap</h2>
+                    <p>Ta vår quiz for å teste din kunnskap om miljøvennlig kodepraksis og lær noe nytt!</p>
+                </div>
+                <div class="quiz-container">
+                    <div class="quiz-header">
+                        <h3>Grønn Koding Quiz</h3>
+                    </div>
+                    <div class="quiz-content">
+                        <div class="quiz-progress">
+                            <div class="progress-bar" id="quiz-progress"></div>
+                        </div>
+                        <div class="quiz-question">
+                            <h4 id="question-text">Hvilken av følgende kodepraksis bidrar mest til å redusere energiforbruk?</h4>
+                            <div class="quiz-options" id="options-container">
+                                <div class="option" data-index="0">Minimere HTTP-forespørsler i webapplikasjoner</div>
+                                <div class="option" data-index="1">Bruke mørk modus som standard</div>
+                                <div class="option" data-index="2">Implementere effektive algoritmer med lavere kompleksitet</div>
+                                <div class="option" data-index="3">Alle de ovennevnte</div>
+                            </div>
+                        </div>
+                        <div class="quiz-buttons">
+                            <button class="quiz-btn prev-btn" id="prev-btn" disabled>Forrige</button>
+                            <button class="quiz-btn next-btn" id="next-btn">Neste</button>
+                        </div>
+                    </div>
+                    <div class="quiz-result" id="quiz-result">
+                        <h3>Quiz Resultat</h3>
+                        <div class="score" id="quiz-score">0/5</div>
+                        <p id="result-message">Flott innsats! Du er på vei til å bli en grønn koding-ekspert!</p>
+                        <button class="cta-button" id="restart-quiz">Prøv Igjen</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Newsletter Section -->
+        <section class="newsletter">
+            <div class="container">
+                <h2>Hold Deg Oppdatert med Grønn Kodepraksis</h2>
+                <p>Abonner på vårt nyhetsbrev og motta de nyeste oppdateringene, tips og beste praksis for miljøvennlig koding.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Skriv inn din e-postadresse" required>
+                    <button type="submit">Abonner</button>
+                </form>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer id="contact">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-column">
+                        <h3>GRØNN<span>KODE</span></h3>
+                        <p>Vi fremmer bærekraftig og miljøvennlig kodepraksis for å bygge en grønnere fremtid gjennom teknologi.</p>
+                        <div class="social-links">
+                            <a href="#"><span>FB</span></a>
+                            <a href="#"><span>TW</span></a>
+                            <a href="#"><span>IG</span></a>
+                            <a href="#"><span>LI</span></a>
+                        </div>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Raske Lenker</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">Hjem</a></li>
+                            <li><a href="#features">Funksjoner</a></li>
+                            <li><a href="#blog">Blogg</a></li>
+                            <li><a href="#quiz">Quiz</a></li>
+                            <li><a href="#contact">Kontakt</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Ressurser</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">Dokumentasjon</a></li>
+                            <li><a href="#">Veiledninger</a></li>
+                            <li><a href="#">Casestudier</a></li>
+                            <li><a href="#">Forskningsartikler</a></li>
+                            <li><a href="#">Samfunnsforum</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Kontakt Oss</h3>
+                        <ul class="footer-links">
+                            <li><a href="mailto:info@greencode.org">info@gronnkode.org</a></li>
+                            <li><a href="tel:+1234567890">+47 123 45 678</a></li>
+                            <li>123 Grønn Gate, Øko By</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 GrønnKode. Alle rettigheter reservert.</p>
+                </div>
+            </div>
+        </footer>
+        
+        <!-- Login Modal -->
+        <div class="modal" id="login-modal">
+            <div class="modal-content">
+                <span class="close-btn" id="close-login">&times;</span>
+                <div class="modal-header">
+                    <h2>Logg Inn</h2>
+                </div>
+                <form class="modal-form" id="login-form">
+                    <div class="form-group">
+                        <label for="login-email">E-post</label>
+                        <input type="email" id="login-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Passord</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    <button type="submit">Logg Inn</button>
+                </form>
+                <div class="switch-form">
+                    <p>Har du ikke en konto? <a id="switch-to-register">Registrer</a></p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Register Modal -->
+        <div class="modal" id="register-modal">
+            <div class="modal-content">
+                <span class="close-btn" id="close-register">&times;</span>
+                <div class="modal-header">
+                    <h2>Registrer</h2>
+                </div>
+                <form class="modal-form" id="register-form">
+                    <div class="form-group">
+                        <label for="register-name">Fullt Navn</label>
+                        <input type="text" id="register-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-email">E-post</label>
+                        <input type="email" id="register-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password">Passord</label>
+                        <input type="password" id="register-password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-confirm-password">Bekreft Passord</label>
+                        <input type="password" id="register-confirm-password" required>
+                    </div>
+                    <button type="submit">Registrer</button>
+                </form>
+                <div class="switch-form">
+                    <p>Har du allerede en konto? <a id="switch-to-login">Logg Inn</a></p>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // Binary animation
+            function createBinaryBackground() {
+                const container = document.getElementById('binary-container');
+                const containerWidth = container.offsetWidth;
+                const containerHeight = container.offsetHeight;
+                
+                // Create binary texts
+                for (let i = 0; i < 20; i++) {
+                    const binaryText = document.createElement('div');
+                    binaryText.className = 'binary-text';
+                    
+                    // Random position
+                    const left = Math.random() * containerWidth;
+                    const top = Math.random() * containerHeight;
+                    
+                    binaryText.style.left = `${left}px`;
+                    binaryText.style.top = `${top}px`;
+                    
+                    // Generate binary content
+                    let binary = '';
+                    const length = 50 + Math.floor(Math.random() * 100);
+                    for (let j = 0; j < length; j++) {
+                        binary += Math.random() > 0.5 ? '1' : '0';
+                    }
+                    
+                    binaryText.textContent = binary;
+                    container.appendChild(binaryText);
+                    
+                    // Animate falling
+                    animateBinary(binaryText, containerHeight);
                 }
-                element.style.top = pos + 'px';
+            }
+            
+            function animateBinary(element, maxHeight) {
+                let pos = parseFloat(element.style.top);
+                const speed = 0.5 + Math.random() * 1.5;
+                
+                function frame() {
+                    pos += speed;
+                    if (pos > maxHeight) {
+                        pos = -100;
+                    }
+                    element.style.top = pos + 'px';
+                    requestAnimationFrame(frame);
+                }
+                
                 requestAnimationFrame(frame);
             }
             
-            requestAnimationFrame(frame);
-        }
-        
-        // Quiz functionality
-        const quizQuestions = [
-            {
-                question: "Which of the following coding practices contributes most to reducing energy consumption?",
-                options: [
-                    "Minimizing HTTP requests in web applications",
-                    "Using dark mode UI by default",
-                    "Implementing efficient algorithms with lower complexity",
-                    "All of the above"
-                ],
-                answer: 3
-            },
-            {
-                question: "What is the environmental impact of unused code in a software project?",
-                options: [
-                    "It increases storage requirements unnecessarily",
-                    "It may still be executed and consume CPU resources",
-                    "It needs to be transmitted over networks increasing bandwidth usage",
-                    "All of the above"
-                ],
-                answer: 3
-            },
-            {
-                question: "Which of these hosting options generally has the lowest carbon footprint?",
-                options: [
-                    "Self-hosted servers in your office",
-                    "Cloud providers who use renewable energy",
-                    "Any cloud provider regardless of energy source",
-                    "Dedicated servers in a data center"
-                ],
-                answer: 1
-            },
-            {
-                question: "What is 'digital sobriety' in green coding?",
-                options: [
-                    "Using fewer animations and visual effects",
-                    "Minimizing resource usage and implementing only necessary features",
-                    "Writing code while avoiding caffeine",
-                    "Using muted color schemes in user interfaces"
-                ],
-                answer: 1
-            },
-            {
-                question: "Which file format is typically more energy-efficient for web images?",
-                options: [
-                    "High-resolution PNG",
-                    "Uncompressed TIFF",
-                    "Optimized WebP or AVIF",
-                    "Standard JPEG with no optimization"
-                ],
-                answer: 2
-            }
-        ];
-        
-        let currentQuestion = 0;
-        let userAnswers = [];
-        
-        function loadQuestion(index) {
-            const question = quizQuestions[index];
-            document.getElementById('question-text').textContent = question.question;
-            
-            const optionsContainer = document.getElementById('options-container');
-            optionsContainer.innerHTML = '';
-            
-            question.options.forEach((option, i) => {
-                const optionDiv = document.createElement('div');
-                optionDiv.className = 'option';
-                if (userAnswers[index] === i) {
-                    optionDiv.className += ' selected';
+            // Quiz functionality
+            const quizQuestions = [
+                {
+                    question: "Which of the following coding practices contributes most to reducing energy consumption?",
+                    options: [
+                        "Minimizing HTTP requests in web applications",
+                        "Using dark mode UI by default",
+                        "Implementing efficient algorithms with lower complexity",
+                        "All of the above"
+                    ],
+                    answer: 3
+                },
+                {
+                    question: "What is the environmental impact of unused code in a software project?",
+                    options: [
+                        "It increases storage requirements unnecessarily",
+                        "It may still be executed and consume CPU resources",
+                        "It needs to be transmitted over networks increasing bandwidth usage",
+                        "All of the above"
+                    ],
+                    answer: 3
+                },
+                {
+                    question: "Which of these hosting options generally has the lowest carbon footprint?",
+                    options: [
+                        "Self-hosted servers in your office",
+                        "Cloud providers who use renewable energy",
+                        "Any cloud provider regardless of energy source",
+                        "Dedicated servers in a data center"
+                    ],
+                    answer: 1
+                },
+                {
+                    question: "What is 'digital sobriety' in green coding?",
+                    options: [
+                        "Using fewer animations and visual effects",
+                        "Minimizing resource usage and implementing only necessary features",
+                        "Writing code while avoiding caffeine",
+                        "Using muted color schemes in user interfaces"
+                    ],
+                    answer: 1
+                },
+                {
+                    question: "Which file format is typically more energy-efficient for web images?",
+                    options: [
+                        "High-resolution PNG",
+                        "Uncompressed TIFF",
+                        "Optimized WebP or AVIF",
+                        "Standard JPEG with no optimization"
+                    ],
+                    answer: 2
                 }
-                optionDiv.setAttribute('data-index', i);
-                optionDiv.textContent = option;
-                optionsContainer.appendChild(optionDiv);
-            });
+            ];
             
-            // Update progress bar
-            const progressBar = document.getElementById('quiz-progress');
-            progressBar.style.width = `${(index + 1) / quizQuestions.length * 100}%`;
+            let currentQuestion = 0;
+            let userAnswers = [];
             
-            // Update buttons
-            document.getElementById('prev-btn').disabled = index === 0;
-            const nextBtn = document.getElementById('next-btn');
-            if (index === quizQuestions.length - 1) {
-                nextBtn.textContent = 'Finish';
-            } else {
-                nextBtn.textContent = 'Next';
-            }
-        }
-        
-        function showResult() {
-            const quizContent = document.querySelector('.quiz-content');
-            const quizResult = document.getElementById('quiz-result');
-            
-            quizContent.style.display = 'none';
-            quizResult.style.display = 'block';
-            
-            // Calculate score
-            let score = 0;
-            userAnswers.forEach((answer, index) => {
-                if (answer === quizQuestions[index].answer) {
-                    score++;
-                }
-            });
-            
-            document.getElementById('quiz-score').textContent = `${score}/${quizQuestions.length}`;
-            
-            const resultMessage = document.getElementById('result-message');
-            const percentage = score / quizQuestions.length * 100;
-            
-            if (percentage >= 80) {
-                resultMessage.textContent = "Excellent! You're a green coding expert!";
-            } else if (percentage >= 60) {
-                resultMessage.textContent = "Good job! You have solid knowledge of green coding practices.";
-            } else {
-                resultMessage.textContent = "Keep learning! Check out our blog for more information on green coding.";
-            }
-        }
-        
-        // Modal functionality
-        function openModal(modalId) {
-            const modal = document.getElementById(modalId);
-            modal.style.display = 'flex';
-        }
-        
-        function closeModal(modalId) {
-            const modal = document.getElementById(modalId);
-            modal.style.display = 'none';
-        }
-        
-        // Event Listeners
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize binary background
-            createBinaryBackground();
-            
-            // Load first question
-            loadQuestion(0);
-            
-            // Quiz event listeners
-            document.getElementById('options-container').addEventListener('click', function(e) {
-                if (e.target.classList.contains('option')) {
-                    // Remove selected class from all options
-                    const options = document.querySelectorAll('.option');
-                    options.forEach(option => option.classList.remove('selected'));
-                    
-                    // Add selected class to clicked option
-                    e.target.classList.add('selected');
-                    
-                    // Save answer
-                    userAnswers[currentQuestion] = parseInt(e.target.getAttribute('data-index'));
-                }
-            });
-            
-            document.getElementById('prev-btn').addEventListener('click', function() {
-                if (currentQuestion > 0) {
-                    currentQuestion--;
-                    loadQuestion(currentQuestion);
-                }
-            });
-            
-            document.getElementById('next-btn').addEventListener('click', function() {
-                if (currentQuestion < quizQuestions.length - 1) {
-                    currentQuestion++;
-                    loadQuestion(currentQuestion);
+            function loadQuestion(index) {
+                const question = quizQuestions[index];
+                document.getElementById('question-text').textContent = question.question;
+                
+                const optionsContainer = document.getElementById('options-container');
+                optionsContainer.innerHTML = '';
+                
+                question.options.forEach((option, i) => {
+                    const optionDiv = document.createElement('div');
+                    optionDiv.className = 'option';
+                    if (userAnswers[index] === i) {
+                        optionDiv.className += ' selected';
+                    }
+                    optionDiv.setAttribute('data-index', i);
+                    optionDiv.textContent = option;
+                    optionsContainer.appendChild(optionDiv);
+                });
+                
+                // Update progress bar
+                const progressBar = document.getElementById('quiz-progress');
+                progressBar.style.width = `${(index + 1) / quizQuestions.length * 100}%`;
+                
+                // Update buttons
+                document.getElementById('prev-btn').disabled = index === 0;
+                const nextBtn = document.getElementById('next-btn');
+                if (index === quizQuestions.length - 1) {
+                    nextBtn.textContent = 'Finish';
                 } else {
-                    showResult();
+                    nextBtn.textContent = 'Next';
                 }
-            });
+            }
             
-            document.getElementById('restart-quiz').addEventListener('click', function() {
-                currentQuestion = 0;
-                userAnswers = [];
-                document.querySelector('.quiz-content').style.display = 'block';
-                document.getElementById('quiz-result').style.display = 'none';
+            function showResult() {
+                const quizContent = document.querySelector('.quiz-content');
+                const quizResult = document.getElementById('quiz-result');
+                
+                quizContent.style.display = 'none';
+                quizResult.style.display = 'block';
+                
+                // Calculate score
+                let score = 0;
+                userAnswers.forEach((answer, index) => {
+                    if (answer === quizQuestions[index].answer) {
+                        score++;
+                    }
+                });
+                
+                document.getElementById('quiz-score').textContent = `${score}/${quizQuestions.length}`;
+                
+                const resultMessage = document.getElementById('result-message');
+                const percentage = score / quizQuestions.length * 100;
+                
+                if (percentage >= 80) {
+                    resultMessage.textContent = "Excellent! You're a green coding expert!";
+                } else if (percentage >= 60) {
+                    resultMessage.textContent = "Good job! You have solid knowledge of green coding practices.";
+                } else {
+                    resultMessage.textContent = "Keep learning! Check out our blog for more information on green coding.";
+                }
+            }
+            
+            // Modal functionality
+            function openModal(modalId) {
+                const modal = document.getElementById(modalId);
+                modal.style.display = 'flex';
+            }
+            
+            function closeModal(modalId) {
+                const modal = document.getElementById(modalId);
+                modal.style.display = 'none';
+            }
+            
+            // Event Listeners
+            document.addEventListener('DOMContentLoaded', function() {
+                // Initialize binary background
+                createBinaryBackground();
+                
+                // Load first question
                 loadQuestion(0);
-            });
-            
-            // Modal event listeners
-            document.getElementById('login-btn').addEventListener('click', function() {
-                openModal('login-modal');
-            });
-            
-            document.getElementById('register-btn').addEventListener('click', function() {
-                openModal('register-modal');
-            });
-            
-            document.getElementById('close-login').addEventListener('click', function() {
-                closeModal('login-modal');
-            });
-            
-            document.getElementById('close-register').addEventListener('click', function() {
-                closeModal('register-modal');
-            });
-            
-            document.getElementById('switch-to-register').addEventListener('click', function() {
-                closeModal('login-modal');
-                openModal('register-modal');
-            });
-            
-            document.getElementById('switch-to-login').addEventListener('click', function() {
-                closeModal('register-modal');
-                openModal('login-modal');
-            });
-            
-            // Handle form submissions
-            document.getElementById('login-form').addEventListener('submit', function(e) {
-                e.preventDefault();
-                const email = document.getElementById('login-email').value;
-                const password = document.getElementById('login-password').value;
                 
-                // Simulate login (no backend)
-                alert(`Login successful!\nWelcome back, ${email}`);
-                closeModal('login-modal');
+                // Quiz event listeners
+                document.getElementById('options-container').addEventListener('click', function(e) {
+                    if (e.target.classList.contains('option')) {
+                        // Remove selected class from all options
+                        const options = document.querySelectorAll('.option');
+                        options.forEach(option => option.classList.remove('selected'));
+                        
+                        // Add selected class to clicked option
+                        e.target.classList.add('selected');
+                        
+                        // Save answer
+                        userAnswers[currentQuestion] = parseInt(e.target.getAttribute('data-index'));
+                    }
+                });
                 
-                // Update UI to show logged in state
-                document.getElementById('login-btn').style.display = 'none';
-                document.getElementById('register-btn').textContent = 'Logout';
-            });
-            
-            document.getElementById('register-form').addEventListener('submit', function(e) {
-                e.preventDefault();
-                const name = document.getElementById('register-name').value;
-                const email = document.getElementById('register-email').value;
-                const password = document.getElementById('register-password').value;
-                const confirmPassword = document.getElementById('register-confirm-password').value;
+                document.getElementById('prev-btn').addEventListener('click', function() {
+                    if (currentQuestion > 0) {
+                        currentQuestion--;
+                        loadQuestion(currentQuestion);
+                    }
+                });
                 
-                if (password !== confirmPassword) {
-                    alert('Passwords do not match!');
-                    return;
-                }
+                document.getElementById('next-btn').addEventListener('click', function() {
+                    if (currentQuestion < quizQuestions.length - 1) {
+                        currentQuestion++;
+                        loadQuestion(currentQuestion);
+                    } else {
+                        showResult();
+                    }
+                });
                 
-                // Simulate registration (no backend)
-                alert(`Registration successful!\nWelcome to GreenCode, ${name}!`);
-                closeModal('register-modal');
+                document.getElementById('restart-quiz').addEventListener('click', function() {
+                    currentQuestion = 0;
+                    userAnswers = [];
+                    document.querySelector('.quiz-content').style.display = 'block';
+                    document.getElementById('quiz-result').style.display = 'none';
+                    loadQuestion(0);
+                });
                 
-                // Update UI to show logged in state
-                document.getElementById('login-btn').style.display = 'none';
-                document.getElementById('register-btn').textContent = 'Logout';
+                // Modal event listeners
+                document.getElementById('login-btn').addEventListener('click', function() {
+                    openModal('login-modal');
+                });
+                
+                document.getElementById('register-btn').addEventListener('click', function() {
+                    openModal('register-modal');
+                });
+                
+                document.getElementById('close-login').addEventListener('click', function() {
+                    closeModal('login-modal');
+                });
+                
+                document.getElementById('close-register').addEventListener('click', function() {
+                    closeModal('register-modal');
+                });
+                
+                document.getElementById('switch-to-register').addEventListener('click', function() {
+                    closeModal('login-modal');
+                    openModal('register-modal');
+                });
+                
+                document.getElementById('switch-to-login').addEventListener('click', function() {
+                    closeModal('register-modal');
+                    openModal('login-modal');
+                });
+                
+                // Handle form submissions
+                document.getElementById('login-form').addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = document.getElementById('login-email').value;
+                    const password = document.getElementById('login-password').value;
+                    
+                    // Simulate login (no backend)
+                    alert(`Login successful!\nWelcome back, ${email}`);
+                    closeModal('login-modal');
+                    
+                    // Update UI to show logged in state
+                    document.getElementById('login-btn').style.display = 'none';
+                    document.getElementById('register-btn').textContent = 'Logout';
+                });
+                
+                document.getElementById('register-form').addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const name = document.getElementById('register-name').value;
+                    const email = document.getElementById('register-email').value;
+                    const password = document.getElementById('register-password').value;
+                    const confirmPassword = document.getElementById('register-confirm-password').value;
+                    
+                    if (password !== confirmPassword) {
+                        alert('Passwords do not match!');
+                        return;
+                    }
+                    
+                    // Simulate registration (no backend)
+                    alert(`Registration successful!\nWelcome to GreenCode, ${name}!`);
+                    closeModal('register-modal');
+                    
+                    // Update UI to show logged in state
+                    document.getElementById('login-btn').style.display = 'none';
+                    document.getElementById('register-btn').textContent = 'Logout';
+                });
+                
+                // Newsletter form
+                document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = this.querySelector('input[type="email"]').value;
+                    alert(`Thank you for subscribing to our newsletter with ${email}!`);
+                    this.reset();
+                });
+                
+                // Close modals when clicking outside
+                window.addEventListener('click', function(e) {
+                    if (e.target.classList.contains('modal')) {
+                        e.target.style.display = 'none';
+                    }
+                });
             });
-            
-            // Newsletter form
-            document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
-                e.preventDefault();
-                const email = this.querySelector('input[type="email"]').value;
-                alert(`Thank you for subscribing to our newsletter with ${email}!`);
-                this.reset();
-            });
-            
-            // Close modals when clicking outside
-            window.addEventListener('click', function(e) {
-                if (e.target.classList.contains('modal')) {
-                    e.target.style.display = 'none';
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+        </script>
+    </body>
+    </html>
