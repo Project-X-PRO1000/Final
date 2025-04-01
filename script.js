@@ -1,35 +1,74 @@
   // Binary animation
       function createBinaryBackground() {
-        const container = document.getElementById("binary-container");
-        const containerWidth = container.offsetWidth;
-        const containerHeight = container.offsetHeight;
+  const container = document.getElementById("binary-container");
+  const containerWidth = container.offsetWidth;
+  const containerHeight = container.offsetHeight;
 
-        // Create binary texts
-        for (let i = 0; i < 20; i++) {
-          const binaryText = document.createElement("div");
-          binaryText.className = "binary-text";
+  // Create more binary columns
+  for (let i = 0; i < 40; i++) {
+    const binaryColumn = document.createElement("div");
+    binaryColumn.className = "binary-text";
 
-          // Random position
-          const left = Math.random() * containerWidth;
-          const top = Math.random() * containerHeight;
+    // Position columns evenly across the width
+    const left = (i / 40) * containerWidth + Math.random() * 20 - 10;
+    const top = Math.random() * containerHeight - containerHeight;
 
-          binaryText.style.left = `${left}px`;
-          binaryText.style.top = `${top}px`;
+    binaryColumn.style.left = `${left}px`;
+    binaryColumn.style.top = `${top}px`;
 
-          // Generate binary content
-          let binary = "";
-          const length = 50 + Math.floor(Math.random() * 100);
-          for (let j = 0; j < length; j++) {
+    // Generate binary content with varying character brightness
+    let binary = "";
+    const length = 20 + Math.floor(Math.random() * 30);
+    for (let j = 0; j < length; j++) {
+      // Randomly add a span with brighter color for highlight effect
+      if (Math.random() > 0.8) {
+        binary += `<span style="color:white;text-shadow:0 0 10px #fff,0 0 20px var(--primary-green);">${Math.random() > 0.5 ? "1" : "0"}</span>`;
+      } else {
+        binary += Math.random() > 0.5 ? "1" : "0";
+      }
+    }
+
+    binaryColumn.innerHTML = binary;
+    container.appendChild(binaryColumn);
+
+    // Animate falling with varying speeds
+    animateBinary(binaryColumn, containerHeight);
+  }
+}
+
+function animateBinary(element, maxHeight) {
+  let pos = parseFloat(element.style.top);
+  const speed = 0.5 + Math.random() * 2; // More variation in speeds
+  
+  // Randomize content occasionally
+  const updateInterval = 5000 + Math.random() * 10000;
+  const lastUpdate = Date.now();
+
+  function frame() {
+    pos += speed;
+    if (pos > maxHeight) {
+      pos = -100 - Math.random() * 500; // Stagger reentry
+      
+      // Refresh binary content occasionally
+      if (Date.now() - lastUpdate > updateInterval) {
+        let binary = "";
+        const length = 20 + Math.floor(Math.random() * 30);
+        for (let j = 0; j < length; j++) {
+          if (Math.random() > 0.8) {
+            binary += `<span style="color:white;text-shadow:0 0 10px #fff,0 0 20px var(--primary-green);">${Math.random() > 0.5 ? "1" : "0"}</span>`;
+          } else {
             binary += Math.random() > 0.5 ? "1" : "0";
           }
-
-          binaryText.textContent = binary;
-          container.appendChild(binaryText);
-
-          // Animate falling
-          animateBinary(binaryText, containerHeight);
         }
+        element.innerHTML = binary;
       }
+    }
+    element.style.top = pos + "px";
+    requestAnimationFrame(frame);
+  }
+
+  requestAnimationFrame(frame);
+}
 
       function animateBinary(element, maxHeight) {
         let pos = parseFloat(element.style.top);
