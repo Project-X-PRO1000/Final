@@ -346,13 +346,13 @@
         align-items: center;
       }
 
-      .author-avatar {
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        background-color: var(--medium-gray);
-        margin-right: 10px;
+      .author-avatar img {
+        width: 40px;  /* Juster størrelsen etter behov */
+        height: 40px;
+        border-radius: 50%; /* Gjør bildet rundt */
+        object-fit: cover; /* Sørger for at bildet fyller hele sirkelen */
       }
+      
 
       .blog-date {
         color: var(--dark-gray);
