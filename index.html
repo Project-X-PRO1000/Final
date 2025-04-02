@@ -3,14 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GreenCode | Kode Grønt. Bygg .</title>
+    <title>GreenCode - Sustainable Software Development</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
   </head>
   <body>
-    <!-- Header & Navigation -->
+    <!-- Header -->
     <header>
       <div class="container nav-container">
-        <a href="#" class="logo">GREEN<span>CODE</span></a>
+        <a href="#" class="logo">Green<span>Code</span></a>
         <nav>
           <ul>
             <li><a href="#">Hjem</a></li>
@@ -21,8 +25,9 @@
           </ul>
         </nav>
         <div class="auth-buttons">
-          <button id="login-btn">Logg inn</button>
+          <button id="login-btn">Logg Inn</button>
           <button id="register-btn">Registrer</button>
+          <!-- User info will be added here by JavaScript when logged in -->
         </div>
       </div>
     </header>
@@ -100,7 +105,7 @@
           </p>
         </div>
         <div class="blog-grid">
-          <div class="blog-card">
+          <div class="blog-card" data-article="article1">
             <div class="blog-image">
               <img src="tast.jpg" alt="Blogg Bilde" />
             </div>
@@ -116,13 +121,13 @@
                   <div class="author-avatar">
                     <img src="portrett1.jpeg" alt="Emma Johnson" />
                   </div>
-                  <span>Emma  Johnson</span>
+                  <span>Emma Johnson</span>
                 </div>
                 <div class="blog-date">15. Mar 2025</div>
               </div>
             </div>
           </div>
-          <div class="blog-card">
+          <div class="blog-card" data-article="article2">
             <div class="blog-image">
               <img src="bilde.jpg" alt="Blogg Bilde" />
             </div>
@@ -144,7 +149,7 @@
               </div>
             </div>
           </div>
-          <div class="blog-card">
+          <div class="blog-card" data-article="article3">
             <div class="blog-image">
               <img src="2.jpg" alt="Blogg Bilde" />
             </div>
@@ -170,8 +175,299 @@
       </div>
     </section>
 
+    <!-- Article Modals -->
+    <div class="modal article-modal" id="article1-modal">
+      <div class="modal-content article-content">
+        <span class="close-btn" id="close-article1">&times;</span>
+        <div class="article-header">
+          <span class="blog-tag">Energieffektivitet</span>
+          <h2>10 Måter å Redusere Kodens Karbonavtrykk</h2>
+          <div class="article-meta">
+            <div class="blog-author">
+              <div class="author-avatar">
+                <img src="portrett1.jpeg" alt="Emma Johnson" />
+              </div>
+              <span>Emma Johnson</span>
+            </div>
+            <div class="blog-date">15. Mar 2025</div>
+          </div>
+        </div>
+        <div class="article-body">
+          <img src="tast.jpg" alt="Blogg Bilde" class="article-main-image" />
+          <p>
+            I dagens digitale verden har programvare en overraskende stor
+            miljøpåvirkning. Hver linje kode vi skriver krever prosessorkraft,
+            som igjen krever elektrisitet. Med milliarder av digitale
+            transaksjoner hver dag, kan selv små forbedringer i kodeeffektivitet
+            gi betydelige miljøgevinster.
+          </p>
+
+          <h3>1. Optimalisere algoritmer</h3>
+          <p>
+            Effektive algoritmer med lavere tidskompleksitet reduserer CPU-bruk
+            betydelig. Vurder alltid om det finnes en mer effektiv måte å løse
+            problemet på.
+          </p>
+
+          <h3>2. Redusere HTTP-forespørsler</h3>
+          <p>
+            Hver nettverksforespørsel bruker energi. Ved å kombinere filer,
+            bruke sprite-bilder og implementere effektiv caching, kan du
+            drastisk redusere antall forespørsler.
+          </p>
+
+          <h3>3. Bildekomprimering og optimalisering</h3>
+          <p>
+            Store mediefiler er en stor kilde til energiforbruk. Bruk moderne
+            bildekomprimering og velg riktig format for formålet (WebP, AVIF).
+          </p>
+
+          <h3>4. Implementere energieffektiv CSS</h3>
+          <p>
+            Komplekse CSS-selektorer og animasjoner kan være ressurskrevende.
+            Bruk enkle selektorer og foretrekk CSS-transformasjoner over andre
+            animasjonsteknikker.
+          </p>
+
+          <h3>5. Optimalisere JavaScript</h3>
+          <p>
+            Unngå unødvendig DOM-manipulasjon, bruk event delegation, og
+            implementer virtuell scrolling for lange lister.
+          </p>
+
+          <h3>6. Implementere "lazy loading"</h3>
+          <p>
+            Last bare inn innhold når det faktisk trengs, spesielt for bilder og
+            videoer som ikke er synlige i viewport.
+          </p>
+
+          <h3>7. Utnytte serverkaching</h3>
+          <p>
+            Riktig implementert caching reduserer behovet for gjentatt
+            prosessering og dataoverføring.
+          </p>
+
+          <h3>8. Redusere databasespørringer</h3>
+          <p>
+            Optimaliser databaseforespørsler for å minimere serverbelastningen
+            og responstiden.
+          </p>
+
+          <h3>9. Designe for mørk modus</h3>
+          <p>
+            Mørke brukergrensesnitt kan spare betydelig batteriforbruk på
+            enheter med OLED-skjermer.
+          </p>
+
+          <h3>10. Velg grønne hostingalternativer</h3>
+          <p>
+            Bruk serverleverandører som drifter med fornybar energi for å
+            ytterligere redusere kodens miljøavtrykk.
+          </p>
+
+          <p>
+            Ved å implementere disse teknikkene, kan utviklere bidra til en
+            betydelig reduksjon i energiforbruk uten å ofre applikasjonens
+            funksjonalitet eller brukeropplevelse. Husk at grønn koding ikke
+            bare er bra for miljøet – det gir også ofte raskere og mer effektive
+            applikasjoner!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal article-modal" id="article2-modal">
+      <div class="modal-content article-content">
+        <span class="close-btn" id="close-article2">&times;</span>
+        <div class="article-header">
+          <span class="blog-tag">Beste Praksis</span>
+          <h2>Bærekraftige Webdesign-Prinsipper for Utviklere</h2>
+          <div class="article-meta">
+            <div class="blog-author">
+              <div class="author-avatar">
+                <img src="portrett3.jpeg" alt="Alex Chen" />
+              </div>
+              <span>Alex Chen</span>
+            </div>
+            <div class="blog-date">10. Mar 2025</div>
+          </div>
+        </div>
+        <div class="article-body">
+          <img src="bilde.jpg" alt="Blogg Bilde" class="article-main-image" />
+          <p>
+            Bærekraftig webdesign handler ikke bare om miljøvennlighet – det
+            handler om å skape nettsteder som er effektive, tilgjengelige og
+            bærekraftige over tid. Ved å implementere miljøvennlige
+            designprinsipper, kan utviklere redusere energiforbruket samtidig
+            som brukeropplevelsen forbedres.
+          </p>
+
+          <h3>Minimalistisk design</h3>
+          <p>
+            En minimalistisk tilnærming til webdesign fokuserer på det
+            essensielle og eliminerer unødvendige elementer. Dette resulterer i
+            raskere lastetider, redusert dataoverføring og lavere energiforbruk.
+            Enklere design betyr også ofte en mer fokusert og bedre
+            brukeropplevelse.
+          </p>
+
+          <h3>Responsiv vs. separat mobilside</h3>
+          <p>
+            Å bruke én responsiv design i stedet for separate versjoner for
+            desktop og mobil reduserer duplisering av ressurser og forenkler
+            vedlikeholdet. Dette sparer både utviklingstid og serverressurser
+            over tid.
+          </p>
+
+          <h3>Typografi og systemfonter</h3>
+          <p>
+            Bruk av systemfonter reduserer behovet for å laste ned fontfiler.
+            Hvis tilpassede fonter er nødvendig, begrens antallet og vekter, og
+            implementer font-display for optimal lasting.
+          </p>
+
+          <h3>Optimalisert media</h3>
+          <p>
+            Bilder og video utgjør ofte mesteparten av en nettsides størrelse.
+            Ved å implementere moderne formater (WebP, AVIF), riktig
+            dimensjonering, og teknikker som responsive bilder og lazy loading,
+            kan du dramatisk redusere dataoverføring.
+          </p>
+
+          <h3>Fargepaletter og kontrast</h3>
+          <p>
+            Velg fargepaletter som fungerer godt både i lys og mørk modus. Sikre
+            at kontrastforholdene oppfyller tilgjengelighetsstandarder, noe som
+            gjør innholdet lesbart for alle brukere.
+          </p>
+
+          <h3>Effektiv koding</h3>
+          <p>
+            Optimaliser CSS og JavaScript ved å fjerne ubrukt kode, minimere
+            filer, og bruke effektive selektorer. Vurder om du virkelig trenger
+            tunge rammeverk, eller om lettere alternativer kan fungere for ditt
+            prosjekt.
+          </p>
+
+          <h3>Bærekraftig hosting</h3>
+          <p>
+            Velg hostingleverandører som bruker fornybar energi og har en
+            bevisst miljøpolitikk. Dette er en enkel måte å redusere
+            karbonavtrykket til nettsiden din.
+          </p>
+
+          <h3>Konklusjon</h3>
+          <p>
+            Bærekraftig webdesign skaper en vinn-vinn situasjon: nettsteder som
+            er raskere, mer tilgjengelige, og som samtidig har mindre
+            miljøpåvirkning. Ved å implementere disse prinsippene, tar utviklere
+            et viktig steg mot en mer bærekraftig digital fremtid.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal article-modal" id="article3-modal">
+      <div class="modal-content article-content">
+        <span class="close-btn" id="close-article3">&times;</span>
+        <div class="article-header">
+          <span class="blog-tag">Verktøy</span>
+          <h2>5 Verktøy for å Måle Kodens Miljøpåvirkning</h2>
+          <div class="article-meta">
+            <div class="blog-author">
+              <div class="author-avatar">
+                <img src="portrett2.jpeg" alt="Maria Garcia" />
+              </div>
+              <span>Maria Garcia</span>
+            </div>
+            <div class="blog-date">5. Mar 2025</div>
+          </div>
+        </div>
+        <div class="article-body">
+          <img src="2.jpg" alt="Blogg Bilde" class="article-main-image" />
+          <p>
+            I arbeidet med å skape mer miljøvennlig programvare er måling av
+            miljøpåvirkning avgjørende. Heldigvis finnes det stadig flere
+            verktøy som hjelper utviklere med å forstå og redusere
+            karbonavtrykket til koden deres. La oss utforske fem av de mest
+            effektive verktøyene som er tilgjengelige i dag:
+          </p>
+
+          <h3>1. Website Carbon Calculator</h3>
+          <p>
+            Dette brukervennlige verktøyet beregner karbonutslipp for nettsteder
+            ved å analysere dataoverføring, serverplassering, og besøkstrafikk.
+            Det gir en enkel beregning og sammenligner resultatet med andre
+            testede nettsteder.
+          </p>
+          <p></p>
+            <strong>Nytteverdi:</strong> Perfekt for rask vurdering av
+            eksisterende nettsteder og for å måle fremgang over tid når
+            optimaliseringer implementeres.
+          </p>
+
+          <h3>2. Ecograder</h3>
+          <p>
+            Ecograder analyserer både miljøpåvirkning og ytelsesaspekter ved
+            nettsteder. Det gir en omfattende rapport med konkrete anbefalinger
+            for forbedringer innen flere kategorier.
+          </p>
+          <p>
+            <strong>Nytteverdi:</strong> Ideell for team som ønsker en detaljert
+            handlingsplan for å forbedre nettstedets miljøavtrykk og ytelse.
+          </p>
+
+          <h3>3. GreenFrame</h3>
+          <p>
+            Dette utviklerverktøyet måler energiforbruk og CO2-utslipp direkte
+            fra kode og brukerscenarioer. Det kan integreres i CI/CD-prosesser
+            for kontinuerlig overvåking av miljøpåvirkning.
+          </p>
+          <p>
+            <strong>Nytteverdi:</strong> Spesielt nyttig for utviklingsteam som
+            ønsker å inkludere miljøpåvirkning som en del av
+            kvalitetssikringsprosessen.
+          </p>
+
+          <h3>4. Lighthouse og PageSpeed Insights</h3>
+          <p>
+            Googles verktøy fokuserer primært på ytelse, men ytelsesforbedringer
+            fører ofte direkte til redusert energiforbruk. De gir konkrete
+            anbefalinger for å optimalisere lastetid og ressursbruk.
+          </p>
+          <p></p>
+            <strong>Nytteverdi:</strong> Allsidige verktøy som mange utviklere
+            allerede er kjent med, og som indirekte bidrar til grønnere
+            nettsteder.
+          </p>
+
+          <h3>5. EcoAPM</h3>
+          <p>
+            Dette er et mer avansert overvåkingsverktøy som kan integreres i
+            ulike applikasjoner for å måle energiforbruk og karbonintensitet i
+            sanntid. Det gir detaljerte data om hvilke deler av applikasjonen
+            som bruker mest energi.
+          </p>
+          <p>
+            <strong>Nytteverdi:</strong> Best egnet for større prosjekter hvor
+            detaljert analyse og kontinuerlig overvåking er nødvendig.
+          </p>
+
+          <h3>Konklusjon</h3>
+          <p>
+            Å måle miljøpåvirkning er det første steget mot mer bærekraftig
+            utvikling. Ved å bruke disse verktøyene kan utviklere ta informerte
+            beslutninger som både forbedrer brukeropplevelsen og reduserer
+            miljøpåvirkningen av deres digitale produkter. Husk at den mest
+            miljøvennlige koden ofte er den som aldri trenger å kjøres – så
+            fokuser alltid på effektivitet og nødvendighet i utviklingsarbeidet.
+          </p>
+        </div>
+      </div>
+    </div>
+
     <!-- Quiz Section -->
-    <section class="quiz-section" id="quiz">
+    <section class="quiz-section" id="quiz">ection">
       <div class="container">
         <div class="section-title">
           <h2>Test Din <span>Grønne</span> Kodekunnskap</h2>
@@ -190,8 +486,7 @@
             </div>
             <div class="quiz-question">
               <h4 id="question-text">
-                Hvilken av følgende kodepraksis bidrar mest til å redusere
-                energiforbruk?
+                Hvilken av følgende kodepraksis bidrar mest til å redusere energiforbruk?
               </h4>
               <div class="quiz-options" id="options-container">
                 <div class="option" data-index="0">
@@ -303,7 +598,7 @@
       <div class="modal-content">
         <span class="close-btn" id="close-login">&times;</span>
         <div class="modal-header">
-          <h2>Logg Inn</h2>
+          <h2>Logg inn</h2>
         </div>
         <form class="modal-form" id="login-form">
           <div class="form-group">
@@ -327,11 +622,11 @@
       <div class="modal-content">
         <span class="close-btn" id="close-register">&times;</span>
         <div class="modal-header">
-          <h2>Registrer</h2>
+          <h2>Opprett konto</h2>
         </div>
         <form class="modal-form" id="register-form">
           <div class="form-group">
-            <label for="register-name">Fullt Navn</label>
+            <label for="register-name">Fullt navn</label>
             <input type="text" id="register-name" required />
           </div>
           <div class="form-group">
@@ -343,7 +638,7 @@
             <input type="password" id="register-password" required />
           </div>
           <div class="form-group">
-            <label for="register-confirm-password">Bekreft Passord</label>
+            <label for="register-confirm-password">Bekreft passord</label>
             <input type="password" id="register-confirm-password" required />
           </div>
           <button type="submit">Registrer</button>
