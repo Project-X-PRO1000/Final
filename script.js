@@ -1,4 +1,5 @@
 // Binary animation
+/* Commented out to remove binary background
 function createBinaryBackground() {
   const container = document.getElementById("binary-container");
   const containerWidth = container.offsetWidth;
@@ -69,6 +70,7 @@ function animateBinary(element, maxHeight) {
 
   requestAnimationFrame(frame);
 }
+*/
 
 // Quiz functionality
 document.addEventListener('DOMContentLoaded', function() {
@@ -357,8 +359,8 @@ function closeModal(modalId) {
 // Event Listeners
 document.addEventListener("DOMContentLoaded", function () {
   // Initialize binary background
-  createBinaryBackground();
-
+  // createBinaryBackground(); // Removed binary background initialization
+  
   // Modal event listeners
   document
     .getElementById("login-btn")

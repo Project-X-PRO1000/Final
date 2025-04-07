@@ -1,12 +1,12 @@
 :root {
-        --primary-green: #0e9e4a;
-        --secondary-green: #0a7a38;
-        --dark-bg: #111;
-        --light-green-text: #a3f7b5;
-        --white: #fff;
-        --light-gray: #f5f5f5;
-        --medium-gray: #ccc;
-        --dark-gray: #333;
+        --primary-green: #4CAF50;     /* A true green color */
+        --secondary-green: #388E3C;   /* Darker shade of green */
+        --dark-bg: #2d3436;           /* Dark background, not pure black */
+        --light-green-text: #8BC34A;  /* Light green for highlights */
+        --white: #fafafa;             /* Slightly off-white for better eye comfort */
+        --light-gray: #f0f0f0;        /* Very light gray for backgrounds */
+        --medium-gray: #d1d1d1;       /* Medium gray for borders */
+        --dark-gray: #424242;         /* Dark gray for text */
       }
 
       * {
@@ -36,7 +36,7 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 2px 10px rgba(14, 158, 74, 0.5);
+  box-shadow: none; /* Removed the shadow */
 }
 
       .nav-container {
@@ -99,7 +99,7 @@
       }
 
       #login-btn:hover {
-        background-color: rgba(14, 158, 74, 0.1);
+        background-color: rgba(98, 124, 133, 0.1);
       }
 
       #register-btn {
@@ -139,7 +139,7 @@
       }
 
       #logout-btn:hover {
-        background-color: rgba(14, 158, 74, 0.1);
+        background-color: rgba(98, 124, 133, 0.1);
       }
 
       /* Notification popup styles */
@@ -193,9 +193,8 @@
       /* Hero section */
       .hero {
         height: 80vh;
-        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-          url("/api/placeholder/1200/800") center/cover;
-        color: var(--white);
+        background: var(--light-gray);  /* Changed from dark gradient to light gray */
+        color: var(--dark-gray);  /* Changed text color to dark gray for better contrast */
         display: flex;
         align-items: center;
         position: relative;
@@ -209,32 +208,25 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: url("/api/placeholder/1200/800") center/cover;
-        opacity: 0.5;
+        background: linear-gradient(rgba(76, 175, 80, 0.1), rgba(56, 142, 60, 0.2)); /* Light green gradient overlay */
+        opacity: 0.8;
         z-index: -1;
       }
 
       .binary-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8));
-  overflow: hidden;
-  z-index: -1;
-}
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--light-gray); /* Changed to light gray */
+        overflow: hidden;
+        z-index: -1;
+      }
 
       .binary-text {
-  position: absolute;
-  color: var(--primary-green);
-  font-family: monospace;
-  font-size: 12px;
-  opacity: 0.7;
-  line-height: 1;
-  text-shadow: 0 0 8px var(--primary-green);
-  font-weight: bold;
-}
+        display: none; /* Hide any binary text elements */
+      }
 
       .hero-content {
         max-width: 800px;
@@ -245,12 +237,14 @@
         font-size: 3.5rem;
         margin-bottom: 20px;
         line-height: 1.2;
+        color: var(--dark-gray); /* Added to ensure heading is visible on light background */
       }
 
       .hero p {
         font-size: 1.2rem;
         margin-bottom: 30px;
         max-width: 600px;
+        color: var(--dark-gray); /* Added to ensure paragraph text is visible */
       }
 
       .hero span {
@@ -321,7 +315,7 @@
       }
 
       .feature-icon {
-        background-color: rgba(14, 158, 74, 0.1);
+        background-color: rgba(98, 124, 133, 0.1);
         width: 70px;
         height: 70px;
         border-radius: 50%;
@@ -395,7 +389,7 @@
 
       .blog-tag {
         display: inline-block;
-        background-color: rgba(14, 158, 74, 0.1);
+        background-color: rgba(98, 124, 133, 0.1);
         color: var(--primary-green);
         padding: 5px 10px;
         border-radius: 4px;
@@ -583,12 +577,12 @@
       }
 
       .option:hover {
-        background-color: rgba(14, 158, 74, 0.05);
+        background-color: rgba(98, 124, 133, 0.05);
         border-color: var(--primary-green);
       }
 
       .option.selected {
-        background-color: rgba(14, 158, 74, 0.1);
+        background-color: rgba(98, 124, 133, 0.1);
         border-color: var(--primary-green);
       }
 
