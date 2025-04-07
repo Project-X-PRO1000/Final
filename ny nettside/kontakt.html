@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fellesskap | GreenCode Initiative</title>
+    <title>Kontakt Oss | GreenCode Initiative</title>
     <style>
       :root {
         --color-dark-green: #1a5632;
@@ -125,112 +125,99 @@
         margin: 0 auto;
       }
 
-      .community-content {
-        padding: 5rem 0;
+      .contact-section {
+          padding: 5rem 0;
       }
 
-       .section {
-        margin-bottom: 4rem;
+      .contact-wrapper {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 3rem;
+          background-color: var(--color-white);
+          padding: 3rem;
+          border-radius: 8px;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.07);
       }
 
-      .section-title {
-        font-size: 2rem;
-        color: var(--color-dark-green);
-        margin-bottom: 2rem;
-        position: relative;
-        padding-bottom: 0.5rem;
-        text-align: center;
+      .contact-info h3, .contact-form h3 {
+          font-size: 1.8rem;
+          color: var(--color-dark-green);
+          margin-bottom: 1.5rem;
       }
 
-      .section-title:after {
-        content: "";
-        position: absolute;
-        width: 60px;
-        height: 3px;
-        background-color: var(--color-medium-green);
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
+      .contact-info p {
+          margin-bottom: 1.5rem;
+          color: var(--color-gray);
       }
 
-      .card-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-      }
-
-      .card {
-        background-color: var(--color-white);
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        transition: transform 0.3s, box-shadow 0.3s;
-        padding: 2rem;
-        text-align: center;
-      }
-
-      .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-      }
-
-      .card-icon {
-          font-size: 3rem;
-          color: var(--color-medium-green);
+      .info-item {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
           margin-bottom: 1rem;
+          color: var(--color-dark-earth);
       }
 
-      .card-title {
-        font-size: 1.4rem;
-        margin-bottom: 1rem;
-        color: var(--color-dark-green);
-      }
-
-      .card-text {
-        color: var(--color-gray);
-        margin-bottom: 1.5rem;
-        font-size: 0.95rem;
-      }
-
-      .btn {
-        display: inline-block;
-        background-color: var(--color-medium-green);
-        color: var(--color-white);
-        padding: 0.7rem 1.5rem;
-        border-radius: 30px;
-        text-decoration: none;
-        font-weight: 500;
-        transition: all 0.3s;
-        border: none;
-        cursor: pointer;
-      }
-
-      .btn:hover {
-        background-color: var(--color-dark-green);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      }
-
-       .contribute-section {
-           background-color: var(--color-light-green);
-           color: var(--color-white);
-           padding: 4rem 0;
-           text-align: center;
-           border-radius: 8px;
-           margin-top: 4rem;
-       }
-       .contribute-title {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: var(--color-dark-green);
-       }
-        .contribute-text {
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto 2rem auto;
-            color: var(--color-dark-earth);
+        .info-item svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--color-medium-green);
+            flex-shrink: 0;
         }
 
+      .form-group {
+          margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+          display: block;
+          margin-bottom: 0.5rem;
+          font-weight: 500;
+          color: var(--color-dark-earth);
+      }
+
+      .form-group input,
+      .form-group textarea {
+          width: 100%;
+          padding: 0.8rem;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          font-size: 1rem;
+          background-color: var(--color-cream);
+          color: var(--color-gray);
+          transition: border-color 0.3s;
+      }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-medium-green);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--color-medium-green);
+            color: var(--color-white);
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: var(--color-dark-green);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
       footer {
         background-color: var(--color-dark-green);
@@ -309,7 +296,11 @@
         font-size: 0.9rem;
       }
 
-      @media (max-width: 992px) {
+       @media (max-width: 992px) {
+        .contact-wrapper {
+            grid-template-columns: 1fr;
+            padding: 2rem;
+        }
         .footer-content {
           grid-template-columns: 1fr 1fr;
         }
@@ -318,9 +309,6 @@
       @media (max-width: 768px) {
         .nav-menu {
           display: none; /* Add logic for mobile menu toggle if needed */
-        }
-        .card-grid {
-          grid-template-columns: 1fr;
         }
         .footer-content {
           grid-template-columns: 1fr;
@@ -361,43 +349,55 @@
 
     <section class="page-header">
       <div class="container">
-        <h1 class="page-title">Bli med i Fellesskapet</h1>
+        <h1 class="page-title">Kontakt Oss</h1>
         <p class="page-subtitle">
-          Koble deg på med andre utviklere, del kunnskap, delta på arrangementer og bidra til en grønnere teknologifremtid sammen.
+            Har du spørsmål, forslag, eller ønsker du å samarbeide? Vi hører gjerne fra deg!
         </p>
       </div>
     </section>
 
-    <section class="community-content">
+    <section class="contact-section">
         <div class="container">
-            <div class="section">
-                <h2 class="section-title">Engasjer deg</h2>
-                <div class="card-grid">
-                    <div class="card">
-                        <div class="card-icon">💬</div>
-                        <h3 class="card-title">Forum</h3>
-                        <p class="card-text">Diskuter beste praksis, still spørsmål, og del dine erfaringer med bærekraftig koding i vårt dedikerte forum.</p>
-                        <a href="#" class="btn">Gå til Forum</a>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>Kom i kontakt</h3>
+                    <p>Fyll ut skjemaet, så kommer vi tilbake til deg så snart som mulig. Du kan også nå oss via e-post.</p>
+                    <div class="info-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        <span>kontakt@greencode.org</span>
                     </div>
-                    <div class="card">
-                        <div class="card-icon">📅</div>
-                        <h3 class="card-title">Arrangementer</h3>
-                        <p class="card-text">Finn kommende webinarer, workshops og meetups. Lær av eksperter og nettverk med likesinnede utviklere.</p>
-                        <a href="#" class="btn">Se Arrangementer</a>
+                    <div class="info-item">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        <span>Oslo, Norge (Digitalt Initiativ)</span>
                     </div>
-                    <div class="card">
-                        <div class="card-icon">🤝</div>
-                        <h3 class="card-title">Prosjekter</h3>
-                        <p class="card-text">Utforsk og bidra til open-source prosjekter fokusert på grønn teknologi og energieffektiv programvare.</p>
-                        <a href="#" class="btn">Utforsk Prosjekter</a>
-                    </div>
+                    <p>Følg oss også på sosiale medier!</p>
+                     <div class="social-links" style="margin-top:1rem;">
+                        <!-- Kopier sosiale ikoner fra footer hvis ønskelig -->
+                     </div>
                 </div>
-            </div>
-
-            <div class="section contribute-section">
-                <h2 class="contribute-title">Bidra til GreenCode</h2>
-                <p class="contribute-text">Din kunnskap og engasjement er verdifullt! Lær hvordan du kan bidra med kode, artikler, veiledninger eller ved å organisere lokale arrangementer.</p>
-                <a href="#" class="btn">Lær Hvordan du Kan Bidra</a>
+                <div class="contact-form">
+                    <h3>Send oss en melding</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Navn</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-post</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Emne</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Melding</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Melding</button>
+                    </form>
+                     <div id="form-response" style="margin-top: 1rem; color: var(--color-medium-green);"></div>
+                </div>
             </div>
         </div>
     </section>
@@ -432,10 +432,10 @@
           <div>
             <h3 class="footer-title">Ressurser</h3>
             <ul class="footer-links">
-              <li class="footer-link"><a href="ressurser.html#guider">Guider</a></li>
-              <li class="footer-link"><a href="ressurser.html#verktoy">Verktøy</a></li>
-              <li class="footer-link"><a href="ressurser.html#webinarer">Webinarer</a></li>
-              <li class="footer-link"><a href="ressurser.html">Artikler</a></li>
+               <li class="footer-link"><a href="ressurser.html#guider">Guider</a></li>
+               <li class="footer-link"><a href="ressurser.html#verktoy">Verktøy</a></li>
+               <li class="footer-link"><a href="ressurser.html#webinarer">Webinarer</a></li>
+               <li class="footer-link"><a href="ressurser.html">Artikler</a></li>
             </ul>
           </div>
           <div>
@@ -462,6 +462,26 @@
         </div>
       </div>
     </footer>
+
+    <script>
+        // Basic contact form submission simulation
+        const contactForm = document.getElementById('contactForm');
+        const formResponse = document.getElementById('form-response');
+
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent actual form submission
+
+            // Simulate sending data
+            formResponse.textContent = 'Sender melding...';
+            formResponse.style.color = 'var(--color-dark-earth)';
+
+            setTimeout(() => {
+                formResponse.textContent = 'Takk for din henvendelse! Vi kontakter deg snart.';
+                formResponse.style.color = 'var(--color-medium-green)';
+                contactForm.reset(); // Clear the form
+            }, 1500); // Simulate network delay
+        });
+    </script>
 
 </body>
 </html>

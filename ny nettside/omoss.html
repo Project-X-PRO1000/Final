@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fellesskap | GreenCode Initiative</title>
+    <title>Om Oss | GreenCode Initiative</title>
     <style>
       :root {
         --color-dark-green: #1a5632;
@@ -125,13 +125,21 @@
         margin: 0 auto;
       }
 
-      .community-content {
+      .about-section {
         padding: 5rem 0;
       }
 
-       .section {
+      .about-intro {
+        text-align: center;
         margin-bottom: 4rem;
       }
+
+       .about-intro p {
+           max-width: 800px;
+           margin: 0 auto;
+           font-size: 1.1rem;
+           color: var(--color-dark-earth);
+       }
 
       .section-title {
         font-size: 2rem;
@@ -153,83 +161,77 @@
         transform: translateX(-50%);
       }
 
-      .card-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
+      .mission-vision {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 3rem;
+          margin-bottom: 4rem;
+          align-items: start;
       }
 
-      .card {
-        background-color: var(--color-white);
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        transition: transform 0.3s, box-shadow 0.3s;
-        padding: 2rem;
-        text-align: center;
+      .mission-vision div {
+          background: var(--color-white);
+          padding: 2rem;
+          border-radius: 8px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
       }
 
-      .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-      }
-
-      .card-icon {
-          font-size: 3rem;
-          color: var(--color-medium-green);
+      .mission-vision h3 {
+          font-size: 1.5rem;
+          color: var(--color-dark-green);
           margin-bottom: 1rem;
+          text-align: center;
       }
 
-      .card-title {
-        font-size: 1.4rem;
-        margin-bottom: 1rem;
-        color: var(--color-dark-green);
-      }
-
-      .card-text {
-        color: var(--color-gray);
-        margin-bottom: 1.5rem;
-        font-size: 0.95rem;
-      }
-
-      .btn {
-        display: inline-block;
-        background-color: var(--color-medium-green);
-        color: var(--color-white);
-        padding: 0.7rem 1.5rem;
-        border-radius: 30px;
-        text-decoration: none;
-        font-weight: 500;
-        transition: all 0.3s;
-        border: none;
-        cursor: pointer;
-      }
-
-      .btn:hover {
-        background-color: var(--color-dark-green);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      }
-
-       .contribute-section {
-           background-color: var(--color-light-green);
-           color: var(--color-white);
-           padding: 4rem 0;
-           text-align: center;
-           border-radius: 8px;
-           margin-top: 4rem;
-       }
-       .contribute-title {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: var(--color-dark-green);
-       }
-        .contribute-text {
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto 2rem auto;
-            color: var(--color-dark-earth);
+        .mission-vision p {
+            color: var(--color-gray);
+            text-align: center;
         }
+
+       .values-section {
+           padding: 4rem 0;
+           background-color: var(--color-white);
+       }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .value-item {
+            padding: 1.5rem;
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--color-medium-green);
+            margin-bottom: 1rem;
+        }
+
+        .value-title {
+            font-size: 1.2rem;
+            color: var(--color-dark-earth);
+            margin-bottom: 0.5rem;
+        }
+
+        .value-text {
+            font-size: 0.9rem;
+            color: var(--color-gray);
+        }
+
+       .team-section {
+           padding: 5rem 0;
+           text-align: center;
+       }
+       .team-text {
+           max-width: 700px;
+           margin: 0 auto 2rem auto;
+           font-size: 1.1rem;
+           color: var(--color-dark-earth);
+       }
+        /* Placeholder for team member cards if needed later */
 
 
       footer {
@@ -313,20 +315,23 @@
         .footer-content {
           grid-template-columns: 1fr 1fr;
         }
+         .mission-vision {
+            grid-template-columns: 1fr;
+        }
       }
 
       @media (max-width: 768px) {
         .nav-menu {
           display: none; /* Add logic for mobile menu toggle if needed */
         }
-        .card-grid {
-          grid-template-columns: 1fr;
-        }
         .footer-content {
           grid-template-columns: 1fr;
         }
          .page-title {
             font-size: 2.5rem;
+        }
+        .values-grid {
+             grid-template-columns: 1fr;
         }
       }
     </style>
@@ -361,44 +366,70 @@
 
     <section class="page-header">
       <div class="container">
-        <h1 class="page-title">Bli med i Fellesskapet</h1>
+        <h1 class="page-title">Om GreenCode Initiative</h1>
         <p class="page-subtitle">
-          Koble deg på med andre utviklere, del kunnskap, delta på arrangementer og bidra til en grønnere teknologifremtid sammen.
+          Lær mer om vårt formål, vår visjon og verdiene som driver oss i arbeidet for en mer bærekraftig teknologibransje.
         </p>
       </div>
     </section>
 
-    <section class="community-content">
+    <section class="about-section">
         <div class="container">
-            <div class="section">
-                <h2 class="section-title">Engasjer deg</h2>
-                <div class="card-grid">
-                    <div class="card">
-                        <div class="card-icon">💬</div>
-                        <h3 class="card-title">Forum</h3>
-                        <p class="card-text">Diskuter beste praksis, still spørsmål, og del dine erfaringer med bærekraftig koding i vårt dedikerte forum.</p>
-                        <a href="#" class="btn">Gå til Forum</a>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon">📅</div>
-                        <h3 class="card-title">Arrangementer</h3>
-                        <p class="card-text">Finn kommende webinarer, workshops og meetups. Lær av eksperter og nettverk med likesinnede utviklere.</p>
-                        <a href="#" class="btn">Se Arrangementer</a>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon">🤝</div>
-                        <h3 class="card-title">Prosjekter</h3>
-                        <p class="card-text">Utforsk og bidra til open-source prosjekter fokusert på grønn teknologi og energieffektiv programvare.</p>
-                        <a href="#" class="btn">Utforsk Prosjekter</a>
-                    </div>
+            <div class="about-intro">
+                <p>
+                    GreenCode Initiative ble startet av en gruppe engasjerte utviklere og miljøforkjempere som så behovet for økt bevissthet rundt teknologiens miljøpåvirkning. Vi tror at ved å dele kunnskap og fremme beste praksis, kan vi kollektivt redusere det digitale karbonavtrykket og bygge en mer bærekraftig fremtid.
+                </p>
+            </div>
+
+            <div class="mission-vision">
+                <div>
+                    <h3>Vårt Formål</h3>
+                    <p>Å fremme utviklingen og bruken av energieffektiv og ressursbesparende programvare gjennom utdanning, samarbeid og tilgjengeliggjøring av verktøy og ressurser for utviklere globalt.</p>
+                </div>
+                <div>
+                    <h3>Vår Visjon</h3>
+                    <p>En teknologibransje der bærekraft er en integrert del av programvareutviklingen, og hvor miljøvennlig kode er standarden, ikke unntaket.</p>
                 </div>
             </div>
 
-            <div class="section contribute-section">
-                <h2 class="contribute-title">Bidra til GreenCode</h2>
-                <p class="contribute-text">Din kunnskap og engasjement er verdifullt! Lær hvordan du kan bidra med kode, artikler, veiledninger eller ved å organisere lokale arrangementer.</p>
-                <a href="#" class="btn">Lær Hvordan du Kan Bidra</a>
-            </div>
+        </div>
+    </section>
+
+    <section class="values-section">
+        <div class="container">
+             <h2 class="section-title">Våre Verdier</h2>
+             <div class="values-grid">
+                 <div class="value-item">
+                    <div class="value-icon">🌱</div>
+                    <h4 class="value-title">Bærekraft</h4>
+                    <p class="value-text">Vi er forpliktet til å redusere miljøpåvirkningen av teknologi.</p>
+                 </div>
+                 <div class="value-item">
+                    <div class="value-icon">🤝</div>
+                    <h4 class="value-title">Samarbeid</h4>
+                    <p class="value-text">Vi tror på kraften i fellesskapet og åpen deling av kunnskap.</p>
+                 </div>
+                 <div class="value-item">
+                    <div class="value-icon">💡</div>
+                    <h4 class="value-title">Innovasjon</h4>
+                    <p class="value-text">Vi oppmuntrer til nye løsninger for grønnere teknologi.</p>
+                 </div>
+                 <div class="value-item">
+                    <div class="value-icon">🎓</div>
+                    <h4 class="value-title">Utdanning</h4>
+                    <p class="value-text">Vi jobber for å øke bevisstheten og kompetansen om bærekraftig koding.</p>
+                 </div>
+             </div>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <div class="container">
+            <h2 class="section-title">Møt Teamet (Eksempel)</h2>
+            <p class="team-text">
+                GreenCode Initiative drives av et dedikert team av frivillige utviklere, designere og miljøentusiaster fra hele verden. Vi brenner for å gjøre en forskjell og inviterer deg til å bli med på reisen! (Her kan man legge til bilder og korte bioer av kjerneteamet).
+            </p>
+             <!-- Team member cards could go here -->
         </div>
     </section>
 
@@ -432,10 +463,10 @@
           <div>
             <h3 class="footer-title">Ressurser</h3>
             <ul class="footer-links">
-              <li class="footer-link"><a href="ressurser.html#guider">Guider</a></li>
-              <li class="footer-link"><a href="ressurser.html#verktoy">Verktøy</a></li>
-              <li class="footer-link"><a href="ressurser.html#webinarer">Webinarer</a></li>
-              <li class="footer-link"><a href="ressurser.html">Artikler</a></li>
+               <li class="footer-link"><a href="ressurser.html#guider">Guider</a></li>
+               <li class="footer-link"><a href="ressurser.html#verktoy">Verktøy</a></li>
+               <li class="footer-link"><a href="ressurser.html#webinarer">Webinarer</a></li>
+               <li class="footer-link"><a href="ressurser.html">Artikler</a></li>
             </ul>
           </div>
           <div>
