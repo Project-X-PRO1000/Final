@@ -1,433 +1,234 @@
 <!DOCTYPE html>
 <html lang="no">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ressurser | GreenCode Initiative</title>
-  <style>
-    :root {
-      --color-dark-green: #1a5632;
-      --color-medium-green: #2e8b57;
-      --color-light-green: #8cc084;
-      --color-cream: #f5f5dc;
-      --color-earth: #8b6b4c;
-      --color-dark-earth: #5e4b33;
-      --color-white: #ffffff;
-      --color-gray: #333333;
-    }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    
-    body {
-      background-color: var(--color-cream);
-      color: var(--color-gray);
-      line-height: 1.6;
-    }
-    
-    header {
-      background-color: var(--color-white);
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      padding: 1rem 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    
-    .container {
-      width: 85%;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      color: var(--color-dark-green);
-    }
-    
-    .logo-icon {
-      width: 40px;
-      height: 40px;
-    }
-    
-    .logo-text {
-      font-size: 1.5rem;
-      font-weight: 700;
-    }
-    
-    .nav-menu {
-      display: flex;
-      list-style: none;
-      gap: 2rem;
-    }
-    
-    .nav-link {
-      text-decoration: none;
-      color: var(--color-dark-green);
-      font-weight: 500;
-      padding: 0.5rem 0;
-      position: relative;
-      transition: color 0.3s;
-    }
-    
-    .nav-link:hover {
-      color: var(--color-medium-green);
-    }
-    
-    .nav-link:after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: 0;
-      left: 0;
-      background-color: var(--color-medium-green);
-      transition: width 0.3s;
-    }
-    
-    .nav-link:hover:after {
-      width: 100%;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ressurser | GreenCode Initiative</title>
+    <style>
+      :root {
+        --color-dark-green: #1a5632;
+        --color-medium-green: #2e8b57;
+        --color-light-green: #8cc084;
+        --color-cream: #f5f5dc;
+        --color-earth: #8b6b4c;
+        --color-dark-earth: #5e4b33;
+        --color-white: #ffffff;
+        --color-gray: #333333;
+      }
 
-    .nav-link.active {
-      color: var(--color-medium-green);
-    }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
 
-    .nav-link.active:after {
-      width: 100%;
-    }
-    
-    .page-header {
-      background: linear-gradient(135deg, rgba(46, 139, 87, 0.1) 0%, rgba(140, 192, 132, 0.2) 100%);
-      padding: 5rem 0 3rem;
-      text-align: center;
-    }
-    
-    .page-title {
-      font-size: 3rem;
-      color: var(--color-dark-green);
-      margin-bottom: 1rem;
-    }
-    
-    .page-subtitle {
-      font-size: 1.2rem;
-      color: var(--color-dark-earth);
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    
-    .resources-section {
-      padding: 5rem 0;
-      background-color: var(--color-white);
-    }
-    
-    .resources-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-    
-    .resource-card {
-      background-color: var(--color-cream);
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    
-    .resource-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    }
-    
-    .resource-img {
-      height: 160px;
-      background-color: var(--color-light-green);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.5rem;
-    }
-    
-    .resource-content {
-      padding: 1.5rem;
-    }
-    
-    .resource-tag {
-      display: inline-block;
-      background-color: var(--color-medium-green);
-      color: var(--color-white);
-      padding: 0.3rem 0.8rem;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      margin-bottom: 1rem;
-    }
-    
-    .resource-title {
-      font-size: 1.3rem;
-      margin-bottom: 0.5rem;
-      color: var(--color-dark-earth);
-    }
-    
-    .resource-desc {
-      color: var(--color-gray);
-      margin-bottom: 1.5rem;
-    }
-    
-    .resource-link {
-      color: var(--color-medium-green);
-      text-decoration: none;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: color 0.3s;
-    }
-    
-    .resource-link:hover {
-      color: var(--color-dark-green);
-    }
-    
-    .section-title {
-      text-align: center;
-      font-size: 2.5rem;
-      color: var(--color-dark-green);
-      margin-bottom: 1rem;
-    }
-    
-    .section-subtitle {
-      text-align: center;
-      color: var(--color-dark-earth);
-      margin-bottom: 3rem;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    
-    .filter-container {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
-    }
-    
-    .filter-btn {
-      background-color: transparent;
-      border: 2px solid var(--color-medium-green);
-      color: var(--color-medium-green);
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-    
-    .filter-btn:hover, .filter-btn.active {
-      background-color: var(--color-medium-green);
-      color: var(--color-white);
-    }
-    
-    .tools-section {
-      padding: 5rem 0;
-      background: linear-gradient(135deg, rgba(139, 107, 76, 0.1) 0%, rgba(94, 75, 51, 0.15) 100%);
-    }
-    
-    .tool-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 2rem;
-    }
-    
-    .tool-card {
-      padding: 2rem;
-      background-color: var(--color-white);
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      text-align: center;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    
-    .tool-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    }
-    
-    .tool-icon {
-      font-size: 2.5rem;
-      color: var(--color-medium-green);
-      margin-bottom: 1rem;
-    }
-    
-    .tool-title {
-      font-size: 1.3rem;
-      margin-bottom: 0.5rem;
-      color: var(--color-dark-earth);
-    }
-    
-    .tool-desc {
-      color: var(--color-gray);
-      margin-bottom: 1.5rem;
-      font-size: 0.9rem;
-    }
-    
-    .btn {
-      display: inline-block;
-      background-color: var(--color-medium-green);
-      color: var(--color-white);
-      padding: 0.8rem 2rem;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: 500;
-      transition: all 0.3s;
-      border: none;
-      cursor: pointer;
-    }
-    
-    .btn:hover {
-      background-color: var(--color-dark-green);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    
-    .newsletter-section {
-      padding: 4rem 0;
-      background-color: var(--color-dark-green);
-      color: var(--color-white);
-      text-align: center;
-    }
-    
-    .newsletter-title {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-    
-    .newsletter-text {
-      max-width: 600px;
-      margin: 0 auto 2rem;
-      color: rgba(255, 255, 255, 0.8);
-    }
-    
-    .newsletter-form {
-      display: flex;
-      max-width: 500px;
-      margin: 0 auto;
-    }
-    
-    .newsletter-input {
-      flex: 1;
-      padding: 0.8rem 1.5rem;
-      border: none;
-      border-radius: 30px 0 0 30px;
-      outline: none;
-    }
-    
-    .newsletter-btn {
-      background-color: var(--color-earth);
-      color: var(--color-white);
-      padding: 0.8rem 1.5rem;
-      border: none;
-      border-radius: 0 30px 30px 0;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-    
-    .newsletter-btn:hover {
-      background-color: var(--color-dark-earth);
-    }
-    
-    footer {
-      background-color: var(--color-dark-green);
-      color: var(--color-white);
-      padding: 3rem 0 1.5rem;
-    }
-    
-    .footer-content {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 2rem;
-      margin-bottom: 2rem;
-    }
-    
-    .footer-logo {
-      color: var(--color-white);
-      font-size: 1.5rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 1rem;
-    }
-    
-    .footer-text {
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 0.9rem;
-      margin-bottom: 1.5rem;
-    }
-    
-    .social-links {
-      display: flex;
-      gap: 1rem;
-    }
-    
-    .social-icon {
-      color: var(--color-white);
-      font-size: 1.2rem;
-      transition: color 0.3s;
-    }
-    
-    .social-icon:hover {
-      color: var(--color-light-green);
-    }
-    
-    .footer-title {
-      color: var(--color-white);
-      font-size: 1.2rem;
-      margin-bottom: 1.5rem;
-      font-weight: 600;
-    }
-    
-    .footer-links {
-      list-style: none;
-    }
-    
-    .footer-link {
-      margin-bottom: 0.8rem;
-    }
-    
-    .footer-link a {
-      color: rgba(255, 255, 255, 0.8);
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-    
-    .footer-link a:hover {
-      color: var(--color-light-green);
-    }
-    
-    .copyright {
-      text-align: center;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      color: rgba(255, 255, 255, 0.6);
-      font-size: 0.9rem;
-    }
+      html {
+         scroll-behavior: smooth;
+      }
 
-    /* Styles for Carbon Calculator */
+      body {
+        background-color: var(--color-cream);
+        color: var(--color-gray);
+        line-height: 1.6;
+      }
+
+      header {
+        background-color: var(--color-white);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 1rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .container {
+        width: 85%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        color: var(--color-dark-green);
+      }
+
+      .logo-icon {
+        width: 40px;
+        height: 40px;
+      }
+
+      .logo-text {
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+
+      .nav-menu {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-link {
+        text-decoration: none;
+        color: var(--color-dark-green);
+        font-weight: 500;
+        padding: 0.5rem 0;
+        position: relative;
+        transition: color 0.3s;
+      }
+
+      .nav-link:hover {
+        color: var(--color-medium-green);
+      }
+
+      .nav-link:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--color-medium-green);
+        transition: width 0.3s;
+      }
+
+      .nav-link:hover:after {
+        width: 100%;
+      }
+
+      .page-header {
+        background: linear-gradient(
+          135deg,
+          rgba(46, 139, 87, 0.1) 0%,
+          rgba(140, 192, 132, 0.2) 100%
+        );
+        padding: 5rem 0 3rem;
+        text-align: center;
+      }
+
+      .page-title {
+        font-size: 3rem;
+        color: var(--color-dark-green);
+        margin-bottom: 1rem;
+      }
+
+      .page-subtitle {
+        font-size: 1.2rem;
+        color: var(--color-dark-earth);
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .resources {
+        padding: 5rem 0;
+      }
+
+      .resource-section {
+        margin-bottom: 4rem;
+        padding-top: 2rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+        color: var(--color-dark-green);
+        margin-bottom: 2rem;
+        position: relative;
+        padding-bottom: 0.5rem;
+      }
+
+      .section-title:after {
+        content: "";
+        position: absolute;
+        width: 60px;
+        height: 3px;
+        background-color: var(--color-medium-green);
+        bottom: 0;
+        left: 0;
+      }
+
+      .resource-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .resource-card {
+        background-color: var(--color-white);
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s, box-shadow 0.3s;
+        display: flex; /* Added for flex layout */
+        flex-direction: column; /* Stack content vertically */
+      }
+
+      .resource-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .resource-img {
+        height: 180px;
+        width: 100%;
+        background-color: var(--color-light-green);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--color-white);
+        font-size: 2rem;
+      }
+
+      .resource-content {
+        padding: 1.5rem;
+        flex-grow: 1; /* Allow content to grow */
+        display: flex; /* Added */
+        flex-direction: column; /* Stack title, text, link */
+      }
+
+      .resource-title {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+        color: var(--color-dark-green);
+      }
+
+      .resource-text {
+        color: var(--color-gray);
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+        flex-grow: 1; /* Allow text to take up space */
+      }
+
+      .resource-link {
+        display: inline-block;
+        color: var(--color-medium-green);
+        background: none; /* Make it look like a link */
+        border: none; /* Remove button border */
+        padding: 0; /* Remove button padding */
+        font: inherit; /* Inherit font styles */
+        cursor: pointer; /* Add pointer cursor */
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.9rem;
+        transition: color 0.3s;
+        margin-top: auto; /* Push link to bottom */
+        align-self: flex-start; /* Align to start */
+      }
+
+      .resource-link:hover {
+        color: var(--color-dark-green);
+      }
+
+       /* Styles for Carbon Calculator */
       .calculator-section {
           background-color: var(--color-white);
           padding: 3rem;
@@ -469,7 +270,8 @@
           color: var(--color-dark-earth);
       }
 
-      .calculator-input-group input {
+      .calculator-input-group input,
+      .calculator-input-group select {
           width: 100%;
           padding: 0.8rem;
           border: 1px solid #ddd;
@@ -478,7 +280,8 @@
           background-color: var(--color-cream);
            color: var(--color-gray);
       }
-       .calculator-input-group input:focus {
+       .calculator-input-group input:focus,
+       .calculator-input-group select:focus {
              outline: none;
             border-color: var(--color-medium-green);
        }
@@ -528,319 +331,731 @@
             color: var(--color-dark-earth);
             margin-top: 1rem;
         }
-    
-    @media (max-width: 992px) {
-      .footer-content {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-    
-    @media (max-width: 768px) {
-      .nav-menu {
-        display: none;
-      }
-      
-      .resources-grid, .tool-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .footer-content {
-        grid-template-columns: 1fr;
-      }
-      
-      .newsletter-form {
-        flex-direction: column;
-      }
-      
-      .newsletter-input {
-        border-radius: 30px;
-        margin-bottom: 1rem;
-      }
-      
-      .newsletter-btn {
-        border-radius: 30px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <script>
-    const calculateButton = document.getElementById('calculateCarbon');
-    const resultDiv = document.getElementById('calculatorResult');
-    const pageSizeInput = document.getElementById('pageSize');
-    const visitorsInput = document.getElementById('monthlyVisitors');
-    const hostingTypeSelect = document.getElementById('hostingType');
 
-    // Constants (Approximate values based on common estimates)
-    const KWH_PER_GB = 0.81; // Energy consumption per GB transferred
-    const GCO2E_PER_KWH_STANDARD = 475; // Global average grid carbon intensity (gCO2e/kWh)
-    const GCO2E_PER_KWH_GREEN = 10; // Assumed minimal footprint for green hosting (gCO2e/kWh) - not zero due to infrastructure
-
-    calculateButton.addEventListener('click', () => {
-        const pageSizeMB = parseFloat(pageSizeInput.value);
-        const monthlyVisitors = parseInt(visitorsInput.value);
-        const hostingType = hostingTypeSelect.value;
-
-        if (isNaN(pageSizeMB) || pageSizeMB <= 0 || isNaN(monthlyVisitors) || monthlyVisitors <= 0) {
-            resultDiv.innerHTML = '<p style="color: red;">Vennligst oppgi gyldige positive tall.</p>';
-            resultDiv.style.display = 'block';
-            return;
+       /* Modal Styles */
+       #resource-modal {
+            max-width: 800px;
+            width: 90%;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            padding: 0; /* Remove default padding */
+            overflow: hidden; /* Prevent content spill */
+            margin: auto; /* <-- LEGG TIL DENNE LINJEN */
         }
 
-        // Calculate total data transfer per month in GB
-        const monthlyDataTransferGB = (pageSizeMB * monthlyVisitors) / 1024;
+        #resource-modal::backdrop {
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(3px);
+        }
 
-        // Calculate energy consumption per month in kWh
-        const monthlyEnergyKWh = monthlyDataTransferGB * KWH_PER_GB;
+        .modal-header {
+            background-color: var(--color-dark-green);
+            color: var(--color-white);
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-        // Determine carbon intensity based on hosting type
-        const carbonIntensity = (hostingType === 'green') ? GCO2E_PER_KWH_GREEN : GCO2E_PER_KWH_STANDARD;
+        .modal-title {
+            font-size: 1.5rem;
+            margin: 0;
+        }
 
-        // Calculate carbon footprint per month in gCO2e
-        const monthlyCarbonGrams = monthlyEnergyKWh * carbonIntensity;
+        .modal-close-button {
+            background: none;
+            border: none;
+            color: var(--color-white);
+            font-size: 1.8rem;
+            line-height: 1;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+        .modal-close-button:hover {
+            opacity: 1;
+        }
 
-        // Calculate annual carbon footprint in kgCO2e
-        const annualCarbonKg = (monthlyCarbonGrams * 12) / 1000;
+        .modal-body {
+            padding: 1.5rem 2rem;
+            max-height: 70vh; /* Limit height */
+            overflow-y: auto; /* Enable scrolling */
+            background-color: var(--color-white);
+        }
 
-        // Equivalent comparisons (examples)
-        const kmDriven = (annualCarbonKg * 1000 / 120).toFixed(1); // Assuming 120 gCO2e/km for a car
-        const treesNeeded = (annualCarbonKg / 21).toFixed(1); // Assuming one tree absorbs ~21 kg CO2/year
+        /* Styles for content within modal */
+        .modal-body h3 {
+            color: var(--color-dark-green);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+         .modal-body p, .modal-body li {
+             margin-bottom: 1rem;
+             color: var(--color-gray);
+         }
+         .modal-body ul {
+             list-style-position: inside;
+             padding-left: 1rem;
+         }
+         .modal-body code {
+             background-color: var(--color-cream);
+             padding: 0.2em 0.4em;
+             border-radius: 3px;
+             font-family: monospace;
+             color: var(--color-dark-earth);
+         }
+         .modal-body pre {
+             background-color: var(--color-dark-earth);
+             color: var(--color-cream);
+             padding: 1rem;
+             border-radius: 5px;
+             overflow-x: auto;
+             margin-bottom: 1rem;
+             font-family: monospace;
+         }
+         .modal-body a {
+             color: var(--color-medium-green);
+             text-decoration: none;
+         }
+         .modal-body a:hover {
+              text-decoration: underline;
+              color: var(--color-dark-green);
+         }
 
-        // Display result
-        resultDiv.innerHTML = `
-            <p>Estimert årlig karbonavtrykk:</p>
-            <p><strong>${annualCarbonKg.toFixed(2)} kg CO<sub>2</sub>e</strong></p>
-            <p class="small-text">
-                Dette tilsvarer omtrent utslippene fra å kjøre ${kmDriven} km med en gjennomsnittsbil,
-                eller karbonet som absorberes av ${treesNeeded} trær i løpet av ett år.
-            </p>
-        `;
-        resultDiv.style.display = 'block';
-    });
-</script>
-  <header>
-    <div class="container nav-container">
-      <a href="index.html" class="logo">
-        <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20 5C22 5 28 10 28 20C28 30 22 35 20 35" stroke="#1a5632" stroke-width="2"/>
-          <path d="M20 5C18 5 12 10 12 20C12 30 18 35 20 35" stroke="#2e8b57" stroke-width="2"/>
-          <circle cx="20" cy="5" r="3" fill="#8cc084"/>
-          <circle cx="20" cy="35" r="3" fill="#8b6b4c"/>
-          <rect x="18" y="15" width="4" height="2" fill="#1a5632"/>
-          <rect x="18" y="20" width="4" height="2" fill="#1a5632"/>
-          <rect x="18" y="25" width="4" height="2" fill="#1a5632"/>
-        </svg>
-        <span class="logo-text">GreenCode</span>
-      </a>
-      <nav>
-        <ul class="nav-menu">
-          <li><a href="index.html" class="nav-link">Hjem</a></li>
-          <li><a href="ressurser.html" class="nav-link active">Ressurser</a></li>
-          <li><a href="fellesskap.html" class="nav-link">Fellesskap</a></li>
-          <li><a href="om-oss.html" class="nav-link">Om oss</a></li>
-          <li><a href="kontakt.html" class="nav-link">Kontakt</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
 
-  <section class="page-header">
-    <div class="container">
-      <h1 class="page-title">Ressurser for Grønnere Koding</h1>
-      <p class="page-subtitle">Utforsk våre veiledninger, artikler, verktøy og beste praksis for å gjøre dine prosjekter mer miljøvennlige og energieffektive.</p>
-    </div>
-  </section>
+      footer {
+        background-color: var(--color-dark-green);
+        color: var(--color-white);
+        padding: 3rem 0 1.5rem;
+      }
 
-  <section class="resources-section">
-    <div class="container">
-      <h2 class="section-title">Læringsressurser</h2>
-      <p class="section-subtitle">Kunnskapsressurser for å hjelpe deg med å implementere bærekraftige kodeprinsipper i dine prosjekter.</p>
-      
-      <div class="filter-container">
-        <button class="filter-btn active">Alle</button>
-        <button class="filter-btn">Guider</button>
-        <button class="filter-btn">Artikler</button>
-        <button class="filter-btn">Kurs</button>
-        <button class="filter-btn">Beste praksis</button>
+      .footer-content {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      /* ... (rest of footer styles remain the same) ... */
+      .footer-logo { color: var(--color-white); font-size: 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; }
+      .footer-text { color: rgba(255, 255, 255, 0.8); font-size: 0.9rem; margin-bottom: 1.5rem; }
+      .social-links { display: flex; gap: 1rem; }
+      .social-icon { color: var(--color-white); font-size: 1.2rem; transition: color 0.3s; }
+      .social-icon:hover { color: var(--color-light-green); }
+      .footer-title { color: var(--color-white); font-size: 1.2rem; margin-bottom: 1.5rem; font-weight: 600; }
+      .footer-links { list-style: none; }
+      .footer-link { margin-bottom: 0.8rem; }
+      .footer-link a { color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s; }
+      .footer-link a:hover { color: var(--color-light-green); }
+      .copyright { text-align: center; padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.6); font-size: 0.9rem; }
+
+
+      @media (max-width: 992px) {
+        .footer-content {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav-menu {
+          display: none;
+        }
+        .resource-grid {
+          grid-template-columns: 1fr;
+        }
+        .footer-content {
+          grid-template-columns: 1fr;
+        }
+        #resource-modal {
+            width: 95%;
+        }
+         .modal-body {
+            padding: 1rem 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container nav-container">
+        <a href="index2.html" class="logo">
+          <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M20 5C22 5 28 10 28 20C28 30 22 35 20 35" stroke="#1a5632" stroke-width="2"/> <path d="M20 5C18 5 12 10 12 20C12 30 18 35 20 35" stroke="#2e8b57" stroke-width="2"/> <circle cx="20" cy="5" r="3" fill="#8cc084"/> <circle cx="20" cy="35" r="3" fill="#8b6b4c"/> <rect x="18" y="15" width="4" height="2" fill="#1a5632"/> <rect x="18" y="20" width="4" height="2" fill="#1a5632"/> <rect x="18" y="25" width="4" height="2" fill="#1a5632"/> </svg>
+          <span class="logo-text">GreenCode</span>
+        </a>
+        <nav>
+          <ul class="nav-menu">
+            <li><a href="index2.html" class="nav-link">Hjem</a></li>
+            <li><a href="ressurser.html" class="nav-link">Ressurser</a></li>
+            <li><a href="fellesskap.html" class="nav-link">Fellesskap</a></li>
+            <li><a href="omoss.html" class="nav-link">Om oss</a></li>
+            <li><a href="kontakt.html" class="nav-link">Kontakt</a></li>
+             <li><a href="login.html" class="nav-link">Logg Inn</a></li>
+             <li><a href="register.html" class="nav-link">Registrer Deg</a></li>
+          </ul>
+        </nav>
       </div>
-      
-      <div class="resources-grid">
-        <div class="resource-card">
-          <div class="resource-img">📘</div>
-          <div class="resource-content">
-            <span class="resource-tag">Guide</span>
-            <h3 class="resource-title">Kom i gang med Grønn Koding</h3>
-            <p class="resource-desc">En omfattende guide for nybegynnere som ønsker å lære grunnleggende prinsipper for bærekraftig programmering.</p>
-            <a href="#" class="resource-link">Les mer →</a>
-          </div>
-        </div>
-        
-        <div class="resource-card">
-          <div class="resource-img">📝</div>
-          <div class="resource-content">
-            <span class="resource-tag">Artikkel</span>
-            <h3 class="resource-title">Optimalisering av Database-spørringer</h3>
-            <p class="resource-desc">Lær hvordan du kan redusere energiforbruket gjennom mer effektive database-spørringer og indeksering.</p>
-            <a href="#" class="resource-link">Les mer →</a>
-          </div>
-        </div>
-        
-        <div class="resource-card">
-          <div class="resource-img">🎓</div>
-          <div class="resource-content">
-            <span class="resource-tag">Kurs</span>
-            <h3 class="resource-title">Energieffektiv Frontend-utvikling</h3>
-            <p class="resource-desc">Et kurs som fokuserer på teknikker for å redusere energiforbruket i nettlesere og mobile enheter.</p>
-            <a href="#" class="resource-link">Les mer →</a>
-          </div>
-        </div>
-        
-        <div class="resource-card">
-          <div class="resource-img">📊</div>
-          <div class="resource-content">
-            <span class="resource-tag">Beste praksis</span>
-            <h3 class="resource-title">Bærekraftig CI/CD-pipeline</h3>
-            <p class="resource-desc">Beste praksis for å optimalisere dine continuous integration- og deployment-prosesser for mindre miljøpåvirkning.</p>
-            <a href="#" class="resource-link">Les mer →</a>
-          </div>
-        </div>
-        
-        <div class="resource-card">
-          <div class="resource-img">🧪</div>
-          <div class="resource-content">
-            <span class="resource-tag">Guide</span>
-            <h3 class="resource-title">Måling av Kodeeffektivitet</h3>
-            <p class="resource-desc">En praktisk guide til å måle og forbedre energieffektiviteten til dine applikasjoner.</p>
-            <a href="#" class="resource-link">Les mer →</a>
-          </div>
-        </div>
-        
-        <div class="resource-card">
-          <div class="resource-img">📱</div>
-          <div class="resource-content">
-            <span class="resource-tag">Artikkel</span>
-            <h3 class="resource-title">Grønne Mobilapplikasjoner</h3>
-            <p class="resource-desc">Hvordan utvikle miljøvennlige mobile applikasjoner som bruker mindre batteri og ressurser.</p>
-            <a href="#" class="resource-link">Les mer →</a>
-          </div>
-        </div>
-      </div>
+    </header>
 
-      <!-- Karbonavtrykk Kalkulator Seksjon -->
+    <section class="page-header">
+      <div class="container">
+        <h1 class="page-title">Ressurser</h1>
+        <p class="page-subtitle">
+          Utforsk vår samling av verktøy, guider og ressurser for å gjøre din
+          kode mer miljøvennlig og bærekraftig.
+        </p>
+      </div>
+    </section>
+
+    <section class="resources">
+      <div class="container">
+        <div id="guider" class="resource-section">
+          <h2 class="section-title">Guider og Artikler</h2>
+          <div class="resource-grid">
+            <!-- Card 1 -->
+            <div class="resource-card">
+              <div class="resource-img">📝</div>
+              <div class="resource-content">
+                <h3 class="resource-title">Grunnleggende Bærekraftig Koding</h3>
+                <p class="resource-text">
+                  Lær grunnleggende prinsipper for å skrive miljøvennlig kode og
+                  redusere ressursbruk i dine applikasjoner.
+                </p>
+                <button class="resource-link" data-resource-id="guide-basics">Vis Detaljer →</button>
+              </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="resource-card">
+              <div class="resource-img">📊</div>
+              <div class="resource-content">
+                <h3 class="resource-title">
+                  Hvordan måle karbonfotavtrykket av din applikasjon
+                </h3>
+                <p class="resource-text">
+                  En praktisk guide til å måle og analysere energiforbruket og
+                  miljøpåvirkningen av dine programvareløsninger.
+                </p>
+                <button class="resource-link" data-resource-id="guide-measure-carbon">Vis Detaljer →</button>
+              </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="resource-card">
+              <div class="resource-img">🌿</div>
+              <div class="resource-content">
+                <h3 class="resource-title">
+                  Beste praksis for grønn frontend-utvikling
+                </h3>
+                <p class="resource-text">
+                  Teknikker og strategier for å optimalisere frontend-kode og
+                  redusere ressursbruk i nettleseren. Asset loading, lazy loading, etc.
+                </p>
+                 <button class="resource-link" data-resource-id="guide-green-frontend">Vis Detaljer →</button>
+              </div>
+            </div>
+             <!-- Card 4 -->
+            <div class="resource-card">
+              <div class="resource-img">⚙️</div>
+              <div class="resource-content">
+                <h3 class="resource-title">
+                  Energieffektiv Backend-arkitektur
+                </h3>
+                <p class="resource-text">
+                    Prinsipper for å designe server-side løsninger som minimerer CPU- og minnebruk, og velge riktige teknologier.
+                </p>
+                <button class="resource-link" data-resource-id="guide-efficient-backend">Vis Detaljer →</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="verktoy" class="resource-section">
+          <h2 class="section-title">Verktøy og Biblioteker</h2>
+          <div class="resource-grid">
+            <!-- Tool Card 1 -->
+            <div class="resource-card">
+              <div class="resource-img">🔧</div>
+              <div class="resource-content">
+                <h3 class="resource-title">Carbon Tracker CLI</h3>
+                <p class="resource-text">
+                  Et kommandolinjeverktøy for å spore og analysere
+                  energiforbruket til dine applikasjoner under utvikling.
+                </p>
+                <button class="resource-link" data-resource-id="tool-carbon-tracker">Vis Detaljer →</button>
+              </div>
+            </div>
+            <!-- Tool Card 2 -->
+            <div class="resource-card">
+              <div class="resource-img">⚡</div>
+              <div class="resource-content">
+                <h3 class="resource-title">GreenQuery Library (Python/JS)</h3>
+                <p class="resource-text">
+                  Et database-bibliotek som optimaliserer spørringer for lavere
+                  CPU-bruk og redusert strømforbruk for populære ORM-er.
+                </p>
+                <button class="resource-link" data-resource-id="tool-greenquery">Vis Detaljer →</button>
+              </div>
+            </div>
+            <!-- Tool Card 3 -->
+            <div class="resource-card">
+              <div class="resource-img">🔍</div>
+              <div class="resource-content">
+                <h3 class="resource-title">EcoCode Analyzer (VS Code Extension)</h3>
+                <p class="resource-text">
+                  En statisk kodeskanner som identifiserer ineffektiv kode med
+                  høyt energi- eller ressursforbruk direkte i editoren.
+                </p>
+                 <button class="resource-link" data-resource-id="tool-ecocode-analyzer">Vis Detaljer →</button>
+              </div>
+            </div>
+            <!-- Tool Card 4 -->
+             <div class="resource-card">
+              <div class="resource-img">☁️</div>
+              <div class="resource-content">
+                <h3 class="resource-title">Cloud Carbon Footprint</h3>
+                <p class="resource-text">
+                  Open source-verktøy fra ThoughtWorks for å estimere energiforbruk og karbonutslipp fra skytjenester (AWS, GCP, Azure).
+                </p>
+                 <!-- External link opens directly, no modal -->
+                <a href="https://www.cloudcarbonfootprint.org/" target="_blank" rel="noopener noreferrer" class="resource-link">Besøk Nettside →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Karbonavtrykk Kalkulator Seksjon -->
         <div class="resource-section calculator-section">
-          <h2 class="calculator-title">Nettside Karbonavtrykk Kalkulator (Estimert)</h2>
-          <div class="calculator-grid">
-            <div class="calculator-input-group">
-              <label for="pageSize">Gjennomsnittlig sidestørrelse (MB)</label>
-              <input type="number" id="pageSize" name="pageSize" min="0.1" step="0.1" value="1.5" required>
-            </div>
-            <div class="calculator-input-group">
-              <label for="monthlyVisitors">Månedlige besøkende</label>
-              <input type="number" id="monthlyVisitors" name="monthlyVisitors" min="1" value="10000" required>
-            </div>
-             <div class="calculator-input-group">
-              <label for="hostingType">Hosting Type</label>
-              <select id="hostingType" name="hostingType" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem; background-color: var(--color-cream); color: var(--color-gray);">
-                  <option value="standard">Standard Mix</option>
-                  <option value="green">Grønn Hosting (Fornybar)</option>
-              </select>
-            </div>
-          </div>
-          <button id="calculateCarbon" class="calculator-button">Beregn Avtrykk</button>
-          <div id="calculatorResult" class="calculator-result">
-            <!-- Resultat vises her -->
-          </div>
-          <p style="font-size: 0.8rem; text-align: center; color: var(--color-dark-earth); margin-top: 2rem;">
-              Merk: Dette er en forenklet estimering basert på gjennomsnittsverdier (ca. 0.81 kWh/GB dataoverføring og global gjennomsnittlig strømmiks på 475 gCO2e/kWh). Faktiske utslipp varierer mye. Grønn hosting antas å ha nær null utslipp fra strøm.
-          </p>
+            <!-- ... (Kalkulator HTML er uendret) ... -->
+            <h2 class="calculator-title">Nettside Karbonavtrykk Kalkulator (Estimert)</h2>
+            <div class="calculator-grid"> <div class="calculator-input-group"> <label for="pageSize">Gjennomsnittlig sidestørrelse (MB)</label> <input type="number" id="pageSize" name="pageSize" min="0.1" step="0.1" value="1.5" required> </div> <div class="calculator-input-group"> <label for="monthlyVisitors">Månedlige besøkende</label> <input type="number" id="monthlyVisitors" name="monthlyVisitors" min="1" value="10000" required> </div> <div class="calculator-input-group"> <label for="hostingType">Hosting Type</label> <select id="hostingType" name="hostingType"> <option value="standard">Standard Mix</option> <option value="green">Grønn Hosting (Fornybar)</option> </select> </div> </div> <button id="calculateCarbon" class="calculator-button">Beregn Avtrykk</button> <div id="calculatorResult" class="calculator-result"> </div> <p style="font-size: 0.8rem; text-align: center; color: var(--color-dark-earth); margin-top: 2rem;"> Merk: Dette er en forenklet estimering basert på gjennomsnittsverdier (ca. 0.81 kWh/GB dataoverføring og global gjennomsnittlig strømmiks på 475 gCO2e/kWh). Faktiske utslipp varierer mye. Grønn hosting antas å ha nær null utslipp fra strøm. </p>
         </div>
         <!-- Slutt Karbonavtrykk Kalkulator Seksjon -->
-    </div>
-  </section>
 
-  <section class="tools-section">
-    <div class="container">
-      <h2 class="section-title">Nyttige Verktøy</h2>
-      <p class="section-subtitle">Programvare og tjenester som hjelper deg med å analysere, overvåke og forbedre energieffektiviteten i dine prosjekter.</p>
-      
-      <div class="tool-grid">
-        <div class="tool-card">
-          <div class="tool-icon">⚡</div>
-          <h3 class="tool-title">EcoAnalyzer</h3>
-          <p class="tool-desc">Et analyseverktøy som måler energiforbruket til dine applikasjoner og gir anbefalinger for forbedringer.</p>
-          <a href="#" class="btn">Utforsk verktøyet</a>
-        </div>
-        
-        <div class="tool-card">
-          <div class="tool-icon">🔍</div>
-          <h3 class="tool-title">GreenLinter</h3>
-          <p class="tool-desc">En kodelinter som identifiserer energi-ineffektive mønstre i koden din og foreslår forbedringer.</p>
-          <a href="#" class="btn">Utforsk verktøyet</a>
-        </div>
-        
-        <div class="tool-card">
-          <div class="tool-icon">📊</div>
-          <h3 class="tool-title">EcoDashboard</h3>
-          <p class="tool-desc">Et dashbord som overvåker energiforbruket til dine systemer i sanntid og gir innsikt for optimalisering.</p>
-          <a href="#" class="btn">Utforsk verktøyet</a>
-        </div>
-        
-        <div class="tool-card">
-          <div class="tool-icon">💾</div>
-          <h3 class="tool-title">GreenDB</h3>
-          <p class="tool-desc">Et databaseoptimaliseringsverktøy som analyserer og forbedrer effektiviteten til dine database-operasjoner.</p>
-          <a href="#" class="btn">Utforsk verktøyet</a>
+
+        <div id="webinarer" class="resource-section">
+          <h2 class="section-title">Webinarer og Kurs</h2>
+          <div class="resource-grid">
+             <!-- Course Card 1 -->
+            <div class="resource-card">
+              <div class="resource-img">🎓</div>
+              <div class="resource-content">
+                <h3 class="resource-title">
+                  Bærekraftig Arkitektur Masterclass
+                </h3>
+                <p class="resource-text">
+                  En omfattende kurs om hvordan designe systemer med minimal
+                  miljøpåvirkning og maksimal ytelse. Dekker microservices, serverless, etc.
+                </p>
+                <button class="resource-link" data-resource-id="course-architecture-masterclass">Vis Detaljer →</button>
+              </div>
+            </div>
+            <!-- Course Card 2 -->
+            <div class="resource-card">
+              <div class="resource-img">📹</div>
+              <div class="resource-content">
+                <h3 class="resource-title">Webinar: Framtidens Grønne IT (Opptak)</h3>
+                <p class="resource-text">
+                  Eksperter diskuterer trender og fremtidsutsikter for
+                  miljøvennlig teknologi og bærekraftig utvikling innen AI, cloud og edge computing.
+                </p>
+                 <button class="resource-link" data-resource-id="webinar-future-green-it">Vis Detaljer →</button>
+              </div>
+            </div>
+            <!-- Course Card 3 -->
+            <div class="resource-card">
+              <div class="resource-img">👨‍💻</div>
+              <div class="resource-content">
+                <h3 class="resource-title">
+                  Workshop: Optimalisering av Legacy-kode for Energi
+                </h3>
+                <p class="resource-text">
+                  Praktisk workshop for å identifisere "hotspots" og redusere energiforbruket i eldre
+                  systemer uten fullstendig omskriving.
+                </p>
+                <button class="resource-link" data-resource-id="workshop-legacy-optimization">Vis Detaljer →</button>
+              </div>
+            </div>
+            <!-- Course Card 4 -->
+             <div class="resource-card">
+              <div class="resource-img">💡</div>
+              <div class="resource-content">
+                <h3 class="resource-title">
+                  Intro til Grønne Algoritmer (Online Kurs)
+                </h3>
+                <p class="resource-text">
+                  Lær hvordan valg av algoritmer og datastrukturer påvirker ressursbruk og hvordan du tar grønnere valg.
+                </p>
+                <button class="resource-link" data-resource-id="course-green-algorithms">Vis Detaljer →</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="newsletter-section">
-    <div class="container">
-      <h2 class="newsletter-title">Hold deg oppdatert</h2>
-      <p class="newsletter-text">Abonner på vårt nyhetsbrev for å motta de nyeste ressursene, verktøyene og retningslinjene for grønn koding direkte i din innboks.</p>
-      <form class="newsletter-form">
-        <input type="email" class="newsletter-input" placeholder="Din e-postadresse" required>
-        <button type="submit" class="newsletter-btn">Abonner</button>
-      </form>
-    </div>
-  </section>
+    <!-- Modal Dialog Element -->
+    <dialog id="resource-modal">
+        <div class="modal-header">
+             <h2 id="modal-title" class="modal-title">Ressurs Detaljer</h2>
+             <button id="modal-close-button" class="modal-close-button" aria-label="Lukk">×</button>
+        </div>
+        <div id="modal-body" class="modal-body">
+            <!-- Innhold lastes her av JavaScript -->
+            <p>Laster ressurs...</p>
+        </div>
+    </dialog>
 
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div>
-          <div class="footer-logo">
-            <svg width="30" height="30" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M20 5C22 5 28 10 28 20C28 30 22 35 20 35" stroke="#8cc084" stroke-width="2"/>
-              <path d="M20 5C18 5 12 10 12 20C12 30 18 35 20 35" stroke="#8cc084" stroke-width="2"/>
-              <circle cx="20" cy="5" r="3" fill="#8cc084"/>
-              <circle cx="20" cy="35" r="3" fill="#8cc084"/>
-              <rect x="18" y="15" width="4" height="2" fill="#8cc084"/>
-              <rect x="18" y="20" width="4" height="2" fill="#8cc084"/>
-              <rect x="18" y="25" width="4" height="2" fill="#8cc084"/>
-            </svg>
-            GreenCode
-          </div>
-          <p class="footer-text">Vi jobber for en mer bærekraftig teknologisk fremtid gjennom effektiv og miljøvennlig koding.</p>
-          <div class="social-links">
-            <a href="#" class="social-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M18 2H15C13.6739 2 12.4021 2.52678 11.4645 3.46447C10.5268 4.40215 10 5.67392 10 7V10H7V14H10V22H14V14H17L18 10H14V7C14 6.73478 14.1054 6.48043 14.2929 6.29289C14.4804 6.10536 14.7348 6 15 6H18V2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </a>
-            <a href="#" class="social-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M23 3.00005C22.0424 3.67552 20.9821 4.19216 19.86 4.53005C19.2577 3.83756 18.4573 3.34674 17.567 3.12397C16.6767 2.90121 15.7395 2.95724 14.8821 3.2845C14.0247 3.61176 13.2884 4.19445 12.773 4.95376C12.2575 5.71308 11.9877 6.61238 12 7.53005V8.53005C10.2426 8.57561 8.50127 8.18586 6.93101 7.39549C5.36074 6.60513 4.01032 5.43868 3 4.00005C3 4.00005 -1 13 8 17C5.94053 18.398 3.48716 19.099 1 19C10 24 21 19 21 7.50005C20.9991 7.2215 20.9723 6.94364 20.92 6.67005C21.9406 5.66354 22.6608 4.39276 23 3.00005Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </a>
-            <a href="#" class="social-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M16 8C17.5913 8 19.1174 8.63214 20.2426 9.75736C21.3679 10.8826 22 12.4087 22 14V21H18V14C18 13.4696 17.7893 12.9609 17.4142 12.5858C17.0391 12.2107 16.5304 12 16 12C15.4696 12 14.9609 12.2107 14.5858 12.5858C14.2107 12.9609 14 13.4696 14 14V21H10V14C10 12.4087 10.6321 10.8826 11.7574 9.75736C12.8826 8.63214 14.4087 8 16 8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M6 9H2V21H6V9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M4 6C5.10457 6 6 5.10457 6 4C6 2.89543 5.10457 2 4 2C2.89543 2 2 2.89543 2 4C2 5.10457 2.89543 6 4 6Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </a>
-            <a href="#" class="social-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2C14.717 2 15.056 2.01 16.122 2.06C17.187 2.11 17.912 2.277 18.55 2.525C19.21 2.779 19.766 3.123 20.322 3.678C20.8305 4.1779 21.224 4.78259 21.475 5.45C21.722 6.087 21.89 6.813 21.94 7.878C21.987 8.944 22 9.283 22 12C22 14.717 21.99 15.056 21.94 16.122C21.89 17.187 21.722 17.912 21.475 18.55C21.2247 19.2178 20.8311 19.8226 20.322 20.322C19.822 20.8303 19.2173 21.2238 18.55 21.475C17.913 21.722 17.187 21.89 16.122 21.94C15.056 21.987 14.717 22 12 22C9.283 22 8.944 21.99 7.878 21.94C6.813 21.89 6.088 21.722
+    <footer>
+      <!-- ... (Footer HTML er uendret) ... -->
+       <div class="container"> <div class="footer-content"> <div> <div class="footer-logo"> <svg width="30" height="30" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M20 5C22 5 28 10 28 20C28 30 22 35 20 35" stroke="#8cc084" stroke-width="2"/> <path d="M20 5C18 5 12 10 12 20C12 30 18 35 20 35" stroke="#8cc084" stroke-width="2"/> <circle cx="20" cy="5" r="3" fill="#8cc084"/> <circle cx="20" cy="35" r="3" fill="#8cc084"/> <rect x="18" y="15" width="4" height="2" fill="#8cc084"/> <rect x="18" y="20" width="4" height="2" fill="#8cc084"/> <rect x="18" y="25" width="4" height="2" fill="#8cc084"/> </svg> GreenCode </div> <p class="footer-text"> Vi jobber for en mer bærekraftig teknologisk fremtid gjennom effektiv og miljøvennlig koding. </p> <div class="social-links"> <a href="#" class="social-icon"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M18 2H15C13.6739 2 12.4021 2.52678 11.4645 3.46447C10.5268 4.40215 10 5.67392 10 7V10H7V14H10V22H14V14H17L18 10H14V7C14 6.73478 14.1054 6.48043 14.2929 6.29289C14.4804 6.10536 14.7348 6 15 6H18V2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </svg> </a> <a href="#" class="social-icon"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M23 3.00005C22.0424 3.67552 20.9821 4.19216 19.86 4.53005C19.2577 3.83756 18.4573 3.34674 17.567 3.12397C16.6767 2.90121 15.7395 2.95724 14.8821 3.2845C14.0247 3.61176 13.2884 4.19445 12.773 4.95376C12.2575 5.71308 11.9877 6.61238 12 7.53005V8.53005C10.2426 8.57561 8.50127 8.18586 6.93101 7.39549C5.36074 6.60513 4.01032 5.43868 3 4.00005C3 4.00005 -1 13 8 17C5.94053 18.398 3.48716 19.099 1 19C10 24 21 19 21 7.50005C20.9991 7.2215 20.9723 6.94364 20.92 6.67005C21.9406 5.66354 22.6608 4.39276 23 3.00005Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </svg> </a> <a href="#" class="social-icon"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M16 8C17.5913 8 19.1174 8.63214 20.2426 9.75736C21.3679 10.8826 22 12.4087 22 14V21H18V14C18 13.4696 17.7893 12.9609 17.4142 12.5858C17.0391 12.2107 16.5304 12 16 12C15.4696 12 14.9609 12.2107 14.5858 12.5858C14.2107 12.9609 14 13.4696 14 14V21H10V14C10 12.4087 10.6321 10.8826 11.7574 9.75736C12.8826 8.63214 14.4087 8 16 8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <path d="M6 9H2V21H6V9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <path d="M4 6C5.10457 6 6 5.10457 6 4C6 2.89543 5.10457 2 4 2C2.89543 2 2 2.89543 2 4C2 5.10457 2.89543 6 4 6Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </svg> </a> <a href="#" class="social-icon"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M12 2C14.717 2 15.056 2.01 16.122 2.06C17.187 2.11 17.912 2.277 18.55 2.525C19.21 2.779 19.766 3.123 20.322 3.678C20.8305 4.1779 21.224 4.78259 21.475 5.45C21.722 6.087 21.89 6.813 21.94 7.878C21.987 8.944 22 9.283 22 12C22 14.717 21.99 15.056 21.94 16.122C21.89 17.187 21.722 17.912 21.475 18.55C21.2247 19.2178 20.8311 19.8226 20.322 20.322C19.822 20.8303 19.2173 21.2238 18.55 21.475C17.913 21.722 17.187 21.89 16.122 21.94C15.056 21.987 14.717 22 12 22C9.283 22 8.944 21.99 7.878 21.94C6.813 21.89 6.088 21.722 5.45 21.475C4.78233 21.2245 4.17753 20.8309 3.678 20.322C3.16941 19.8222 2.77593 19.2175 2.525 18.55C2.277 17.913 2.11 17.187 2.06 16.122C2.013 15.056 2 14.717 2 12C2 9.283 2.01 8.944 2.06 7.878C2.11 6.812 2.277 6.088 2.525 5.45C2.77524 4.78218 3.1688 4.17732 3.678 3.678C4.17767 3.16923 4.78243 2.77573 5.45 2.525C6.088 2.277 6.812 2.11 7.878 2.06C8.944 2.013 9.283 2 12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <path d="M17.5 6.5C17.5 7.32843 16.8284 8 16 8C15.1716 8 14.5 7.32843 14.5 6.5C14.5 5.67157 15.1716 5 16 5C16.8284 5 17.5 5.67157 17.5 6.5Z" fill="currentColor"/> <path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </svg> </a> </div> </div> <div> <h3 class="footer-title">Ressurser</h3> <ul class="footer-links"> <li class="footer-link"><a href="#guider">Guider</a></li> <li class="footer-link"><a href="#guider">Best Practices</a></li> <li class="footer-link"><a href="#verktoy">Verktøy</a></li> <li class="footer-link"><a href="#guider">Artikler</a></li> </ul> </div> <div> <h3 class="footer-title">Fellesskap</h3> <ul class="footer-links"> <li class="footer-link"><a href="fellesskap.html#forum-section">Forum</a></li> <li class="footer-link"><a href="fellesskap.html">Events</a></li> <li class="footer-link"><a href="#webinarer">Webinarer</a></li> <li class="footer-link"><a href="fellesskap.html">Bidra</a></li> </ul> </div> <div> <h3 class="footer-title">Selskap</h3> <ul class="footer-links"> <li class="footer-link"><a href="omoss.html">Om oss</a></li> <li class="footer-link"><a href="kontakt.html">Kontakt</a></li> <li class="footer-link"><a href="#">Partnere</a></li> <li class="footer-link"><a href="#">Personvern</a></li> </ul> </div> </div> <div class="copyright"> © 2025 GreenCode Initiative. Alle rettigheter reservert. </div> </div>
+    </footer>
+
+     <script>
+        // Kalkulator-script (fra tidligere)
+        const calculateButton = document.getElementById('calculateCarbon');
+        const resultDiv = document.getElementById('calculatorResult');
+        const pageSizeInput = document.getElementById('pageSize');
+        const visitorsInput = document.getElementById('monthlyVisitors');
+        const hostingTypeSelect = document.getElementById('hostingType');
+        // ... (resten av kalkulator-logikken er uendret) ...
+        const KWH_PER_GB = 0.81; const GCO2E_PER_KWH_STANDARD = 475; const GCO2E_PER_KWH_GREEN = 10;
+        calculateButton.addEventListener('click', () => { const pageSizeMB = parseFloat(pageSizeInput.value); const monthlyVisitors = parseInt(visitorsInput.value); const hostingType = hostingTypeSelect.value; if (isNaN(pageSizeMB) || pageSizeMB <= 0 || isNaN(monthlyVisitors) || monthlyVisitors <= 0) { resultDiv.innerHTML = '<p style="color: red;">Vennligst oppgi gyldige positive tall.</p>'; resultDiv.style.display = 'block'; return; } const monthlyDataTransferGB = (pageSizeMB * monthlyVisitors) / 1024; const monthlyEnergyKWh = monthlyDataTransferGB * KWH_PER_GB; const carbonIntensity = (hostingType === 'green') ? GCO2E_PER_KWH_GREEN : GCO2E_PER_KWH_STANDARD; const monthlyCarbonGrams = monthlyEnergyKWh * carbonIntensity; const annualCarbonKg = (monthlyCarbonGrams * 12) / 1000; const kmDriven = (annualCarbonKg * 1000 / 120).toFixed(1); const treesNeeded = (annualCarbonKg / 21).toFixed(1); resultDiv.innerHTML = ` <p>Estimert årlig karbonavtrykk:</p> <p><strong>${annualCarbonKg.toFixed(2)} kg CO<sub>2</sub>e</strong></p> <p class="small-text"> Dette tilsvarer omtrent utslippene fra å kjøre ${kmDriven} km med en gjennomsnittsbil, eller karbonet som absorberes av ${treesNeeded} trær i løpet av ett år. </p> `; resultDiv.style.display = 'block'; });
+
+
+        // --- Modal Logic ---
+        const modal = document.getElementById('resource-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalBody = document.getElementById('modal-body');
+        const closeModalButton = document.getElementById('modal-close-button');
+        const resourceLinks = document.querySelectorAll('.resource-link[data-resource-id]');
+
+        // Eksempeldata for ressursene
+        const resourceData = {
+            'guide-basics': {
+                title: 'Grunnleggende Bærekraftig Koding',
+                content: `
+                    <h3>Introduksjon</h3>
+                    <p>Bærekraftig koding handler om å skrive programvare som bruker minst mulig energi og ressurser, både under kjøring og gjennom hele livssyklusen (utvikling, testing, distribusjon, vedlikehold).</p>
+                    <h3>Kjerneprinsipper</h3>
+                    <ul>
+                        <li><strong>Effektivitet:</strong> Skriv kode som gjør jobben sin med færrest mulig CPU-sykluser, minst mulig minnebruk og minimal dataoverføring.</li>
+                        <li><strong>Ressursbevissthet:</strong> Forstå hvordan koden din påvirker maskinvare (CPU, RAM, nettverk, disk) og skytjenester.</li>
+                        <li><strong>Måling:</strong> Det du ikke måler, kan du ikke forbedre. Lær verktøy for å måle energiforbruk og ytelse.</li>
+                        <li><strong>Minimalisme:</strong> Unngå unødvendige funksjoner, biblioteker og avhengigheter. Bygg kun det som trengs.</li>
+                        <li><strong>Optimalisering:</strong> Kontinuerlig arbeid med å forbedre ytelsen og redusere ressursbruken til eksisterende kode.</li>
+                    </ul>
+                    <h3>Enkle Tips</h3>
+                    <p>Velg effektive algoritmer og datastrukturer. Unngå unødvendige løkker og beregninger. Optimaliser databasekall. Komprimer data før sending over nettverk.</p>
+                    <pre><code>// Eksempel: Ineffektiv vs Effektiv
+// Ineffektiv (lager unødvendig array)
+const sumInefficient = (arr) => arr.reduce((acc, val) => acc + val, 0);
+
+// Mer effektiv (itererer direkte)
+const sumEfficient = (arr) => {
+    let total = 0;
+    for (let i = 0; i < arr.length; i++) {
+        total += arr[i];
+    }
+    return total;
+};</code></pre>
+                `
+            },
+             'guide-measure-carbon': {
+                title: 'Måle Karbonfotavtrykk for Applikasjoner',
+                content: `
+                    <h3>Hvorfor Måle?</h3>
+                    <p>Å forstå applikasjonens energiforbruk og tilhørende karbonutslipp er første steg mot å redusere det. Måling gir innsikt i hvor optimalisering vil ha størst effekt.</p>
+                    <h3>Metoder og Verktøy</h3>
+                    <ul>
+                        <li><strong>Programvarebasert Måling (Estimering):</strong>
+                            <ul>
+                                <li>Verktøy som <a href="https://github.com/mlco2/codecarbon" target="_blank" rel="noopener noreferrer">CodeCarbon</a> (Python) eller <a href="https://github.com/responsible-ai-toolbox/energy-estimator" target="_blank" rel="noopener noreferrer">Energy Estimator</a> kan estimere forbruk basert på CPU/GPU-bruk og kjente maskinvareprofiler.</li>
+                                <li>Plattformspesifikke verktøy (f.eks. Intel Power Gadget, AMD uProf) kan gi mer detaljert maskinvareinnsikt.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Fysisk Måling:</strong> Bruk av eksterne strømmålere (wattmeter) koblet til utviklingsmaskinen eller serveren gir de mest nøyaktige resultatene, men er ofte upraktisk.</li>
+                        <li><strong>Skyplattform-verktøy:</strong> Tjenester som <a href="https://www.cloudcarbonfootprint.org/" target="_blank" rel="noopener noreferrer">Cloud Carbon Footprint</a> eller sky-leverandørenes egne kostnads- og bruksrapporter kan gi estimater for skyressurser.</li>
+                    </ul>
+                    <h3>Viktige Metrikker</h3>
+                    <ul>
+                        <li><strong>kWh (Kilowattimer):</strong> Direkte energiforbruk.</li>
+                        <li><strong>gCO2e (Gram CO2-ekvivalenter):</strong> Karbonutslipp, beregnet ved å multiplisere kWh med karbonintensiteten til strømnettet (gCO2e/kWh) der serveren kjører.</li>
+                    </ul>
+                    <p>Husk at nøyaktig måling er vanskelig. Fokuser på relative forbedringer og bruk estimater som veiledning.</p>
+                `
+            },
+            'guide-green-frontend': {
+                title: 'Grønn Frontend-Utvikling: Beste Praksis',
+                content: `
+                    <h3>Reduser Dataoverføring</h3>
+                    <ul>
+                        <li><strong>Bildeoptimalisering:</strong> Bruk moderne formater (WebP, AVIF), riktig størrelse, og komprimering. Bruk <code><picture></code>-elementet for adaptive bilder.</li>
+                        <li><strong>Lazy Loading:</strong> Last inn bilder og andre ressurser (f.eks. iframes, videoer) kun når de er i ferd med å komme inn i brukerens viewport.</li>
+                        <li><strong>Kodesplitting (Code Splitting):</strong> Bruk verktøy som Webpack eller Rollup til å dele opp JavaScript-bundelen din slik at brukeren kun laster koden som trengs for den aktuelle siden/visningen.</li>
+                        <li><strong>Tre-risting (Tree Shaking):</strong> Fjern ubrukt kode fra JavaScript-bundler automatisk under bygging.</li>
+                        <li><strong>Tekstkomprimering:</strong> Sørg for at serveren din bruker Gzip eller Brotli for å komprimere HTML, CSS, og JavaScript før sending.</li>
+                    </ul>
+                    <h3>Effektiv Kjøring i Nettleseren</h3>
+                    <ul>
+                        <li><strong>Minimer DOM Manipulasjon:</strong> Hyppige endringer i DOM-treet kan være kostbart for ytelsen og energibruken. Batch oppdateringer eller bruk virtuelle DOM-biblioteker (React, Vue) effektivt.</li>
+                        <li><strong>Optimaliser JavaScript:</strong> Unngå unødvendige beregninger, lange tasks som blokkerer hovedtråden, og memory leaks. Bruk nettleserens profileringsverktøy.</li>
+                        <li><strong>Effektive CSS-selektorer:</strong> Unngå komplekse selektorer som krever mye prosessering av nettleseren.</li>
+                        <li><strong>Reduser Animasjoner:</strong> Bruk GPU-akselererte CSS-transformasjoner (<code>transform</code>, <code>opacity</code>) fremfor å animere layout-egenskaper (<code>top</code>, <code>left</code>, <code>width</code>, <code>height</code>).</li>
+                    </ul>
+                    <h3>Andre Tips</h3>
+                    <p>Velg lettvekts-biblioteker og rammeverk når det er mulig. Bruk systemets fonter eller host fonter selv for å unngå ekstra nettverkskall.</p>
+                `
+            },
+            'guide-efficient-backend': {
+                title: 'Energieffektiv Backend-arkitektur',
+                content: `
+                    <h3>Prinsipper</h3>
+                    <ul>
+                        <li><strong>Riktig verktøy for jobben:</strong> Velg programmeringsspråk og rammeverk som er kjent for god ytelse og lavt ressursbruk for den spesifikke oppgaven (f.eks. kompilerte språk som Go, Rust kan være mer effektive enn enkelte tolkede språk for CPU-intensive oppgaver).</li>
+                        <li><strong>Asynkron prosessering:</strong> Bruk ikke-blokkerende I/O for å håndtere mange samtidige forespørsler effektivt uten å binde opp tråder unødvendig (vanlig i Node.js, Python asyncio, Go).</li>
+                        <li><strong>Caching:</strong> Mellomlagre resultater av kostbare operasjoner (databasekall, komplekse beregninger) i minnet (f.eks. Redis, Memcached) eller på CDN for å redusere belastningen på backend-servere.</li>
+                        <li><strong>Optimaliser Databaseinteraksjon:</strong> Skriv effektive SQL-spørringer, bruk indekser riktig, unngå N+1-problemer, og vurder connection pooling.</li>
+                        <li><strong>Stateless Design:</strong> Design tjenester til å være stateless der det er mulig, noe som forenkler skalering og reduserer minnebruk per instans.</li>
+                        <li><strong>Effektiv Serialisering:</strong> Velg effektive dataformater for kommunikasjon mellom tjenester (f.eks. Protocol Buffers, MessagePack kan være mer kompakte og raskere å parse enn JSON i noen tilfeller).</li>
+                        <li><strong>Ressursstyring i Skyen:</strong> Velg riktig instansstørrelse, bruk auto-skalering fornuftig, og slå av ubrukte ressurser.</li>
+                    </ul>
+                    <h3>Arkitekturmønstre</h3>
+                    <p>Vurder arkitekturer som serverless (Functions as a Service) for oppgaver som kjører sjeldent, da de kun bruker ressurser ved behov. Forstå avveiningene mellom monolitter, microservices og serverless med tanke på ressursbruk.</p>
+                `
+            },
+             'tool-carbon-tracker': {
+                title: 'Carbon Tracker CLI',
+                content: `
+                    <h3>Hva er Carbon Tracker CLI?</h3>
+                    <p>Dette (fiktive) kommandolinjeverktøyet (CLI) hjelper utviklere med å få en indikasjon på energiforbruket og karbonutslippene knyttet til kjøringen av lokale applikasjoner eller skript.</p>
+                    <h3>Hvordan Fungerer Det?</h3>
+                    <p>Verktøyet overvåker typisk:</p>
+                    <ul>
+                        <li>CPU-bruk for den spesifikke prosessen.</li>
+                        <li>GPU-bruk (hvis relevant og støttet).</li>
+                        <li>Minneallokering (indirekte påvirkning).</li>
+                    </ul>
+                    <p>Basert på disse dataene, og en konfigurerbar profil for maskinvarens strømtrekk (enten generisk eller spesifikk), estimerer verktøyet energiforbruket (i Joules eller kWh). Det kan også bruke sanntidsdata om karbonintensiteten til det lokale strømnettet (via API-er som <a href="https://www.electricitymaps.com/" target="_blank" rel="noopener noreferrer">Electricity Maps</a> eller <a href="https://www.watttime.org/" target="_blank" rel="noopener noreferrer">WattTime</a>) for å estimere CO2e-utslipp.</p>
+                    <h3>Brukseksempel</h3>
+                    <pre><code># Installer (eksempel)
+npm install -g carbon-tracker-cli
+
+# Kjør en kommando og spor den
+carbon-tracker -- track --command "node myApp.js"
+
+# Analyser en kjøring
+carbon-tracker --analyze run-12345.log</code></pre>
+                    <h3>Begrensninger</h3>
+                    <p>Dette er estimater. Nøyaktigheten avhenger av kvaliteten på maskinvareprofilene og tilgangen til sanntidsdata om strømnettet. Det måler vanligvis ikke nettverks- eller disk-I/O-energi direkte.</p>
+                    <p><strong>Merk:</strong> Dette verktøyet er et konsept for denne demoen.</p>
+                 `
+            },
+            'tool-greenquery': {
+                title: 'GreenQuery Library',
+                content: `
+                    <h3>Formål</h3>
+                    <p>GreenQuery er et (fiktivt) bibliotek designet for å integreres med vanlige Object-Relational Mappers (ORMs) i Python (f.eks. SQLAlchemy, Django ORM) og JavaScript (f.eks. Sequelize, TypeORM). Målet er å hjelpe utviklere med å skrive mer energieffektive databaseinteraksjoner.</p>
+                    <h3>Funksjonalitet</h3>
+                    <ul>
+                        <li><strong>Spørringsanalyse:</strong> Analyserer genererte SQL-spørringer før de kjøres for å identifisere potensielle ineffektiviteter, som:
+                            <ul>
+                                <li>Manglende bruk av indekser (krever analyse av databaseskjema).</li>
+                                <li>Potensielle N+1-problemer (henter mange relaterte objekter i separate spørringer).</li>
+                                <li>Henting av unødvendige kolonner (<code>SELECT *</code> når bare noen få trengs).</li>
+                                <li>Overdreven bruk av komplekse joins eller subqueries.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Anbefalinger:</strong> Gir forslag til hvordan spørringer kan optimaliseres (f.eks. "Vurder å legge til en indeks på felt X", "Bruk 'select_related'/'prefetch_related' for å unngå N+1").</li>
+                        <li><strong>CPU-Estimering (Konseptuelt):</strong> Kan (i teorien) integreres med databaseprofileringsverktøy for å estimere CPU-tid brukt på databasesiden per spørring, og flagge de mest kostbare.</li>
+                        <li><strong>Automatisk Optimalisering (Begrenset):</strong> Kan tilby enkle optimaliseringer, som å automatisk legge til <code>.only('field1', 'field2')</code> i Django hvis kun spesifikke felt brukes senere i koden (avansert og potensielt risikabelt).</li>
+                    </ul>
+                    <h3>Integrasjon (Eksempel - Python/Django)</h3>
+                    <pre><code># settings.py
+MIDDLEWARE = [
+    # ...
+    'greenquery.django.middleware.QueryAnalysisMiddleware',
+    # ...
+]
+
+GREENQUERY_SETTINGS = {
+    'WARN_LEVEL': 'INFO', # 'DEBUG', 'INFO', 'WARNING', 'ERROR'
+    'FLAG_SELECT_STAR': True,
+    'ANALYZE_N_PLUS_1': True,
+}</code></pre>
+                    <p><strong>Merk:</strong> Dette biblioteket er et konsept for denne demoen.</p>
+                `
+            },
+             'tool-ecocode-analyzer': {
+                title: 'EcoCode Analyzer (VS Code Extension)',
+                 content: `
+                    <h3>Hva er EcoCode Analyzer?</h3>
+                    <p>EcoCode Analyzer er en (fiktiv) VS Code-utvidelse som hjelper utviklere med å identifisere kode som kan være unødvendig ressurskrevende, direkte mens de skriver kode.</p>
+                    <h3>Funksjoner</h3>
+                    <ul>
+                        <li><strong>Statisk Kodeanalyse:</strong> Skanner koden din (JavaScript, Python, Java - konfigurerbart) for kjente mønstre som ofte fører til høyere energi- eller ressursbruk.</li>
+                        <li><strong>Identifisering av "Hotspots":</strong>
+                            <ul>
+                                <li><strong>Ineffektive Løkker:</strong> Flagge løkker som kan optimaliseres (f.eks. unødvendige operasjoner inne i løkken).</li>
+                                <li><strong>Store Datastrukturer:</strong> Advare om potensiell opprettelse av veldig store arrays eller objekter i minnet.</li>
+                                <li><strong>Blokkerende Operasjoner:</strong> Identifisere synkrone kall som kan blokkere event loop (i Node.js/JavaScript).</li>
+                                <li><strong>Suboptimale API-bruk:</strong> Foreslå mer effektive alternativer for visse innebygde funksjoner eller bibliotek-APIer (f.eks. bruke <code>Array.prototype.find</code> i stedet for <code>Array.prototype.filter</code> når kun ett element trengs).</li>
+                                <li><strong>Rekursjon uten Basistilfelle:</strong> Advare mot potensiell stack overflow og høy CPU-bruk.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Forslag til Refaktorering:</strong> Gir enkle forslag til hvordan koden kan forbedres for effektivitet.</li>
+                        <li><strong>Integrert i Editoren:</strong> Viser advarsler og forslag direkte i kodeeditoren som "squiggles" eller via problempanelet.</li>
+                    </ul>
+                    <h3>Eksempel på Advarsel</h3>
+                    <p>Hvis du skriver kode som dette i JavaScript:</p>
+                    <pre><code>const largeArray = new Array(1000000).fill(0);
+// EcoCode Analyzer: [Warning] Creating very large array in memory. Consider streaming or pagination if possible.
+
+for (let i = 0; i < largeArray.length; i++) {
+    // Complex calculation inside loop...
+    // EcoCode Analyzer: [Info] Operation inside loop. Can it be moved outside?
+}</code></pre>
+                    <p><strong>Merk:</strong> Denne utvidelsen er et konsept for denne demoen.</p>
+                 `
+            },
+             'course-architecture-masterclass': {
+                title: 'Bærekraftig Arkitektur Masterclass',
+                content: `
+                    <h3>Kursbeskrivelse</h3>
+                    <p>Dette dyptgående kurset (fiktivt) utforsker hvordan arkitekturvalg på systemnivå påvirker energiforbruk og miljøavtrykk. Lær å designe skalerbare, robuste OG bærekraftige systemer.</p>
+                    <h3>Moduler</h3>
+                    <ol>
+                        <li><strong>Introduksjon til Grønn Arkitektur:</strong> Hvorfor er det viktig? Nøkkelmetrikker (PUE, CUE, karbonintensitet).</li>
+                        <li><strong>Effektive Kommunikasjonsmønstre:</strong> Synkron vs. Asynkron kommunikasjon (REST, gRPC, meldingskøer). Når bruke hva for minst mulig overhead?</li>
+                        <li><strong>Microservices & Bærekraft:</strong> Fordeler (uavhengig skalering) og ulemper (nettverks-overhead, kompleksitet). Strategier for å redusere "chattiness".</li>
+                        <li><strong>Serverless & Energi:</strong> Fordeler med "scale-to-zero". Potensielle ulemper (cold starts, state management). Optimal bruk for energieffektivitet.</li>
+                        <li><strong>Databasevalg og Design:</strong> SQL vs. NoSQL - påvirkning på ressursbruk. Datamodellering for effektive spørringer. Caching-strategier.</li>
+                        <li><strong>Infrastruktur som Kode (IaC) & Bærekraft:</strong> Automatisering av ressursstyring. Riktig sizing og auto-skalering. Velge grønne skyregioner.</li>
+                        <li><strong>Observabilitet for Bærekraft:</strong> Logge og monitorere ressursbruk og ytelse for å identifisere flaskehalser og optimaliseringsmuligheter.</li>
+                        <li><strong>Casestudier:</strong> Analyse av virkelige eksempler på grønne (og mindre grønne) arkitekturer.</li>
+                    </ol>
+                    <h3>Målgruppe</h3>
+                    <p>Programvarearkitekter, erfarne backend-utviklere, DevOps-ingeniører.</p>
+                    <p><strong>Varighet:</strong> 5 dager (intensivt) eller 8 uker (deltid).</p>
+                    <p><strong>Format:</strong> Online med live forelesninger, praktiske øvelser og gruppediskusjoner.</p>
+                    <p><em>(Dette er et eksempel-kurs)</em></p>
+                `
+            },
+             'webinar-future-green-it': {
+                title: 'Webinar: Framtidens Grønne IT (Opptak)',
+                content: `
+                    <h3>Om Webinaret</h3>
+                    <p>Se opptaket av vårt populære webinar hvor bransjeeksperter diskuterer de nyeste trendene og fremtidige retningene for bærekraftig teknologi.</p>
+                    <h3>Temaer som dekkes:</h3>
+                    <ul>
+                        <li><strong>Grønn AI:</strong> Utfordringer og løsninger for å redusere energiforbruket til trening og inferens av store språkmodeller (LLMs) og andre AI-systemer.</li>
+                        <li><strong>Bærekraftig Sky:</strong> Hvordan sky-leverandørene jobber mot fornybar energi. Verktøy for å velge grønnere regioner og optimalisere skybruken. Fremveksten av "carbon-aware" applikasjoner.</li>
+                        <li><strong>Edge Computing & Miljø:</strong> Potensialet for redusert dataoverføring ved å flytte prosessering nærmere brukeren. Energiutfordringer med distribuerte enheter.</li>
+                        <li><strong>Sirkulær Økonomi for Maskinvare:</strong> Betydningen av å forlenge levetiden til servere og nettverksutstyr. Design for reparasjon og resirkulering.</li>
+                        <li><strong>Regulatoriske Trender:</strong> Kommende lovgivning og standarder knyttet til rapportering av IT-utslipp og energieffektivitet.</li>
+                    </ul>
+                    <h3>Paneldeltakere:</h3>
+                    <ul>
+                        <li>Dr. Eco Coder (Ledende forsker innen grønn programvare)</li>
+                        <li>Cloudy Green (Skyarkitekt med fokus på bærekraft)</li>
+                        <li>Al Gore-ithm (AI-etikk og bærekraft-spesialist)</li>
+                    </ul>
+                    <p><em>(Dette er et eksempel-webinar)</em></p>
+                    <p><a href="#">Se opptaket nå (Simulert lenke)</a></p>
+                 `
+            },
+             'workshop-legacy-optimization': {
+                title: 'Workshop: Optimalisering av Legacy-kode for Energi',
+                 content: `
+                    <h3>Workshop Mål</h3>
+                    <p>Denne praktiske workshopen (fiktiv) gir deg verktøyene og teknikkene for å identifisere og forbedre energieffektiviteten i eksisterende, eldre kodebaser uten behov for en fullstendig omskriving.</p>
+                    <h3>Hva du vil lære:</h3>
+                    <ul>
+                        <li><strong>Profileringsteknikker:</strong> Bruk av profileringsverktøy (språk-spesifikke) for å finne "hotspots" - deler av koden som bruker mest CPU-tid eller allokerer mest minne.</li>
+                        <li><strong>Identifisere Ineffektive Mønstre:</strong> Lær å gjenkjenne vanlige anti-mønstre i legacy-kode som ofte fører til høyt ressursbruk (f.eks. unødvendige databasekall i løkker, ineffektiv strengmanipulasjon, dårlig algoritmevalg).</li>
+                        <li><strong>Refaktorering for Effektivitet:</strong> Teknikker for å trygt refaktorere identifiserte flaskehalser med fokus på å redusere ressursbruk uten å introdusere regresjoner.
+                            <ul>
+                                <li>Memoization/Caching</li>
+                                <li>Optimalisering av løkker</li>
+                                <li>Forbedring av database-spørringer</li>
+                                <li>Bytte ut ineffektive biblioteksfunksjoner</li>
+                            </ul>
+                        </li>
+                        <li><strong>Testing av Ytelse:</strong> Hvordan sette opp enkle ytelsestester for å verifisere at optimaliseringene dine faktisk har en positiv effekt.</li>
+                        <li><strong>Strategier for Gradvis Forbedring:</strong> Hvordan angripe optimalisering i en stor kodebase steg for steg.</li>
+                    </ul>
+                    <h3>Format</h3>
+                    <p>Hands-on workshop med kodeeksempler (typisk i et utvalgt språk som Java, Python eller C#), live koding og gruppeøvelser.</p>
+                    <p><strong>Varighet:</strong> 1 dag.</p>
+                    <p><strong>Forkunnskaper:</strong> Erfaring med programmering i det relevante språket.</p>
+                    <p><em>(Dette er en eksempel-workshop)</em></p>
+                 `
+            },
+             'course-green-algorithms': {
+                title: 'Intro til Grønne Algoritmer (Online Kurs)',
+                 content: `
+                    <h3>Kursinnhold</h3>
+                    <p>Dette nettbaserte kurset (fiktivt) gir en introduksjon til hvordan valget av algoritmer og datastrukturer har en direkte innvirkning på programvarens ressursbruk (CPU, minne) og dermed dets miljøavtrykk.</p>
+                    <h3>Læringsmål:</h3>
+                    <ul>
+                        <li>Forstå Big O-notasjon (tid- og plasskompleksitet) og hvordan det relaterer til ressursbruk.</li>
+                        <li>Analysere vanlige algoritmer (sortering, søking) med tanke på effektivitet i ulike scenarier.
+                            <ul>
+                                <li>Når er Quicksort bedre enn Bubble Sort (og hvorfor)?</li>
+                                <li>Effekten av å søke i en usortert vs. sortert liste.</li>
+                                <li>Hash Maps vs. Søketrær for oppslag.</li>
+                            </ul>
+                        </li>
+                        <li>Velge riktig datastruktur (Array, Linked List, Hash Map, Tree, Graph) basert på forventet bruk og ytelseskrav.</li>
+                        <li>Identifisere algoritmiske flaskehalser i kode.</li>
+                        <li>Grunnleggende om "Space-Time Tradeoff" – når er det fornuftig å bruke mer minne for å spare CPU-tid (og vice versa) fra et energiperspektiv?</li>
+                        <li>Eksempler på hvordan små algoritmiske endringer kan gi store utslag i ressursbruk for store datasett.</li>
+                    </ul>
+                    <h3>Format</h3>
+                    <p>Selvstudium med videoforelesninger, quizer og enkle kodeøvelser.</p>
+                    <p><strong>Estimert tid:</strong> 4-6 timer.</p>
+                    <p><strong>Målgruppe:</strong> Nybegynnere og viderekomne utviklere som ønsker å styrke sin forståelse av algoritmers påvirkning på effektivitet.</p>
+                    <p><em>(Dette er et eksempel-kurs)</em></p>
+                 `
+            }
+            // Legg til flere ressurser her etter behov
+        };
+
+
+        // Funksjon for å åpne modalen med riktig innhold
+        function openModal(resourceId) {
+            const data = resourceData[resourceId];
+            if (data) {
+                modalTitle.textContent = data.title;
+                modalBody.innerHTML = data.content;
+                modal.showModal(); // Native dialog method to show modal
+            } else {
+                // Fallback if data not found (optional)
+                modalTitle.textContent = 'Feil';
+                modalBody.innerHTML = '<p>Kunne ikke finne informasjon for denne ressursen.</p>';
+                modal.showModal();
+            }
+        }
+
+        // Legg til event listener for alle ressurslenker/knapper
+        resourceLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault(); // Forhindre standard link/button oppførsel
+                const resourceId = link.getAttribute('data-resource-id');
+                openModal(resourceId);
+            });
+        });
+
+        // Lukk modalen når lukkeknappen klikkes
+        closeModalButton.addEventListener('click', () => {
+            modal.close(); // Native dialog method to close
+        });
+
+        // Lukk modalen når man klikker utenfor innholdet (på backdrop)
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.close();
+            }
+        });
+
+    </script>
+  </body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fellesskap | GreenCode Initiative</title>
+    <title>Fellesskap & Forum | GreenCode Initiative</title>
     <style>
       :root {
         --color-dark-green: #1a5632;
@@ -157,6 +157,7 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 2rem;
+         margin-bottom: 4rem; /* Add space before forum */
       }
 
       .card {
@@ -203,6 +204,7 @@
         transition: all 0.3s;
         border: none;
         cursor: pointer;
+        font-size: 0.9rem; /* Slightly smaller */
       }
 
       .btn:hover {
@@ -230,6 +232,143 @@
             margin: 0 auto 2rem auto;
             color: var(--color-dark-earth);
         }
+
+      /* Forum Styles */
+      .forum-section {
+          background-color: var(--color-white);
+          padding: 2rem;
+          border-radius: 8px;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+          margin-top: 3rem;
+      }
+
+        .forum-title {
+            font-size: 1.8rem;
+            color: var(--color-dark-green);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            border-bottom: 2px solid var(--color-light-green);
+            padding-bottom: 0.5rem;
+        }
+
+      .post-form {
+          margin-bottom: 2rem;
+          border-bottom: 1px solid #eee;
+          padding-bottom: 2rem;
+      }
+
+       .post-form h3 {
+           font-size: 1.3rem;
+           color: var(--color-dark-earth);
+           margin-bottom: 1rem;
+       }
+
+      .form-group {
+          margin-bottom: 1rem;
+      }
+
+      .form-group label {
+          display: block;
+          margin-bottom: 0.3rem;
+          font-weight: 500;
+          color: var(--color-dark-earth);
+          font-size: 0.9rem;
+      }
+
+      .form-group input,
+      .form-group textarea {
+          width: 100%;
+          padding: 0.7rem;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          font-size: 1rem;
+          background-color: var(--color-cream);
+          color: var(--color-gray);
+          transition: border-color 0.3s;
+      }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-medium-green);
+        }
+
+        .form-group textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+      .post-list {
+          margin-top: 2rem;
+      }
+
+      .forum-post {
+          background-color: #fff;
+          border: 1px solid #eee;
+          border-radius: 6px;
+          padding: 1.5rem;
+          margin-bottom: 1.5rem;
+          box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      }
+
+      .post-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 0.75rem;
+          border-bottom: 1px solid #f0f0f0;
+          padding-bottom: 0.5rem;
+      }
+
+       .post-author {
+           font-weight: 600;
+           color: var(--color-dark-green);
+       }
+
+       .post-meta {
+           font-size: 0.85rem;
+           color: var(--color-dark-earth);
+       }
+
+       .post-content {
+           margin-bottom: 1rem;
+           color: var(--color-gray);
+           white-space: pre-wrap; /* Preserve line breaks */
+       }
+
+       .post-actions {
+           display: flex;
+           align-items: center;
+           gap: 1rem;
+       }
+
+       .like-button {
+           background: none;
+           border: none;
+           color: var(--color-medium-green);
+           cursor: pointer;
+           font-size: 1rem;
+           display: flex;
+           align-items: center;
+           gap: 0.3rem;
+           padding: 0.3rem 0.6rem;
+           border-radius: 4px;
+           transition: background-color 0.2s, color 0.2s;
+       }
+       .like-button:hover {
+            background-color: rgba(46, 139, 87, 0.1);
+            color: var(--color-dark-green);
+       }
+       .like-button.liked { /* Style for when liked (optional) */
+           color: var(--color-dark-green);
+           font-weight: bold;
+       }
+
+       .like-count {
+           font-size: 0.9rem;
+           color: var(--color-dark-earth);
+           font-weight: 500;
+       }
 
 
       footer {
@@ -328,6 +467,9 @@
          .page-title {
             font-size: 2.5rem;
         }
+         .forum-section {
+             padding: 1.5rem;
+         }
       }
     </style>
 </head>
@@ -353,6 +495,8 @@
                     <li><a href="fellesskap.html" class="nav-link">Fellesskap</a></li>
                     <li><a href="omoss.html" class="nav-link">Om oss</a></li>
                     <li><a href="kontakt.html" class="nav-link">Kontakt</a></li>
+                    <li><a href="login.html" class="nav-link">Logg Inn</a></li>
+                    <li><a href="register.html" class="nav-link">Registrer Deg</a></li>
                 </ul>
                  <!-- Add hamburger menu icon for mobile here -->
             </nav>
@@ -363,41 +507,45 @@
       <div class="container">
         <h1 class="page-title">Bli med i Fellesskapet</h1>
         <p class="page-subtitle">
-          Koble deg på med andre utviklere, del kunnskap, delta på arrangementer og bidra til en grønnere teknologifremtid sammen.
+          Koble deg på med andre utviklere, del kunnskap, delta på arrangementer og diskuter i vårt forum.
         </p>
       </div>
     </section>
 
-    <section class="community-content">
-        <div class="container">
-            <div class="section">
-                <h2 class="section-title">Engasjer deg</h2>
-                <div class="card-grid">
-                    <div class="card">
-                        <div class="card-icon">💬</div>
-                        <h3 class="card-title">Forum</h3>
-                        <p class="card-text">Diskuter beste praksis, still spørsmål, og del dine erfaringer med bærekraftig koding i vårt dedikerte forum.</p>
-                        <a href="#" class="btn">Gå til Forum</a>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon">📅</div>
-                        <h3 class="card-title">Arrangementer</h3>
-                        <p class="card-text">Finn kommende webinarer, workshops og meetups. Lær av eksperter og nettverk med likesinnede utviklere.</p>
-                        <a href="#" class="btn">Se Arrangementer</a>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon">🤝</div>
-                        <h3 class="card-title">Prosjekter</h3>
-                        <p class="card-text">Utforsk og bidra til open-source prosjekter fokusert på grønn teknologi og energieffektiv programvare.</p>
-                        <a href="#" class="btn">Utforsk Prosjekter</a>
-                    </div>
+
+            <!-- Forum Section -->
+            <div id="forum-section" class="forum-section">
+                <h2 class="forum-title">Forum Diskusjoner</h2>
+
+                <!-- New Post Form -->
+                <div class="post-form">
+                    <h3>Start en ny diskusjon eller kommenter</h3>
+                    <form id="new-post-form">
+                        <div class="form-group">
+                            <label for="post-username">Ditt Navn/Brukernavn:</label>
+                            <input type="text" id="post-username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="post-content">Din melding:</label>
+                            <textarea id="post-content" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Publiser Innlegg</button>
+                    </form>
+                </div>
+
+                <!-- Post List -->
+                <div id="post-list" class="post-list">
+                    <!-- Forum posts will be loaded here by JavaScript -->
+                    <p>Laster innlegg...</p>
                 </div>
             </div>
+             <!-- End Forum Section -->
+
 
             <div class="section contribute-section">
                 <h2 class="contribute-title">Bidra til GreenCode</h2>
                 <p class="contribute-text">Din kunnskap og engasjement er verdifullt! Lær hvordan du kan bidra med kode, artikler, veiledninger eller ved å organisere lokale arrangementer.</p>
-                <a href="#" class="btn">Lær Hvordan du Kan Bidra</a>
+                <a href="kontakt.html" class="btn">Lær Hvordan du Kan Bidra</a>
             </div>
         </div>
     </section>
@@ -441,7 +589,7 @@
           <div>
             <h3 class="footer-title">Fellesskap</h3>
             <ul class="footer-links">
-              <li class="footer-link"><a href="fellesskap.html">Forum</a></li>
+              <li class="footer-link"><a href="#forum-section">Forum</a></li>
               <li class="footer-link"><a href="fellesskap.html">Arrangementer</a></li>
               <li class="footer-link"><a href="fellesskap.html">Prosjekter</a></li>
               <li class="footer-link"><a href="fellesskap.html">Bidra</a></li>
@@ -462,6 +610,106 @@
         </div>
       </div>
     </footer>
+
+    <script>
+        // --- Forum Simulation ---
+
+        const postList = document.getElementById('post-list');
+        const newPostForm = document.getElementById('new-post-form');
+        const usernameInput = document.getElementById('post-username');
+        const contentInput = document.getElementById('post-content');
+
+        // Simulate initial posts (in a real app, this would come from a server)
+        let posts = [
+            { id: 1, username: "Elina Grønn", timestamp: new Date(Date.now() - 3600000), content: "Noen som har tips til å måle energiforbruket til en Node.js-app?", likes: 5 },
+            { id: 2, username: "Børge Bærekraft", timestamp: new Date(Date.now() - 7200000), content: "Jeg prøver å optimalisere bildene på nettstedet mitt for å redusere datamengden. Hvilke verktøy anbefales?\n\nHar sett på Squoosh, men finnes det andre gode alternativer?", likes: 12 },
+             { id: 3, username: "Kari Kode", timestamp: new Date(Date.now() - 86400000), content: "Hva er den største energislukeren i en typisk webapplikasjon? Frontend eller backend?", likes: 8 },
+        ];
+
+        // Function to format timestamp
+        function formatTimestamp(date) {
+            return date.toLocaleString('no-NO', { dateStyle: 'short', timeStyle: 'short' });
+        }
+
+        // Function to render posts
+        function renderPosts() {
+            postList.innerHTML = ''; // Clear existing posts
+            if (posts.length === 0) {
+                postList.innerHTML = '<p>Ingen innlegg ennå. Bli den første til å skrive!</p>';
+                return;
+            }
+
+            posts.forEach(post => {
+                const postElement = document.createElement('div');
+                postElement.classList.add('forum-post');
+                postElement.innerHTML = `
+                    <div class="post-header">
+                        <span class="post-author">${post.username}</span>
+                        <span class="post-meta">${formatTimestamp(post.timestamp)}</span>
+                    </div>
+                    <div class="post-content">${post.content.replace(/\n/g, '<br>')}</div>
+                    <div class="post-actions">
+                        <button class="like-button" data-id="${post.id}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                            Lik
+                        </button>
+                        <span class="like-count">${post.likes} Likes</span>
+                    </div>
+                `;
+                postList.appendChild(postElement);
+            });
+        }
+
+         // Handle new post submission
+         newPostForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const username = usernameInput.value.trim();
+            const content = contentInput.value.trim();
+
+            if (!username || !content) {
+                alert('Vennligst fyll ut både navn og melding.');
+                return;
+            }
+
+            const newPost = {
+                id: Date.now(), // Simple unique ID
+                username: username,
+                timestamp: new Date(),
+                content: content,
+                likes: 0
+            };
+
+            posts.unshift(newPost); // Add new post to the beginning
+            renderPosts();
+
+            // Clear form (optional: keep username)
+            // usernameInput.value = '';
+            contentInput.value = '';
+        });
+
+         // Handle likes using event delegation
+        postList.addEventListener('click', (event) => {
+            if (event.target.classList.contains('like-button') || event.target.closest('.like-button')) {
+                const button = event.target.closest('.like-button');
+                const postId = parseInt(button.getAttribute('data-id'));
+
+                // Find the post in the array
+                const postIndex = posts.findIndex(p => p.id === postId);
+                if (postIndex !== -1) {
+                    posts[postIndex].likes++;
+                    // In a real app, you might prevent multiple likes from the same user
+                    // and potentially toggle a 'liked' state on the button visually.
+                     // button.classList.toggle('liked');
+                    renderPosts(); // Re-render to show updated like count
+                }
+            }
+        });
+
+
+        // Initial render of posts when the page loads
+        renderPosts();
+
+    </script>
 
 </body>
 </html>

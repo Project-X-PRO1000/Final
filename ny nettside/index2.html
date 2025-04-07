@@ -50,6 +50,62 @@
         align-items: center;
       }
 
+     .nav-button {
+        /* Juster padding: 0.4rem vertikalt, 1.4rem horisontalt */
+        padding: 0.4rem 1.4rem;
+        /* Reduser border-radius for mindre runde hjørner */
+        border-radius: 6px; /* Prøv verdier som 4px, 6px, 8px */
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        margin-left: 0.7rem;
+        text-align: center;
+        display: inline-block;
+        font-weight: 500; /* Kan justeres til 600 for litt mer vekt */
+        font-size: 0.95rem; /* Litt større font enn forrige */
+        border: 2px solid transparent; /* Plassholder */
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Fjern base nav-link underline */
+      .nav-button::after {
+        display: none;
+      }
+
+      /* Login Knapp (Solid Grønn) */
+      .nav-button-login {
+        background-color: var(--color-medium-green);
+        color: var(--color-white);
+        border-color: var(--color-medium-green);
+      }
+
+      .nav-button-login:hover {
+        background-color: var(--color-dark-green);
+        border-color: var(--color-dark-green);
+        color: var(--color-white);
+        transform: translateY(-2px); /* Tilbake til subtil løft */
+        box-shadow: 0 3px 8px rgba(46, 139, 87, 0.25); /* Justert skygge */
+      }
+
+      /* Registrer Knapp (Outline Grønn) */
+      .nav-button-register {
+        background-color: transparent;
+        color: var(--color-medium-green);
+        border-color: var(--color-medium-green);
+      }
+
+      .nav-button-register:hover {
+        background-color: var(--color-medium-green);
+        color: var(--color-white);
+        border-color: var(--color-medium-green);
+        transform: translateY(-2px); /* Subtil løft */
+        box-shadow: 0 3px 8px rgba(46, 139, 87, 0.15); /* Justert skygge */
+      }
+      /* --- SLUTT REVIDERT --- */
+
+      /* Juster spacing hvis needed */
+      .nav-menu {
+        align-items: center;
+      }
       .logo {
         display: flex;
         align-items: center;
@@ -465,12 +521,14 @@
         </a>
         <nav>
           <ul class="nav-menu">
-            <li><a href="index2.html" class="nav-link">Hjem</a></li>
-            <li><a href="ressurser.html" class="nav-link">Ressurser</a></li>
-            <li><a href="fellesskap.html" class="nav-link">Fellesskap</a></li>
-            <li><a href="omoss.html" class="nav-link">Om oss</a></li>
-            <li><a href="kontakt.html" class="nav-link">Kontakt</a></li>
-          </ul>
+    <li><a href="index2.html" class="nav-link">Hjem</a></li>
+    <li><a href="ressurser.html" class="nav-link">Ressurser</a></li>
+    <li><a href="fellesskap.html" class="nav-link">Fellesskap</a></li>
+    <li><a href="omoss.html" class="nav-link">Om oss</a></li>
+    <li><a href="kontakt.html" class="nav-link">Kontakt</a></li>
+     <li><a href="login.html" class="nav-link nav-button nav-button-login">Logg Inn</a></li>
+            <li><a href="register.html" class="nav-link nav-button nav-button-register">Registrer Deg</a></li>
+</ul>
         </nav>
       </div>
     </header>

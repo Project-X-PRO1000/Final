@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Om Oss | GreenCode Initiative</title>
+    <title>Logg Inn | GreenCode Initiative</title>
     <style>
       :root {
         --color-dark-green: #1a5632;
@@ -27,6 +27,9 @@
         background-color: var(--color-cream);
         color: var(--color-gray);
         line-height: 1.6;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
       }
 
       header {
@@ -102,142 +105,105 @@
         width: 100%;
       }
 
-       .page-header {
-        background: linear-gradient(
-          135deg,
-          rgba(46, 139, 87, 0.1) 0%,
-          rgba(140, 192, 132, 0.2) 100%
-        );
-        padding: 5rem 0 3rem;
-        text-align: center;
+      /* Authentication specific styles */
+      .auth-section {
+          padding: 5rem 0;
+          flex-grow: 1; /* Makes sure footer stays at bottom */
+          display: flex;
+          align-items: center;
+          justify-content: center;
       }
 
-      .page-title {
-        font-size: 3rem;
-        color: var(--color-dark-green);
-        margin-bottom: 1rem;
-      }
-
-      .page-subtitle {
-        font-size: 1.2rem;
-        color: var(--color-dark-earth);
-        max-width: 700px;
-        margin: 0 auto;
-      }
-
-      .about-section {
-        padding: 5rem 0;
-      }
-
-      .about-intro {
-        text-align: center;
-        margin-bottom: 4rem;
-      }
-
-       .about-intro p {
-           max-width: 800px;
-           margin: 0 auto;
-           font-size: 1.1rem;
-           color: var(--color-dark-earth);
-       }
-
-      .section-title {
-        font-size: 2rem;
-        color: var(--color-dark-green);
-        margin-bottom: 2rem;
-        position: relative;
-        padding-bottom: 0.5rem;
-        text-align: center;
-      }
-
-      .section-title:after {
-        content: "";
-        position: absolute;
-        width: 60px;
-        height: 3px;
-        background-color: var(--color-medium-green);
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-
-      .mission-vision {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 3rem;
-          margin-bottom: 4rem;
-          align-items: start;
-      }
-
-      .mission-vision div {
-          background: var(--color-white);
-          padding: 2rem;
+      .auth-form-container {
+          background-color: var(--color-white);
+          padding: 2.5rem;
           border-radius: 8px;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      }
-
-      .mission-vision h3 {
-          font-size: 1.5rem;
-          color: var(--color-dark-green);
-          margin-bottom: 1rem;
+          box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+          max-width: 450px;
+          width: 100%;
           text-align: center;
       }
 
-        .mission-vision p {
-            color: var(--color-gray);
-            text-align: center;
-        }
-
-       .values-section {
-           padding: 4rem 0;
-           background-color: var(--color-white);
+       .auth-form-container h2 {
+           font-size: 2rem;
+           color: var(--color-dark-green);
+           margin-bottom: 2rem;
        }
 
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            text-align: center;
+       .form-group {
+          margin-bottom: 1.5rem;
+          text-align: left;
+      }
+
+      .form-group label {
+          display: block;
+          margin-bottom: 0.5rem;
+          font-weight: 500;
+          color: var(--color-dark-earth);
+      }
+
+      .form-group input {
+          width: 100%;
+          padding: 0.8rem;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          font-size: 1rem;
+          background-color: var(--color-cream);
+          color: var(--color-gray);
+          transition: border-color 0.3s;
+      }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--color-medium-green);
         }
 
-        .value-item {
-            padding: 1.5rem;
+        .btn {
+            display: inline-block;
+            background-color: var(--color-medium-green);
+            color: var(--color-white);
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 100%; /* Make button full width */
+            margin-top: 1rem;
         }
 
-        .value-icon {
-            font-size: 2.5rem;
-            color: var(--color-medium-green);
-            margin-bottom: 1rem;
+        .btn:hover {
+            background-color: var(--color-dark-green);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .value-title {
-            font-size: 1.2rem;
-            color: var(--color-dark-earth);
-            margin-bottom: 0.5rem;
-        }
-
-        .value-text {
+        .auth-link {
+            margin-top: 1.5rem;
             font-size: 0.9rem;
             color: var(--color-gray);
         }
+        .auth-link a {
+            color: var(--color-medium-green);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .auth-link a:hover {
+            text-decoration: underline;
+        }
 
-       .team-section {
-           padding: 5rem 0;
-           text-align: center;
-       }
-       .team-text {
-           max-width: 700px;
-           margin: 0 auto 2rem auto;
-           font-size: 1.1rem;
-           color: var(--color-dark-earth);
-       }
-        /* Placeholder for team member cards if needed later */
-
+        #form-response {
+            margin-top: 1.5rem;
+            font-weight: 500;
+        }
 
       footer {
         background-color: var(--color-dark-green);
         color: var(--color-white);
         padding: 3rem 0 1.5rem;
+        margin-top: auto; /* Pushes footer down */
       }
 
       .footer-content {
@@ -311,27 +277,21 @@
         font-size: 0.9rem;
       }
 
-      @media (max-width: 992px) {
+       @media (max-width: 992px) {
         .footer-content {
           grid-template-columns: 1fr 1fr;
-        }
-         .mission-vision {
-            grid-template-columns: 1fr;
         }
       }
 
       @media (max-width: 768px) {
         .nav-menu {
-          display: none; /* Add logic for mobile menu toggle if needed */
+          display: none;
+        }
+        .auth-form-container {
+            padding: 2rem;
         }
         .footer-content {
           grid-template-columns: 1fr;
-        }
-         .page-title {
-            font-size: 2.5rem;
-        }
-        .values-grid {
-             grid-template-columns: 1fr;
         }
       }
     </style>
@@ -352,86 +312,38 @@
                 <span class="logo-text">GreenCode</span>
             </a>
             <nav>
-                <ul class="nav-menu">
-    <li><a href="index2.html" class="nav-link">Hjem</a></li>
-    <li><a href="ressurser.html" class="nav-link">Ressurser</a></li>
-    <li><a href="fellesskap.html" class="nav-link">Fellesskap</a></li>
-    <li><a href="omoss.html" class="nav-link">Om oss</a></li>
-    <li><a href="kontakt.html" class="nav-link">Kontakt</a></li>
-    <li><a href="login.html" class="nav-link">Logg Inn</a></li>      <!-- NY -->
-    <li><a href="register.html" class="nav-link">Registrer Deg</a></li> <!-- NY -->
-</ul>
+                 <ul class="nav-menu">
+                    <li><a href="index2.html" class="nav-link">Hjem</a></li>
+                    <li><a href="ressurser.html" class="nav-link">Ressurser</a></li>
+                    <li><a href="fellesskap.html" class="nav-link">Fellesskap</a></li>
+                    <li><a href="omoss.html" class="nav-link">Om oss</a></li>
+                    <li><a href="kontakt.html" class="nav-link">Kontakt</a></li>
+                    <li><a href="login.html" class="nav-link">Logg Inn</a></li>
+                    <li><a href="register.html" class="nav-link">Registrer Deg</a></li>
+                 </ul>
                  <!-- Add hamburger menu icon for mobile here -->
             </nav>
         </div>
     </header>
 
-    <section class="page-header">
-      <div class="container">
-        <h1 class="page-title">Om GreenCode Initiative</h1>
-        <p class="page-subtitle">
-          Lær mer om vårt formål, vår visjon og verdiene som driver oss i arbeidet for en mer bærekraftig teknologibransje.
-        </p>
-      </div>
-    </section>
-
-    <section class="about-section">
+    <section class="auth-section">
         <div class="container">
-            <div class="about-intro">
-                <p>
-                    GreenCode Initiative ble startet av en gruppe engasjerte utviklere og miljøforkjempere som så behovet for økt bevissthet rundt teknologiens miljøpåvirkning. Vi tror at ved å dele kunnskap og fremme beste praksis, kan vi kollektivt redusere det digitale karbonavtrykket og bygge en mer bærekraftig fremtid.
-                </p>
-            </div>
-
-            <div class="mission-vision">
-                <div>
-                    <h3>Vårt Formål</h3>
-                    <p>Å fremme utviklingen og bruken av energieffektiv og ressursbesparende programvare gjennom utdanning, samarbeid og tilgjengeliggjøring av verktøy og ressurser for utviklere globalt.</p>
-                </div>
-                <div>
-                    <h3>Vår Visjon</h3>
-                    <p>En teknologibransje der bærekraft er en integrert del av programvareutviklingen, og hvor miljøvennlig kode er standarden, ikke unntaket.</p>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <section class="values-section">
-        <div class="container">
-             <h2 class="section-title">Våre Verdier</h2>
-             <div class="values-grid">
-                 <div class="value-item">
-                    <div class="value-icon">🌱</div>
-                    <h4 class="value-title">Bærekraft</h4>
-                    <p class="value-text">Vi er forpliktet til å redusere miljøpåvirkningen av teknologi.</p>
-                 </div>
-                 <div class="value-item">
-                    <div class="value-icon">🤝</div>
-                    <h4 class="value-title">Samarbeid</h4>
-                    <p class="value-text">Vi tror på kraften i fellesskapet og åpen deling av kunnskap.</p>
-                 </div>
-                 <div class="value-item">
-                    <div class="value-icon">💡</div>
-                    <h4 class="value-title">Innovasjon</h4>
-                    <p class="value-text">Vi oppmuntrer til nye løsninger for grønnere teknologi.</p>
-                 </div>
-                 <div class="value-item">
-                    <div class="value-icon">🎓</div>
-                    <h4 class="value-title">Utdanning</h4>
-                    <p class="value-text">Vi jobber for å øke bevisstheten og kompetansen om bærekraftig koding.</p>
-                 </div>
+             <div class="auth-form-container">
+                <h2>Logg Inn</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="email">E-post</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Passord</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit" class="btn">Logg Inn</button>
+                    <div id="form-response"></div>
+                </form>
+                <p class="auth-link">Har du ikke konto? <a href="register.html">Registrer deg her</a></p>
              </div>
-        </div>
-    </section>
-
-    <section class="team-section">
-        <div class="container">
-            <h2 class="section-title">Møt Teamet (Eksempel)</h2>
-            <p class="team-text">
-                GreenCode Initiative drives av et dedikert team av frivillige utviklere, designere og miljøentusiaster fra hele verden. Vi brenner for å gjøre en forskjell og inviterer deg til å bli med på reisen! (Her kan man legge til bilder og korte bioer av kjerneteamet).
-            </p>
-             <!-- Team member cards could go here -->
         </div>
     </section>
 
@@ -495,6 +407,43 @@
         </div>
       </div>
     </footer>
+
+    <script>
+        // Basic login form simulation
+        const loginForm = document.getElementById('loginForm');
+        const formResponse = document.getElementById('form-response');
+
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent actual form submission
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Simple validation
+            if (!email || !password) {
+                 formResponse.textContent = 'Vennligst fyll ut begge feltene.';
+                 formResponse.style.color = 'red';
+                 return;
+            }
+
+            formResponse.textContent = 'Logger inn...';
+            formResponse.style.color = 'var(--color-dark-earth)';
+
+            // Simulate backend check
+            setTimeout(() => {
+                // In a real app, you'd check credentials here.
+                // For simulation, we'll just accept anything for now.
+                 formResponse.textContent = 'Innlogging vellykket! Omdirigerer...';
+                 formResponse.style.color = 'var(--color-medium-green)';
+
+                 // Optional: Redirect after successful login simulation
+                 setTimeout(() => {
+                    // window.location.href = 'index2.html'; // Redirect to home page
+                 }, 1000);
+
+            }, 1500); // Simulate network delay
+        });
+    </script>
 
 </body>
 </html>
