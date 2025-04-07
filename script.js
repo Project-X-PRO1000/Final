@@ -307,6 +307,9 @@ function handleLoginSuccess(userData) {
   
   // Save user data to localStorage
   localStorage.setItem('userData', JSON.stringify(userData));
+  
+  // Dispatch login event
+  document.dispatchEvent(new Event('userLoggedIn'));
 }
 
 // Function to handle logout
@@ -323,6 +326,9 @@ function handleLogout() {
   if (userInfo) {
     userInfo.remove();
   }
+  
+  // Dispatch logout event
+  document.dispatchEvent(new Event('userLoggedOut'));
 }
 
 // Modal functions

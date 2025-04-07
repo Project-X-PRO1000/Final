@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forum - GreenCode</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container nav-container">
+        <a href="index.html" class="logo">Green<span>Code</span></a>
+        <nav>
+          <ul>
+            <li><a href="index.html">Hjem</a></li>
+            <li><a href="index.html#features">Funksjoner</a></li>
+            <li><a href="index.html#blog">Blogg</a></li>
+            <li><a href="forum.html" class="active">Forum</a></li>
+            <li><a href="index.html#quiz">Quiz</a></li>
+            <li><a href="index.html#contact">Kontakt</a></li>
+          </ul>
+        </nav>
+        <div class="auth-buttons">
+          <button id="login-btn">Logg Inn</button>
+          <button id="register-btn">Registrer</button>
+          <!-- User info will be added here by JavaScript when logged in -->
+        </div>
+      </div>
+    </header>
+
+    <!-- Forum Section -->
+    <section class="forum-section">
+      <div class="container">
+        <div class="section-title">
+          <h2>GrønnKode <span>Forum</span></h2>
+          <p>
+            Del dine erfaringer, still spørsmål og diskuter bærekraftig programvareutvikling med andre deltakere.
+          </p>
+        </div>
+
+        <!-- Create New Post (only visible when logged in) -->
+        <div class="create-post-container" id="create-post-container">
+          <h3>Start en ny diskusjon</h3>
+          <div class="login-required-message">
+            <p>Du må være logget inn for å opprette innlegg. <a id="login-prompt">Logg inn</a> eller <a id="register-prompt">registrer deg</a> for å delta i forumet.</p>
+          </div>
+          <form id="create-post-form" class="create-post-form">
+            <div class="form-group">
+              <label for="post-title">Tittel</label>
+              <input type="text" id="post-title" placeholder="Skriv en beskrivende tittel" required />
+            </div>
+            <div class="form-group">
+              <label for="post-category">Kategori</label>
+              <select id="post-category" required>
+                <option value="">Velg kategori</option>
+                <option value="energieffektivitet">Energieffektivitet</option>
+                <option value="baerekraftig-praksis">Bærekraftig Praksis</option>
+                <option value="verktoy">Verktøy & Ressurser</option>
+                <option value="sporsmal">Spørsmål og Svar</option>
+                <option value="annet">Annet</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="post-content">Innhold</label>
+              <textarea id="post-content" placeholder="Del dine tanker, spørsmål eller erfaringer..." required></textarea>
+            </div>
+            <button type="submit" class="post-submit-btn">Publiser innlegg</button>
+          </form>
+        </div>
+
+        <!-- Filter and Sort Controls -->
+        <div class="forum-controls">
+          <div class="forum-filter">
+            <label for="filter-category">Filtrer etter:</label>
+            <select id="filter-category">
+              <option value="all">Alle kategorier</option>
+              <option value="energieffektivitet">Energieffektivitet</option>
+              <option value="baerekraftig-praksis">Bærekraftig Praksis</option>
+              <option value="verktoy">Verktøy & Ressurser</option>
+              <option value="sporsmal">Spørsmål og Svar</option>
+              <option value="annet">Annet</option>
+            </select>
+          </div>
+          <div class="forum-sort">
+            <label for="sort-posts">Sorter etter:</label>
+            <select id="sort-posts">
+              <option value="newest">Nyeste først</option>
+              <option value="oldest">Eldste først</option>
+              <option value="most-liked">Mest likt</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Post List -->
+        <div class="forum-posts" id="forum-posts">
+          <!-- Posts will be populated by JavaScript -->
+          <div class="no-posts-message" id="no-posts-message">
+            <p>Det er ingen innlegg ennå. Bli den første til å starte en diskusjon!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div class="modal" id="login-modal">
+      <div class="modal-content">
+        <span class="close-btn" id="close-login">&times;</span>
+        <div class="modal-header">
+          <h2>Logg inn</h2>
+        </div>
+        <form class="modal-form" id="login-form">
+          <div class="form-group">
+            <label for="login-email">E-post</label>
+            <input type="email" id="login-email" required />
+          </div>
+          <div class="form-group">
+            <label for="login-password">Passord</label>
+            <input type="password" id="login-password" required />
+          </div>
+          <button type="submit">Logg Inn</button>
+        </form>
+        <div class="switch-form">
+          <p>Har du ikke en konto? <a id="switch-to-register">Registrer</a></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal" id="register-modal">
+      <div class="modal-content">
+        <span class="close-btn" id="close-register">&times;</span>
+        <div class="modal-header">
+          <h2>Opprett konto</h2>
+        </div>
+        <form class="modal-form" id="register-form">
+          <div class="form-group">
+            <label for="register-name">Fullt navn</label>
+            <input type="text" id="register-name" required />
+          </div>
+          <div class="form-group">
+            <label for="register-email">E-post</label>
+            <input type="email" id="register-email" required />
+          </div>
+          <div class="form-group">
+            <label for="register-password">Passord</label>
+            <input type="password" id="register-password" required />
+          </div>
+          <div class="form-group">
+            <label for="register-confirm-password">Bekreft passord</label>
+            <input type="password" id="register-confirm-password" required />
+          </div>
+          <button type="submit">Registrer</button>
+        </form>
+        <div class="switch-form">
+          <p>Har du allerede en konto? <a id="switch-to-login">Logg Inn</a></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>GRØNN<span>KODE</span></h3>
+            <p>
+              Vi fremmer bærekraftig og miljøvennlig kodepraksis for å bygge en
+              grønnere fremtid gjennom teknologi.
+            </p>
+            <div class="social-links">
+              <a href="#"><span>FB</span></a>
+              <a href="#"><span>TW</span></a>
+              <a href="#"><span>IG</span></a>
+              <a href="#"><span>LI</span></a>
+            </div>
+          </div>
+          <div class="footer-column">
+            <h3>Raske Lenker</h3>
+            <ul class="footer-links">
+              <li><a href="index.html">Hjem</a></li>
+              <li><a href="index.html#features">Funksjoner</a></li>
+              <li><a href="index.html#blog">Blogg</a></li>
+              <li><a href="forum.html">Forum</a></li>
+              <li><a href="index.html#quiz">Quiz</a></li>
+              <li><a href="index.html#contact">Kontakt</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Ressurser</h3>
+            <ul class="footer-links">
+              <li><a href="#">Dokumentasjon</a></li>
+              <li><a href="#">Veiledninger</a></li>
+              <li><a href="#">Casestudier</a></li>
+              <li><a href="#">Forskningsartikler</a></li>
+              <li><a href="#">Samfunnsforum</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Kontakt Oss</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="mailto:info@greencode.org">info@gronnkode.org</a>
+              </li>
+              <li><a href="tel:+1234567890">+47 123 45 678</a></li>
+              <li>123 Grønn Gate, Øko By</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 GrønnKode. Alle rettigheter reservert.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="forum.js"></script>
+  </body>
+</html>
