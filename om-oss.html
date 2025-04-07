@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kontakt - GreenCode</title>
+    <title>Om Oss - GreenCode</title>
     <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
@@ -21,8 +21,8 @@
             <li><a href="index.html#blog">Blogg</a></li>
             <li><a href="forum.html">Forum</a></li>
             <li><a href="verktoy.html">Verktøy</a></li>
-            <li><a href="om-oss.html">Om Oss</a></li>
-            <li><a href="contact.html" class="active">Kontakt</a></li>
+            <li><a href="om-oss.html" class="active">Om Oss</a></li>
+            <li><a href="contact.html">Kontakt</a></li>
           </ul>
         </nav>
         <div class="auth-buttons">
@@ -33,108 +33,138 @@
       </div>
     </header>
 
-    <!-- Contact Header Section -->
-    <section class="contact-header">
+    <!-- About Header Section -->
+    <section class="about-header">
       <div class="container">
         <div class="section-title">
-          <h2>Kontakt <span>Oss</span></h2>
+          <h2>Vårt <span>Team</span></h2>
           <p>
-            Har du spørsmål eller tilbakemeldinger? Vi vil gjerne høre fra deg.
-            Fyll ut skjemaet nedenfor eller bruk kontaktinformasjonen vår.
+            Møt teamet bak GrønnKode - entusiastiske fagfolk som er dedikert til
+            å fremme bærekraftig og miljøvennlig kodepraksis.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact-section">
+    <!-- Team Section -->
+    <section class="team-section">
       <div class="container">
-        <div class="contact-content">
-          <div class="contact-form-container">
-            <h3>Send oss en melding</h3>
-            <form id="contact-form" class="contact-form">
-              <div class="form-group">
-                <label for="name">Navn</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  placeholder="Ditt fulle navn"
-                />
-              </div>
-              <div class="form-group">
-                <label for="email">E-post</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  placeholder="Din e-postadresse"
-                />
-              </div>
-              <div class="form-group">
-                <label for="subject">Emne</label>
-                <select id="subject" name="subject" required>
-                  <option value="">Velg emne</option>
-                  <option value="general">Generell forespørsel</option>
-                  <option value="support">Teknisk støtte</option>
-                  <option value="partnership">Partnerskap</option>
-                  <option value="feedback">Tilbakemelding</option>
-                  <option value="other">Annet</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="message">Melding</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="6"
-                  required
-                  placeholder="Skriv din melding her..."
-                ></textarea>
-              </div>
-              <button type="submit" class="submit-btn">Send melding</button>
-            </form>
-          </div>
-          <div class="contact-info">
-            <h3>Kontaktinformasjon</h3>
-            <div class="info-item">
-              <div class="info-icon">
-                <i class="fas fa-envelope"></i>
-              </div>
-              <div class="info-content">
-                <h4>E-post</h4>
-                <p>
-                  <a href="mailto:info@gronnkode.org">info@gronnkode.org</a>
-                </p>
-              </div>
+        <div class="team-grid">
+          <!-- Team Member 1 -->
+          <div class="team-member">
+            <div class="member-image">
+              <img src="portrett1.jpeg" alt="Team Medlem" />
             </div>
-            <div class="info-item">
-              <div class="info-icon">
-                <i class="fas fa-phone-alt"></i>
-              </div>
-              <div class="info-content">
-                <h4>Telefon</h4>
-                <p><a href="tel:+4712345678">+47 123 45 678</a></p>
-              </div>
-            </div>
-            <div class="info-item">
-              <div class="info-icon">
-                <i class="fas fa-map-marker-alt"></i>
-              </div>
-              <div class="info-content">
-                <h4>Adresse</h4>
-                <p>123 Grønn Gate, Øko By</p>
-              </div>
-            </div>
-            <div class="social-contact">
-              <h4>Følg oss</h4>
+            <div class="member-info">
+              <h3>Maren Johansen</h3>
+              <span class="position">Prosjektleder</span>
+              <p>
+                Med over 10 års erfaring innen bærekraftig teknologiutvikling,
+                leder Maren vårt team med fokus på grønne løsninger og
+                miljøvennlig innovasjon.
+              </p>
               <div class="social-links">
-                <a href="#"><span>FB</span></a>
-                <a href="#"><span>TW</span></a>
-                <a href="#"><span>IG</span></a>
-                <a href="#"><span>LI</span></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Team Member 2 -->
+          <div class="team-member">
+            <div class="member-image">
+              <img src="portrett2.jpeg" alt="Team Medlem" />
+            </div>
+            <div class="member-info">
+              <h3>Elias Berg</h3>
+              <span class="position">Seniorkonsulent</span>
+              <p>
+                Elias spesialiserer seg på energieffektiv kodearkitektur og har
+                bidratt til flere open source-prosjekter for miljøvennlig
+                programvare.
+              </p>
+              <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Team Member 3 -->
+          <div class="team-member">
+            <div class="member-image">
+              <img src="portrett3.jpeg" alt="Team Medlem" />
+            </div>
+            <div class="member-info">
+              <h3>Sofia Larsen</h3>
+              <span class="position">UX Designer</span>
+              <p>
+                Sofia kombinerer brukersentrert design med bærekraftige
+                prinsipper for å skape brukervennlige og miljøvennlige digitale
+                opplevelser.
+              </p>
+              <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-behance"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Team Member 4 -->
+          <div class="team-member">
+            <div class="member-image">
+              <img src="team4.jpg" alt="Team Medlem" />
+            </div>
+            <div class="member-info">
+              <h3>Anders Pedersen</h3>
+              <span class="position">Backend Utvikler</span>
+              <p>
+                Anders har ekspertise innen serveroptimalisering og
+                energieffektive databaser, med fokus på å redusere
+                karbonfotavtrykk i backend-systemer.
+              </p>
+              <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Team Member 5 -->
+          <div class="team-member">
+            <div class="member-image">
+              <img src="team5.jpg" alt="Team Medlem" />
+            </div>
+            <div class="member-info">
+              <h3>Maja Kristensen</h3>
+              <span class="position">Innholdsstrateg</span>
+              <p>
+                Maja utvikler innholdsstrategier som fremmer miljøvennlig
+                kodepraksis og skaper engasjerende artikler for vår blogg og
+                forum.
+              </p>
+              <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-medium"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Team Member 6 -->
+          <div class="team-member">
+            <div class="member-image">
+              <img src="team6.jpg" alt="Team Medlem" />
+            </div>
+            <div class="member-info">
+              <h3>Kristian Johnsen</h3>
+              <span class="position">Frontend Utvikler</span>
+              <p>
+                Kristian er spesialist på effektiv frontend-utvikling med fokus
+                på minimalistisk og energieffektiv kode for moderne nettsteder.
+              </p>
+              <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-codepen"></i></a>
               </div>
             </div>
           </div>
@@ -274,6 +304,5 @@
     </div>
 
     <script src="script.js"></script>
-    <script src="contact.js"></script>
   </body>
 </html>

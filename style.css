@@ -2021,3 +2021,132 @@ html {
   margin-top: -30px;
 }
 
+/* About/Team Section Styles */
+.about-header {
+  padding: 60px 0 30px;
+  background-color: var(--light-bg);
+}
+
+.team-section {
+  padding: 60px 0;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.team-member {
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.member-image {
+  height: 250px;
+  overflow: hidden;
+}
+
+.member-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.team-member:hover .member-image img {
+  transform: scale(1.05);
+}
+
+.member-info {
+  padding: 20px;
+}
+
+.member-info h3 {
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+  color: var(--primary-green);
+}
+
+.member-info .position {
+  display: block;
+  color: var(--dark-gray);
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+}
+
+.member-info p {
+  color: var(--dark-gray);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.member-info .social-links {
+  display: flex;
+  gap: 10px;
+}
+
+.member-info .social-links a {
+  color: var(--dark-gray);
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.member-info .social-links a:hover {
+  color: var(--primary-green);
+}
+
+/* Values Section */
+.values-section {
+  padding: 60px 0;
+  background-color: var(--light-bg);
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.value-card {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.value-card:hover {
+  transform: translateY(-5px);
+}
+
+.value-icon {
+  font-size: 2rem;
+  color: var(--primary-green);
+  margin-bottom: 15px;
+}
+
+.value-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: var(--dark-gray);
+}
+
+.value-card p {
+  color: var(--dark-gray);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
