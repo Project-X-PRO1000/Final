@@ -1962,3 +1962,62 @@
   }
 }
 
+/* Tools Navigation Styles */
+.tools-navigation {
+  padding: 40px 0;
+  background-color: #f9f9f9;
+}
+
+.tools-nav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.tool-nav-card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  padding: 25px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.tool-nav-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  color: #2c974b;
+}
+
+.tool-nav-icon {
+  font-size: 2.5rem;
+  color: #2c974b;
+  margin-bottom: 15px;
+}
+
+.tool-nav-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.tool-nav-card p {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+/* Add smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Adjust padding for tool sections for better anchor positioning */
+.tool-section {
+  padding-top: 80px;
+  margin-top: -30px;
+}
+
