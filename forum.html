@@ -39,7 +39,8 @@
         <div class="section-title">
           <h2>GrønnKode <span>Forum</span></h2>
           <p>
-            Del dine erfaringer, still spørsmål og diskuter bærekraftig programvareutvikling med andre deltakere.
+            Del dine erfaringer, still spørsmål og diskuter bærekraftig
+            programvareutvikling med andre deltakere.
           </p>
         </div>
 
@@ -47,19 +48,30 @@
         <div class="create-post-container" id="create-post-container">
           <h3>Start en ny diskusjon</h3>
           <div class="login-required-message">
-            <p>Du må være logget inn for å opprette innlegg. <a id="login-prompt">Logg inn</a> eller <a id="register-prompt">registrer deg</a> for å delta i forumet.</p>
+            <p>
+              Du må være logget inn for å opprette innlegg.
+              <a id="login-prompt">Logg inn</a> eller
+              <a id="register-prompt">registrer deg</a> for å delta i forumet.
+            </p>
           </div>
           <form id="create-post-form" class="create-post-form">
             <div class="form-group">
               <label for="post-title">Tittel</label>
-              <input type="text" id="post-title" placeholder="Skriv en beskrivende tittel" required />
+              <input
+                type="text"
+                id="post-title"
+                placeholder="Skriv en beskrivende tittel"
+                required
+              />
             </div>
             <div class="form-group">
               <label for="post-category">Kategori</label>
               <select id="post-category" required>
                 <option value="">Velg kategori</option>
                 <option value="energieffektivitet">Energieffektivitet</option>
-                <option value="baerekraftig-praksis">Bærekraftig Praksis</option>
+                <option value="baerekraftig-praksis">
+                  Bærekraftig Praksis
+                </option>
                 <option value="verktoy">Verktøy & Ressurser</option>
                 <option value="sporsmal">Spørsmål og Svar</option>
                 <option value="annet">Annet</option>
@@ -67,9 +79,15 @@
             </div>
             <div class="form-group">
               <label for="post-content">Innhold</label>
-              <textarea id="post-content" placeholder="Del dine tanker, spørsmål eller erfaringer..." required></textarea>
+              <textarea
+                id="post-content"
+                placeholder="Del dine tanker, spørsmål eller erfaringer..."
+                required
+              ></textarea>
             </div>
-            <button type="submit" class="post-submit-btn">Publiser innlegg</button>
+            <button type="submit" class="post-submit-btn">
+              Publiser innlegg
+            </button>
           </form>
         </div>
 
@@ -100,7 +118,10 @@
         <div class="forum-posts" id="forum-posts">
           <!-- Posts will be populated by JavaScript -->
           <div class="no-posts-message" id="no-posts-message">
-            <p>Det er ingen innlegg ennå. Bli den første til å starte en diskusjon!</p>
+            <p>
+              Det er ingen innlegg ennå. Bli den første til å starte en
+              diskusjon!
+            </p>
           </div>
         </div>
       </div>
