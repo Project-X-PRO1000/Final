@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kontakt - GreenCode</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container nav-container">
+        <a href="index.html" class="logo">Green<span>Code</span></a>
+        <nav>
+          <ul>
+            <li><a href="index.html">Hjem</a></li>
+            <li><a href="index.html#blog">Blogg</a></li>
+            <li><a href="forum.html">Forum</a></li>
+            <li><a href="contact.html" class="active">Kontakt</a></li>
+          </ul>
+        </nav>
+        <div class="auth-buttons">
+          <button id="login-btn">Logg Inn</button>
+          <button id="register-btn">Registrer</button>
+          <!-- User info will be added here by JavaScript when logged in -->
+        </div>
+      </div>
+    </header>
+
+    <!-- Contact Header Section -->
+    <section class="contact-header">
+      <div class="container">
+        <div class="section-title">
+          <h2>Kontakt <span>Oss</span></h2>
+          <p>
+            Har du spørsmål eller tilbakemeldinger? Vi vil gjerne høre fra deg.
+            Fyll ut skjemaet nedenfor eller bruk kontaktinformasjonen vår.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+      <div class="container">
+        <div class="contact-content">
+          <div class="contact-form-container">
+            <h3>Send oss en melding</h3>
+            <form id="contact-form" class="contact-form">
+              <div class="form-group">
+                <label for="name">Navn</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  placeholder="Ditt fulle navn"
+                />
+              </div>
+              <div class="form-group">
+                <label for="email">E-post</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  placeholder="Din e-postadresse"
+                />
+              </div>
+              <div class="form-group">
+                <label for="subject">Emne</label>
+                <select id="subject" name="subject" required>
+                  <option value="">Velg emne</option>
+                  <option value="general">Generell forespørsel</option>
+                  <option value="support">Teknisk støtte</option>
+                  <option value="partnership">Partnerskap</option>
+                  <option value="feedback">Tilbakemelding</option>
+                  <option value="other">Annet</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message">Melding</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="6"
+                  required
+                  placeholder="Skriv din melding her..."
+                ></textarea>
+              </div>
+              <button type="submit" class="submit-btn">Send melding</button>
+            </form>
+          </div>
+          <div class="contact-info">
+            <h3>Kontaktinformasjon</h3>
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="info-content">
+                <h4>E-post</h4>
+                <p>
+                  <a href="mailto:info@gronnkode.org">info@gronnkode.org</a>
+                </p>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <div class="info-content">
+                <h4>Telefon</h4>
+                <p><a href="tel:+4712345678">+47 123 45 678</a></p>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="info-content">
+                <h4>Adresse</h4>
+                <p>123 Grønn Gate, Øko By</p>
+              </div>
+            </div>
+            <div class="social-contact">
+              <h4>Følg oss</h4>
+              <div class="social-links">
+                <a href="#"><span>FB</span></a>
+                <a href="#"><span>TW</span></a>
+                <a href="#"><span>IG</span></a>
+                <a href="#"><span>LI</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>GRØNN<span>KODE</span></h3>
+            <p>
+              Vi fremmer bærekraftig og miljøvennlig kodepraksis for å bygge en
+              grønnere fremtid gjennom teknologi.
+            </p>
+            <div class="social-links">
+              <a href="#"><span>FB</span></a>
+              <a href="#"><span>TW</span></a>
+              <a href="#"><span>IG</span></a>
+              <a href="#"><span>LI</span></a>
+            </div>
+          </div>
+          <div class="footer-column">
+            <h3>Raske Lenker</h3>
+            <ul class="footer-links">
+              <li><a href="index.html">Hjem</a></li>
+              <li><a href="index.html#features">Funksjoner</a></li>
+              <li><a href="index.html#blog">Blogg</a></li>
+              <li><a href="forum.html">Forum</a></li>
+              <li><a href="index.html#quiz">Quiz</a></li>
+              <li><a href="contact.html">Kontakt</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Ressurser</h3>
+            <ul class="footer-links">
+              <li><a href="#">Dokumentasjon</a></li>
+              <li><a href="#">Veiledninger</a></li>
+              <li><a href="#">Casestudier</a></li>
+              <li><a href="#">Forskningsartikler</a></li>
+              <li><a href="#">Samfunnsforum</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Kontakt Oss</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="mailto:info@greencode.org">info@gronnkode.org</a>
+              </li>
+              <li><a href="tel:+1234567890">+47 123 45 678</a></li>
+              <li>123 Grønn Gate, Øko By</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 GrønnKode. Alle rettigheter reservert.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="login-modal">
+      <div class="modal-content">
+        <span class="close-btn" id="close-login">&times;</span>
+        <div class="modal-header">
+          <h2>Logg inn</h2>
+        </div>
+        <form class="modal-form" id="login-form">
+          <div class="form-group">
+            <label for="login-email">E-post</label>
+            <input type="email" id="login-email" required />
+          </div>
+          <div class="form-group">
+            <label for="login-password">Passord</label>
+            <input type="password" id="login-password" required />
+          </div>
+          <button type="submit">Logg Inn</button>
+        </form>
+        <div class="switch-form">
+          <p>Har du ikke en konto? <a id="switch-to-register">Registrer</a></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal" id="register-modal">
+      <div class="modal-content">
+        <span class="close-btn" id="close-register">&times;</span>
+        <div class="modal-header">
+          <h2>Opprett konto</h2>
+        </div>
+        <form class="modal-form" id="register-form">
+          <div class="form-group">
+            <label for="register-name">Fullt navn</label>
+            <input type="text" id="register-name" required />
+          </div>
+          <div class="form-group">
+            <label for="register-email">E-post</label>
+            <input type="email" id="register-email" required />
+          </div>
+          <div class="form-group">
+            <label for="register-password">Passord</label>
+            <input type="password" id="register-password" required />
+          </div>
+          <div class="form-group">
+            <label for="register-confirm-password">Bekreft passord</label>
+            <input type="password" id="register-confirm-password" required />
+          </div>
+          <button type="submit">Registrer</button>
+        </form>
+        <div class="switch-form">
+          <p>Har du allerede en konto? <a id="switch-to-login">Logg Inn</a></p>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="contact.js"></script>
+  </body>
+</html>
