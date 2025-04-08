@@ -236,6 +236,8 @@
       .hero-content {
         max-width: 800px;
         z-index: 1;
+        text-align: left; /* Added to align content to the left */
+       
       }
 
       .hero h1 {
