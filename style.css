@@ -244,14 +244,14 @@
         font-size: 3.5rem;
         margin-bottom: 20px;
         line-height: 1.2;
-        color: var(--dark-gray); /* Added to ensure heading is visible on light background */
+        color: var(--white); /* Changed from dark-gray to white */
       }
 
       .hero p {
         font-size: 1.2rem;
         margin-bottom: 30px;
         max-width: 600px;
-        color: var(--dark-gray); /* Added to ensure paragraph text is visible */
+        color: var(--white); /* Changed from dark-gray to white */
       }
 
       .hero span {
