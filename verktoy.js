@@ -146,6 +146,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const checklistItems = document.querySelectorAll('.checklist-item input');
         const saveButton = document.getElementById('save-checklist');
         const resetButton = document.getElementById('reset-checklist');
+        const exportButton = document.getElementById('export-checklist');
         
         // Load saved state from localStorage
         loadChecklistState();
@@ -172,6 +173,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     resetChecklistState();
                     showNotification('Sjekkliste nullstilt', 'fa-exclamation-circle');
                 }
+            });
+        }
+        
+        // Export to PDF button
+        if (exportButton) {
+            exportButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                exportChecklistToPDF();
             });
         }
         
@@ -230,5 +239,251 @@ document.addEventListener('DOMContentLoaded', function() {
         
         localStorage.removeItem('greenCodeChecklist');
         updateChecklistProgress();
+    }
+    
+    // Function to export checklist to PDF
+    function exportChecklistToPDF() {
+        // Create a deep clone of the checklist container to modify for PDF
+        const checklistContainer = document.querySelector('.checklist-container').cloneNode(true);
+        
+        // Add custom styles for PDF
+        const style = document.createElement('style');
+        style.textContent = `
+            .checklist-container {
+                font-family: Arial, sans-serif;
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+            .checklist-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 20px;
+                border-bottom: 2px solid #4CAF50;
+                padding-bottom: 10px;
+            }
+            .checklist-category {
+                margin-bottom: 20px;
+            }
+            .category-header {
+                background-color: #f5f5f5;
+                padding: 10px;
+                margin-bottom: 10px;
+                border-left: 4px solid #4CAF50;
+            }
+            .checklist-items {
+                padding: 0 10px;
+            }
+            .checklist-item {
+                display: block;
+                margin-bottom: 8px;
+                padding: 5px 0;
+                border-bottom: 1px solid #eee;
+            }
+            .checkmark {
+                display: none;
+            }
+            .checklist-actions {
+                display: none;
+            }
+        `;
+        
+        checklistContainer.prepend(style);
+        
+        // Add title
+        const title = document.createElement('div');
+        title.style.textAlign = 'center';
+        title.style.padding = '20px 0';
+        
+        const heading = document.createElement('h2');
+        heading.textContent = 'Sjekkliste for Grønn Programmering';
+        heading.style.color = '#4CAF50';
+        heading.style.marginBottom = '10px';
+        
+        const subheading = document.createElement('p');
+        subheading.textContent = 'Generert fra GreenCode';
+        subheading.style.fontSize = '14px';
+        subheading.style.color = '#666';
+        
+        const date = document.createElement('p');
+        date.textContent = new Date().toLocaleDateString('no-NO', {
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric'
+        });
+        date.style.fontSize = '12px';
+        date.style.color = '#666';
+        date.style.marginBottom = '20px';
+        
+        title.appendChild(heading);
+        title.appendChild(subheading);
+        title.appendChild(date);
+        
+        checklistContainer.prepend(title);
+        
+        // Update checkboxes to show status visually
+        const checkboxes = checklistContainer.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(checkbox => {
+            const label = checkbox.parentElement;
+            
+            // Get the item text
+            const itemText = label.querySelector('.item-text').textContent;
+            
+            // Create new element for PDF
+            const newItem = document.createElement('div');
+            newItem.classList.add('checklist-item');
+            
+            // Create status indicator
+            const status = document.createElement('span');
+            status.style.display = 'inline-block';
+            status.style.marginRight = '10px';
+            status.style.width = '20px';
+            status.style.height = '20px';
+            status.style.textAlign = 'center';
+            status.style.borderRadius = '50%';
+            status.style.color = 'white';
+            status.style.fontWeight = 'bold';
+            
+            if (checkbox.checked) {
+                status.style.backgroundColor = '#4CAF50';
+                status.textContent = '✓';
+            } else {
+                status.style.backgroundColor = '#ddd';
+                status.textContent = '○';
+            }
+            
+            // Create text element
+            const text = document.createElement('span');
+            text.textContent = itemText;
+            if (checkbox.checked) {
+                text.style.fontWeight = 'bold';
+                text.style.color = '#4CAF50';
+            }
+            
+            newItem.appendChild(status);
+            newItem.appendChild(text);
+            
+            // Replace original label with new item
+            label.parentNode.replaceChild(newItem, label);
+        });
+        
+        // Get progress information
+        const totalItems = checkboxes.length;
+        const checkedItems = Array.from(checkboxes).filter(cb => cb.checked).length;
+        const percentageCompleted = Math.round((checkedItems / totalItems) * 100);
+        
+        // Add progress information
+        const progressInfo = document.createElement('div');
+        progressInfo.style.textAlign = 'center';
+        progressInfo.style.margin = '30px 0';
+        progressInfo.style.padding = '15px';
+        progressInfo.style.backgroundColor = '#f9f9f9';
+        progressInfo.style.border = '1px solid #ddd';
+        progressInfo.style.borderRadius = '5px';
+        
+        progressInfo.innerHTML = `
+            <h3 style="margin-bottom: 10px; color: #333;">Fremgang</h3>
+            <div style="font-size: 24px; font-weight: bold; color: #4CAF50;">${percentageCompleted}%</div>
+            <div style="margin-top: 5px; color: #666;">${checkedItems} av ${totalItems} punkter fullført</div>
+        `;
+        
+        // Add progress info after title
+        title.after(progressInfo);
+        
+        // Create container div for PDF generation
+        const container = document.createElement('div');
+        container.appendChild(checklistContainer);
+        
+        // PDF options
+        const opt = {
+            margin: [10, 10],
+            filename: 'gronn_sjekkliste.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2, useCORS: true },
+            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        };
+        
+        // Generate and download the PDF
+        html2pdf().set(opt).from(container).save()
+            .then(() => {
+                showNotification('Sjekkliste eksportert som PDF!', 'fa-file-pdf');
+            })
+            .catch(err => {
+                console.error('PDF export error:', err);
+                showNotification('Kunne ikke eksportere PDF. Prøv igjen.', 'fa-exclamation-circle');
+            });
+    }
+    
+    // Function to show notification
+    function showNotification(message, icon = 'fa-check-circle') {
+        // Check if notification container exists, if not create it
+        let notificationContainer = document.querySelector('.notification-container');
+        
+        if (!notificationContainer) {
+            notificationContainer = document.createElement('div');
+            notificationContainer.className = 'notification-container';
+            document.body.appendChild(notificationContainer);
+            
+            // Add styles
+            const style = document.createElement('style');
+            style.textContent = `
+                .notification-container {
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    z-index: 1000;
+                }
+                .notification {
+                    background-color: #4CAF50;
+                    color: white;
+                    padding: 15px;
+                    margin-bottom: 10px;
+                    border-radius: 4px;
+                    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+                    display: flex;
+                    align-items: center;
+                    animation: slideIn 0.3s forwards;
+                    opacity: 0;
+                    transform: translateX(100%);
+                }
+                .notification i {
+                    margin-right: 10px;
+                    font-size: 1.2em;
+                }
+                @keyframes slideIn {
+                    to {
+                        opacity: 1;
+                        transform: translateX(0);
+                    }
+                }
+                @keyframes fadeOut {
+                    to {
+                        opacity: 0;
+                        transform: translateX(100%);
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+        
+        // Create notification
+        const notification = document.createElement('div');
+        notification.className = 'notification';
+        notification.innerHTML = `
+            <i class="fas ${icon}"></i>
+            <span>${message}</span>
+        `;
+        
+        // Add to container
+        notificationContainer.appendChild(notification);
+        
+        // Auto-remove after 3 seconds
+        setTimeout(() => {
+            notification.style.animation = 'fadeOut 0.3s forwards';
+            setTimeout(() => {
+                notification.remove();
+            }, 300);
+        }, 3000);
     }
 });
