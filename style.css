@@ -237,7 +237,7 @@
         max-width: 800px;
         z-index: 1;
         text-align: left; /* Added to align content to the left */
-       
+        margin-top: -370px; /* Added negative margin to move content up */
       }
 
       .hero h1 {
