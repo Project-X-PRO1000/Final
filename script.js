@@ -194,7 +194,9 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function updateProgressBar() {
-    const progress = ((currentQuestion + 1) / quizQuestions.length) * 100;
+    // Start at 0% for the first question
+    // Only increase as user progresses through questions
+    const progress = (currentQuestion / quizQuestions.length) * 100;
     progressBar.style.width = `${progress}%`;
   }
 
@@ -266,7 +268,7 @@ function showNotification(message, icon = 'fa-check-circle') {
 }
 
 // Function to handle successful login
-function handleLoginSuccess(userData) {
+function handleLoginSuccess(userData, showLoginNotification = true) {
   // Hide login/register buttons
   document.getElementById('login-btn').style.display = 'none';
   document.getElementById('register-btn').style.display = 'none';
@@ -302,8 +304,10 @@ function handleLoginSuccess(userData) {
     document.querySelector('.user-name').textContent = userData.firstName;
   }
   
-  // Show login success notification
-  showNotification(`Velkommen, ${userData.firstName}! Du har logget inn.`);
+  // Show login success notification only for fresh logins
+  if (showLoginNotification) {
+    showNotification(`Velkommen, ${userData.firstName}! Du har logget inn.`);
+  }
   
   // Save user data to localStorage
   localStorage.setItem('userData', JSON.stringify(userData));
@@ -547,7 +551,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Check if user is already logged in when page loads
   const userData = JSON.parse(localStorage.getItem('userData'));
   if (userData) {
-    handleLoginSuccess(userData);
+    handleLoginSuccess(userData, false); // Don't show notification for existing logins
   }
 });
 
