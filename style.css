@@ -693,7 +693,7 @@
       footer {
         background-color: var(--dark-bg);
         color: var(--white);
-        padding: 40px 0 20px;
+        padding: 40px 0 40px; /* Increased padding from 20px 0 20px for a larger footer */
       }
 
       .footer-content {
