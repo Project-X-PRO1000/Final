@@ -237,7 +237,7 @@ document.addEventListener('DOMContentLoaded', function() {
     } else if (score >= quizQuestions.length * 0.5) {
       resultMessage.textContent = 'Bra innsats! Du er på vei til å forstå grønn koding.';
     } else {
-      resultMessage.textContent = 'Takk for at du tok quizen! Lær mer om grønn koding ved å utforske våre ressurser.';
+      resultMessage.textContent = 'Takk for at du tok quizen! Lær mer om grønn koding ved å utforske vår blogg og verktøy.';
     }
   }
 
