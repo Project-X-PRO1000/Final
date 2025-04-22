@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Om Oss - GreenCode</title>
+    <link rel="stylesheet" href="../CSS/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container nav-container">
+        <a href="index.html" class="logo">Green<span>Code</span></a>
+        <nav>
+          <ul>
+            <li><a href="index.html">Hjem</a></li>
+            <li><a href="index.html#blog">Blogg</a></li>
+            <li><a href="forum.html">Forum</a></li>
+            <li><a href="verktoy.html">Verktøy</a></li>
+            <li><a href="om-oss.html" class="active">Om Oss</a></li>
+            <li><a href="contact.html">Kontakt</a></li>
+          </ul>
+        </nav>
+        <!-- Add search bar -->
+        <div class="navbar-search">
+          <form id="navbar-search-form">
+            <input type="text" id="navbar-search-input" placeholder="Søk..." />
+            <button type="submit"><i class="fas fa-search"></i></button>
+          </form>
+          <div
+            id="search-results-dropdown"
+            class="search-results-dropdown"
+          ></div>
+        </div>
+        <div class="auth-buttons">
+          <button id="login-btn">Logg Inn</button>
+          <button id="register-btn">Registrer</button>
+          <!-- User info will be added here by JavaScript when logged in -->
+        </div>
+      </div>
+    </header>
+
+    <!-- About Header Section -->
+    <section class="about-header">
+      <div class="container">
+        <div class="section-title">
+          <h2>Vårt <span>Team</span></h2>
+          <p>
+            Møt teamet bak GrønnKode - entusiastiske fagfolk som er dedikert til
+            å fremme bærekraftig og miljøvennlig kodepraksis.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+      <div class="container">
+        <div class="team-grid">
+          <!-- Team Member 1 -->
+          <div class="team-member">
+            <div class="member-image">
+              <img src="../Bilder/Kirzat Osman.jpg" alt="Team Medlem" />
+            </div>
+            <div class="member-info">
+              <h3>Kirzat</h3>
+              <span class="position">Prosjektleder</span>
+              <p>
+                Med over 1 års erfaring innen bærekraftig teknologiutvikling,
+                leder Kirzat vårt team med fokus på grønne løsninger og
+                miljøvennlig innovasjon.
+              </p>
+            </div>
+          </div>
+
+          <!-- Team Member 2 -->
+          <div class="team-member">
+            <div class="member-image">
+              <img src="../Bilder/Oskar Beckmann.jpg" alt="Team Medlem" />
+            </div>
+            <div class="member-info">
+              <h3>Oskar Elvebø Beckmann</h3>
+              <span class="position">Konsulent</span>
+              <p>
+                Oskar spesialiserer seg på energieffektiv kodearkitektur og har
+                bidratt til flere open source-prosjekter for miljøvennlig
+                programvare.
+              </p>
+            </div>
+          </div>
+
+          <!-- Team Member 3 -->
+          <div class="team-member">
+            <div class="member-image">
+              <img src="../Bilder/portrett3.jpeg" alt="Team Medlem" />
+            </div>
+            <div class="member-info">
+              <h3>Rasmus Blomvik</h3>
+              <span class="position">UX Designer</span>
+              <p>
+                Rasmus kombinerer brukersentrert design med bærekraftige
+                prinsipper for å skape brukervennlige og miljøvennlige digitale
+                opplevelser.
+              </p>
+            </div>
+          </div>
+
+          <!-- Team Member 4 -->
+          <div class="team-member">
+            <div class="member-image">
+              <img src="../Bilder/William Barros.jpg" alt="Team Medlem" />
+            </div>
+            <div class="member-info">
+              <h3>William Barros</h3>
+              <span class="position">Backend Utvikler</span>
+              <p>
+                William har ekspertise innen serveroptimalisering og
+                energieffektive databaser, med fokus på å redusere
+                karbonfotavtrykk i backend-systemer.
+              </p>
+            </div>
+          </div>
+
+          <!-- Team Member 5 -->
+          <div class="team-member">
+            <div class="member-image">
+              <img src="../Bilder/Ahmed Alshaikh.jpg" alt="Team Medlem" />
+            </div>
+            <div class="member-info">
+              <h3>Ahmed Alshaikh</h3>
+              <span class="position">Innholdsstrateg</span>
+              <p>
+                Ahmed utvikler innholdsstrategier som fremmer miljøvennlig
+                kodepraksis og skaper engasjerende artikler for vår blogg og
+                forum.
+              </p>
+            </div>
+          </div>
+
+          <!-- Team Member 6 -->
+          <div class="team-member">
+            <div class="member-image">
+              <img src="../Bilder/Anas.jpg" alt="Team Medlem" />
+            </div>
+            <div class="member-info">
+              <h3>Anas Hussein</h3>
+              <span class="position">Frontend Utvikler</span>
+              <p>
+                Anas er spesialist på effektiv frontend-utvikling med fokus på
+                minimalistisk og energieffektiv kode for moderne nettsteder.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+      <div class="container">
+        <h2>Hold Deg Oppdatert med Grønn Kodepraksis</h2>
+        <p>
+          Abonner på vårt nyhetsbrev og motta de nyeste oppdateringene, tips og
+          beste praksis for miljøvennlig koding.
+        </p>
+        <form class="newsletter-form">
+          <input
+            type="email"
+            placeholder="Skriv inn din e-postadresse"
+            required
+          />
+          <button type="submit">Abonner</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>GREEN<span>CODE</span></h3>
+            <p>
+              Vi fremmer bærekraftig og miljøvennlig kodepraksis for å bygge en
+              grønnere fremtid gjennom teknologi.
+            </p>
+            <div class="social-links">
+              <a href="#"><span></span></a>
+              <a href="#"><span></span></a>
+              <a href="#"><span></span></a>
+              <a href="#"><span></span></a>
+            </div>
+          </div>
+          <div class="footer-column">
+            <h3>Raske Lenker</h3>
+            <ul class="footer-links">
+              <li><a href="index.html">Hjem</a></li>
+              <li><a href="index.html#blog">Blogg</a></li>
+              <li><a href="forum.html">Forum</a></li>
+              <li><a href="verktoy.html">Verktøy</a></li>
+              <li><a href="om-oss.html">Om Oss</a></li>
+              <li><a href="contact.html">Kontakt</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Kontakt Oss</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="mailto:info@greencode.com">info@greencode.com</a>
+              </li>
+              <li><a href="tel:+1234567890">+47 123 45 678</a></li>
+              <li>Bøgata 6</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 GrønnKode. Alle rettigheter reservert.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="login-modal">
+      <div class="modal-content">
+        <span class="close-btn" id="close-login">&times;</span>
+        <div class="modal-header">
+          <h2>Logg inn</h2>
+        </div>
+        <form class="modal-form" id="login-form">
+          <div class="form-group">
+            <label for="login-email">E-post</label>
+            <input type="email" id="login-email" required />
+          </div>
+          <div class="form-group">
+            <label for="login-password">Passord</label>
+            <input type="password" id="login-password" required />
+          </div>
+          <button type="submit">Logg Inn</button>
+        </form>
+        <div class="switch-form">
+          <p>Har du ikke en konto? <a id="switch-to-register">Registrer</a></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal" id="register-modal">
+      <div class="modal-content">
+        <span class="close-btn" id="close-register">&times;</span>
+        <div class="modal-header">
+          <h2>Opprett konto</h2>
+        </div>
+        <form class="modal-form" id="register-form">
+          <div class="form-group">
+            <label for="register-name">Fullt navn</label>
+            <input type="text" id="register-name" required />
+          </div>
+          <div class="form-group">
+            <label for="register-email">E-post</label>
+            <input type="email" id="register-email" required />
+          </div>
+          <div class="form-group">
+            <label for="register-password">Passord</label>
+            <input type="password" id="register-password" required />
+          </div>
+          <div class="form-group">
+            <label for="register-confirm-password">Bekreft passord</label>
+            <input type="password" id="register-confirm-password" required />
+          </div>
+          <button type="submit">Registrer</button>
+        </form>
+        <div class="switch-form">
+          <p>Har du allerede en konto? <a id="switch-to-login">Logg Inn</a></p>
+        </div>
+      </div>
+    </div>
+
+    <script src="../JS/script.js"></script>
+    <script src="../JS/search.js"></script>
+  </body>
+</html>
