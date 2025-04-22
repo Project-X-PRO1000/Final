@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kontakt - GreenCode</title>
+    <link rel="stylesheet" href="../CSS/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container nav-container">
+        <a href="index.html" class="logo">Green<span>Code</span></a>
+        <nav>
+          <ul>
+            <li><a href="index.html">Hjem</a></li>
+            <li><a href="index.html#blog">Blogg</a></li>
+            <li><a href="forum.html">Forum</a></li>
+            <li><a href="verktoy.html">Verktøy</a></li>
+            <li><a href="om-oss.html">Om Oss</a></li>
+            <li><a href="contact.html" class="active">Kontakt</a></li>
+          </ul>
+        </nav>
+        <!-- Add search bar -->
+        <div class="navbar-search">
+          <form id="navbar-search-form">
+            <input type="text" id="navbar-search-input" placeholder="Søk..." />
+            <button type="submit"><i class="fas fa-search"></i></button>
+          </form>
+          <div
+            id="search-results-dropdown"
+            class="search-results-dropdown"
+          ></div>
+        </div>
+        <div class="auth-buttons">
+          <button id="login-btn">Logg Inn</button>
+          <button id="register-btn">Registrer</button>
+          <!-- User info will be added here by JavaScript when logged in -->
+        </div>
+      </div>
+    </header>
+
+    <!-- Contact Header Section -->
+    <section class="contact-header">
+      <div class="container">
+        <div class="section-title">
+          <h2>Kontakt <span>Oss</span></h2>
+          <p>
+            Har du spørsmål eller tilbakemeldinger? Vi vil gjerne høre fra deg.
+            Fyll ut skjemaet nedenfor eller bruk kontaktinformasjonen vår.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+      <div class="container">
+        <div class="contact-content">
+          <div class="contact-form-container">
+            <h3>Send oss en melding</h3>
+            <form id="contact-form" class="contact-form">
+              <div class="form-group">
+                <label for="name">Navn</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  placeholder="Ditt fulle navn"
+                />
+              </div>
+              <div class="form-group">
+                <label for="email">E-post</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  placeholder="Din e-postadresse"
+                />
+              </div>
+              <div class="form-group">
+                <label for="subject">Emne</label>
+                <select id="subject" name="subject" required>
+                  <option value="">Velg emne</option>
+                  <option value="general">Generell forespørsel</option>
+                  <option value="support">Teknisk støtte</option>
+                  <option value="partnership">Partnerskap</option>
+                  <option value="feedback">Tilbakemelding</option>
+                  <option value="other">Annet</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message">Melding</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="6"
+                  required
+                  placeholder="Skriv din melding her..."
+                ></textarea>
+              </div>
+              <button type="submit" class="submit-btn">Send melding</button>
+            </form>
+          </div>
+          <div class="contact-info">
+            <h3>Kontaktinformasjon</h3>
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="info-content">
+                <h4>E-post</h4>
+                <p>
+                  <a href="mailto:info@greencode.com">info@greencode.com</a>
+                </p>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <div class="info-content">
+                <h4>Telefon</h4>
+                <p><a href="tel:+4712345678">+47 123 45 678</a></p>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="info-content">
+                <h4>Adresse</h4>
+                <p>Bøgata 6</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Vanlige <span>Spørsmål</span></h2>
+          <p>
+            Her finner du svar på de vanligste spørsmålene om grønn koding og
+            våre tjenester.
+          </p>
+        </div>
+
+        <div class="faq-container">
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>Hva er grønn koding?</h3>
+              <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Grønn koding er en tilnærming til programvareutvikling som
+                fokuserer på å redusere miljøpåvirkningen gjennom energieffektiv
+                kode, optimalisert ressursbruk, og bærekraftige
+                utviklingspraksiser. Målet er å skape programvare som bruker
+                mindre energi og ressurser gjennom hele sin livssyklus.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>Hvordan påvirker programvare miljøet?</h3>
+              <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Programvare påvirker miljøet gjennom energiforbruket ved kjøring
+                på servere og enheter, ressursbruken i datasentre, og indirekte
+                gjennom batterilevetid på mobile enheter. Ineffektiv kode krever
+                mer prosessorkraft, som fører til høyere energiforbruk og dermed
+                større CO2-utslipp.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>Kan jeg måle miljøpåvirkningen av min kode?</h3>
+              <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Ja, det finnes flere verktøy som kan hjelpe deg med å måle
+                miljøpåvirkningen av din kode. Vår Karbonfotavtrykk-Kalkulator
+                er ett eksempel. Andre verktøy inkluderer Website Carbon
+                Calculator, Ecograder, og GreenFrame. Disse verktøyene måler
+                faktorer som energiforbruk, dataoverføring, og
+                servereffektivitet.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>Hvordan kan jeg delta i GrønnKode-fellesskapet?</h3>
+              <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Det er flere måter å engasjere seg på! Du kan registrere deg for
+                en konto på nettstedet vårt, delta i diskusjoner på vårt forum,
+                delta på våre arrangementer, eller bidra med innhold og
+                kodeeksempler. Vi oppfordrer også alle til å dele kunnskap om
+                bærekraftig programvareutvikling i sine egne nettverk.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>Tilbyr dere konsulenttjenester for virksomheter?</h3>
+              <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Ja, vi tilbyr konsulenttjenester for bedrifter som ønsker å
+                implementere grønnere kodepraksis. Våre tjenester inkluderer
+                koderevisjoner for energieffektivitet, opplæring for
+                utviklingsteam, og strategisk rådgivning for å redusere det
+                digitale karbonavtrykket. Kontakt oss via kontaktskjemaet for
+                mer informasjon om priser og tilgjengelighet.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+      <div class="container">
+        <h2>Hold Deg Oppdatert med Grønn Kodepraksis</h2>
+        <p>
+          Abonner på vårt nyhetsbrev og motta de nyeste oppdateringene, tips og
+          beste praksis for miljøvennlig koding.
+        </p>
+        <form class="newsletter-form">
+          <input
+            type="email"
+            placeholder="Skriv inn din e-postadresse"
+            required
+          />
+          <button type="submit">Abonner</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>GREEN<span>CODE</span></h3>
+            <p>
+              Vi fremmer bærekraftig og miljøvennlig kodepraksis for å bygge en
+              grønnere fremtid gjennom teknologi.
+            </p>
+            <div class="social-links">
+              <a href="#"><span></span></a>
+              <a href="#"><span></span></a>
+              <a href="#"><span></span></a>
+              <a href="#"><span></span></a>
+            </div>
+          </div>
+          <div class="footer-column">
+            <h3>Raske Lenker</h3>
+            <ul class="footer-links">
+              <li><a href="index.html">Hjem</a></li>
+              <li><a href="index.html#blog">Blogg</a></li>
+              <li><a href="forum.html">Forum</a></li>
+              <li><a href="verktoy.html">Verktøy</a></li>
+              <li><a href="om-oss.html">Om Oss</a></li>
+              <li><a href="contact.html">Kontakt</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Kontakt Oss</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="mailto:info@greencode.com">info@greencode.com</a>
+              </li>
+              <li><a href="tel:+1234567890">+47 123 45 678</a></li>
+              <li>Bøgata 6</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 GrønnKode. Alle rettigheter reservert.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="login-modal">
+      <div class="modal-content">
+        <span class="close-btn" id="close-login">&times;</span>
+        <div class="modal-header">
+          <h2>Logg inn</h2>
+        </div>
+        <form class="modal-form" id="login-form">
+          <div class="form-group">
+            <label for="login-email">E-post</label>
+            <input type="email" id="login-email" required />
+          </div>
+          <div class="form-group">
+            <label for="login-password">Passord</label>
+            <input type="password" id="login-password" required />
+          </div>
+          <button type="submit">Logg Inn</button>
+        </form>
+        <div class="switch-form">
+          <p>Har du ikke en konto? <a id="switch-to-register">Registrer</a></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal" id="register-modal">
+      <div class="modal-content">
+        <span class="close-btn" id="close-register">&times;</span>
+        <div class="modal-header">
+          <h2>Opprett konto</h2>
+        </div>
+        <form class="modal-form" id="register-form">
+          <div class="form-group">
+            <label for="register-name">Fullt navn</label>
+            <input type="text" id="register-name" required />
+          </div>
+          <div class="form-group">
+            <label for="register-email">E-post</label>
+            <input type="email" id="register-email" required />
+          </div>
+          <div class="form-group">
+            <label for="register-password">Passord</label>
+            <input type="password" id="register-password" required />
+          </div>
+          <div class="form-group">
+            <label for="register-confirm-password">Bekreft passord</label>
+            <input type="password" id="register-confirm-password" required />
+          </div>
+          <button type="submit">Registrer</button>
+        </form>
+        <div class="switch-form">
+          <p>Har du allerede en konto? <a id="switch-to-login">Logg Inn</a></p>
+        </div>
+      </div>
+    </div>
+
+    <script src="../JS/script.js"></script>
+    <script src="../JS/contact.js"></script>
+    <script src="../JS/search.js"></script>
+  </body>
+</html>

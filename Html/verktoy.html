@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verktøy - GreenCode</title>
+    <link rel="stylesheet" href="../CSS/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container nav-container">
+        <a href="index.html" class="logo">Green<span>Code</span></a>
+        <nav>
+          <ul>
+            <li><a href="index.html">Hjem</a></li>
+            <li><a href="index.html#blog">Blogg</a></li>
+            <li><a href="forum.html">Forum</a></li>
+            <li><a href="verktoy.html" class="active">Verktøy</a></li>
+            <li><a href="om-oss.html">Om Oss</a></li>
+            <li><a href="contact.html">Kontakt</a></li>
+          </ul>
+        </nav>
+        <!-- Add search bar -->
+        <div class="navbar-search">
+          <form id="navbar-search-form">
+            <input type="text" id="navbar-search-input" placeholder="Søk..." />
+            <button type="submit"><i class="fas fa-search"></i></button>
+          </form>
+          <div
+            id="search-results-dropdown"
+            class="search-results-dropdown"
+          ></div>
+        </div>
+        <div class="auth-buttons">
+          <button id="login-btn">Logg Inn</button>
+          <button id="register-btn">Registrer</button>
+          <!-- User info will be added here by JavaScript when logged in -->
+        </div>
+      </div>
+    </header>
+
+    <!-- Tools Navigation -->
+    <section class="tools-navigation">
+      <div class="container">
+        <div class="tools-nav-grid">
+          <a href="#carbon-calculator" class="tool-nav-card">
+            <div class="tool-nav-icon">
+              <i class="fas fa-leaf"></i>
+            </div>
+            <h3>Karbonfotavtrykk-Kalkulator</h3>
+            <p>
+              Beregn miljøpåvirkningen av dine nettsteder basert på størrelse,
+              kompleksitet og serverplassering.
+            </p>
+          </a>
+          <a href="#framework-section" class="tool-nav-card">
+            <div class="tool-nav-icon">
+              <i class="fas fa-sitemap"></i>
+            </div>
+            <h3>Rammeverk for Grønn Programmering</h3>
+            <p>
+              En strukturert tilnærming for å utvikle programvare med minimal
+              miljøpåvirkning.
+            </p>
+          </a>
+          <a href="#checklist-section" class="tool-nav-card">
+            <div class="tool-nav-icon">
+              <i class="fas fa-tasks"></i>
+            </div>
+            <h3>Sjekkliste for Grønn Programmering</h3>
+            <p>
+              En omfattende sjekkliste for å sikre at ditt prosjekt følger beste
+              praksis for miljøvennlig utvikling.
+            </p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tools Header Section -->
+    <section class="tools-header">
+      <div class="container">
+        <div class="section-title">
+          <h2>Grønne Utviklings<span>Verktøy</span></h2>
+          <p>
+            Utforsk våre verktøy for å måle og forbedre miljøavtrykket av dine
+            digitale prosjekter. Våre ressurser hjelper deg å bygge mer
+            bærekraftige programvareløsninger.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Carbon Footprint Calculator -->
+    <section class="tool-section carbon-calculator" id="carbon-calculator">
+      <div class="container">
+        <div class="tool-container">
+          <h2>Karbonfotavtrykk-Kalkulator for Nettsider</h2>
+          <p>
+            Beregn det omtrentlige karbonfotavtrykket til en nettside basert på
+            størrelse, kompleksitet og serverplassering. Dette er et estimat som
+            kan hjelpe deg å forstå og redusere miljøpåvirkningen av nettsidene
+            dine.
+          </p>
+
+          <form id="carbon-calculator-form" class="calculator-form">
+            <div class="form-group">
+              <label for="website-url">Nettside URL</label>
+              <input
+                type="url"
+                id="website-url"
+                placeholder="https://example.com"
+                required
+              />
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="page-complexity">Sidekompleksitet</label>
+                <select id="page-complexity">
+                  <option value="low">Enkel (Hovedsakelig tekst)</option>
+                  <option value="medium" selected>
+                    Middels (Tekst og bilder)
+                  </option>
+                  <option value="high">
+                    Kompleks (Animasjoner, video, etc.)
+                  </option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="server-location">Server Energikilde</label>
+                <select id="server-location">
+                  <option value="renewable">Fornybar energi</option>
+                  <option value="mixed" selected>Blandet energikilde</option>
+                  <option value="fossil">Hovedsakelig fossil energi</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="monthly-visits">Månedlige besøkende (estimat)</label>
+              <input
+                type="number"
+                id="monthly-visits"
+                min="100"
+                value="10000"
+                step="100"
+              />
+            </div>
+
+            <button type="submit" class="calculate-btn">
+              Beregn Fotavtrykk
+            </button>
+          </form>
+
+          <div id="carbon-result" class="calculator-result">
+            <div class="result-header">
+              <h3>Resultater</h3>
+              <p id="analyzed-url"></p>
+            </div>
+
+            <div class="result-container">
+              <div class="result-item">
+                <div class="result-label">CO2 per besøk</div>
+                <div class="result-value" id="co2-per-visit">-</div>
+              </div>
+              <div class="result-item">
+                <div class="result-label">Månedlig utslipp</div>
+                <div class="result-value" id="monthly-emissions">-</div>
+              </div>
+              <div class="result-item">
+                <div class="result-label">Årlig utslipp</div>
+                <div class="result-value" id="yearly-emissions">-</div>
+              </div>
+              <div class="result-item">
+                <div class="result-label">Energibruk</div>
+                <div class="result-value" id="energy-consumption">-</div>
+              </div>
+            </div>
+
+            <div class="result-comparison">
+              <div class="comparison-scale">
+                <div class="scale-label">Miljøvennlig</div>
+                <div class="scale-bar">
+                  <div class="scale-indicator" id="eco-scale"></div>
+                </div>
+                <div class="scale-label">Ressurskrevende</div>
+              </div>
+            </div>
+
+            <div class="result-recommendations">
+              <h4>Anbefalinger for forbedring</h4>
+              <ul id="recommendations-list">
+                <!-- Recommendations will be added by JavaScript -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Green Programming Framework -->
+    <section class="tool-section framework-section" id="framework-section">
+      <div class="container">
+        <div class="tool-container">
+          <h2>Rammeverk for Grønn Programmering</h2>
+          <p>
+            Dette rammeverket gir en strukturert tilnærming for å utvikle
+            programvare med minimal miljøpåvirkning, samtidig som ytelse og
+            funksjonalitet opprettholdes.
+          </p>
+
+          <div class="framework-diagram">
+            <div class="framework-core">
+              <h3>Kjerneprinsipper</h3>
+              <ul>
+                <li>Energieffektivitet</li>
+                <li>Ressursoptimalisering</li>
+                <li>Bærekraftig design</li>
+                <li>Målbar miljøpåvirkning</li>
+              </ul>
+            </div>
+
+            <div class="framework-pillars">
+              <div class="pillar">
+                <div class="pillar-header">
+                  <i class="fas fa-code"></i>
+                  <h3>Kode</h3>
+                </div>
+                <ul>
+                  <li>Algoritmeoptimalisering</li>
+                  <li>Minimere prosessorkraft</li>
+                  <li>Effektiv minnebruk</li>
+                  <li>Redusere energiforbruk</li>
+                </ul>
+              </div>
+
+              <div class="pillar">
+                <div class="pillar-header">
+                  <i class="fas fa-paint-brush"></i>
+                  <h3>Design</h3>
+                </div>
+                <ul>
+                  <li>Minimalistisk UI</li>
+                  <li>Optimaliserte medier</li>
+                  <li>Energibevisst UX</li>
+                  <li>Responsiv tilpasning</li>
+                </ul>
+              </div>
+
+              <div class="pillar">
+                <div class="pillar-header">
+                  <i class="fas fa-server"></i>
+                  <h3>Infrastruktur</h3>
+                </div>
+                <ul>
+                  <li>Grønn hosting</li>
+                  <li>Effektiv CDN bruk</li>
+                  <li>Serverplassering</li>
+                  <li>Skalerbar arkitektur</li>
+                </ul>
+              </div>
+
+              <div class="pillar">
+                <div class="pillar-header">
+                  <i class="fas fa-chart-line"></i>
+                  <h3>Måling</h3>
+                </div>
+                <ul>
+                  <li>Energiovervåking</li>
+                  <li>Ytelsesanalyse</li>
+                  <li>Kontinuerlig forbedring</li>
+                  <li>CO2-rapportering</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="framework-footer">
+              <h3>Implementasjonsnivåer</h3>
+              <div class="levels">
+                <div class="level">
+                  <h4>Nivå 1: Bevisstgjøring</h4>
+                  <p>Forstå miljøpåvirkningen av programvare</p>
+                </div>
+                <div class="level">
+                  <h4>Nivå 2: Optimalisering</h4>
+                  <p>Implementere grunnleggende grønne praksiser</p>
+                </div>
+                <div class="level">
+                  <h4>Nivå 3: Transformasjon</h4>
+                  <p>Redesigne for bærekraft fra bunnen</p>
+                </div>
+                <div class="level">
+                  <h4>Nivå 4: Innovasjon</h4>
+                  <p>Skape nye løsninger med miljø som drivkraft</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Green Programming Checklist -->
+    <section class="tool-section checklist-section" id="checklist-section">
+      <div class="container">
+        <div class="tool-container">
+          <h2>Sjekkliste for Grønn Programmering</h2>
+          <p>
+            Bruk denne sjekklisten for å sikre at ditt prosjekt følger beste
+            praksis for miljøvennlig utvikling. Marker oppgavene som utført
+            etter hvert som du implementerer dem.
+          </p>
+
+          <div class="checklist-container">
+            <div class="checklist-header">
+              <div class="progress-container">
+                <div class="progress-bar" id="checklist-progress"></div>
+              </div>
+              <div class="progress-info">
+                <span id="checklist-completed">0</span>/<span
+                  id="checklist-total"
+                  >0</span
+                >
+                fullført
+              </div>
+            </div>
+
+            <div class="checklist-categories">
+              <div class="checklist-category">
+                <div class="category-header">
+                  <h3><i class="fas fa-code"></i> Kodeoptimalisering</h3>
+                </div>
+                <div class="checklist-items">
+                  <label class="checklist-item">
+                    <input
+                      type="checkbox"
+                      data-category="code"
+                      value="efficient-algorithms"
+                    />
+                    <span class="checkmark"></span>
+                    <span class="item-text"
+                      >Implementert effektive algoritmer</span
+                    >
+                  </label>
+                  <label class="checklist-item">
+                    <input
+                      type="checkbox"
+                      data-category="code"
+                      value="minimize-processing"
+                    />
+                    <span class="checkmark"></span>
+                    <span class="item-text"
+                      >Minimert unødvendig prosessering</span
+                    >
+                  </label>
+                  <label class="checklist-item">
+                    <input
+                      type="checkbox"
+                      data-category="code"
+                      value="memory-optimization"
+                    />
+                    <span class="checkmark"></span>
+                    <span class="item-text">Optimalisert minnebruk</span>
+                  </label>
+                  <label class="checklist-item">
+                    <input
+                      type="checkbox"
+                      data-category="code"
+                      value="code-efficiency"
+                    />
+                    <span class="checkmark"></span>
+                    <span class="item-text"
+                      >Fjernet ubrukt og redundant kode</span
+                    >
+                  </label>
+                  <label class="checklist-item">
+                    <input
+                      type="checkbox"
+                      data-category="code"
+                      value="batch-processing"
+                    />
+                    <span class="checkmark"></span>
+                    <span class="item-text"
+                      >Implementert batchprosessering der mulig</span
+                    >
+                  </label>
+                </div>
+              </div>
+
+              <div class="checklist-category">
+                <div class="category-header">
+                  <h3>
+                    <i class="fas fa-desktop"></i> Frontend-optimalisering
+                  </h3>
+                </div>
+                <div class="checklist-items">
+                  <label class="checklist-item">
+                    <input
+                      type="checkbox"
+                      data-category="frontend"
+                      value="image-optimization"
+                    />
+                    <span class="checkmark"></span>
+                    <span class="item-text"
+                      >Optimalisert og komprimert bilder</span
+                    >
+                  </label>
+                  <label class="checklist-item">
+                    <input
+                      type="checkbox"
+                      data-category="frontend"
+                      value="lazy-loading"
+                    />
+                    <span class="checkmark"></span>
+                    <span class="item-text"
+                      >Implementert lazy loading for innhold</span
+                    >
+                  </label>
+                  <label class="checklist-item">
+                    <input
+                      type="checkbox"
+                      data-category="frontend"
+                      value="minimize-http"
+                    />
+                    <span class="checkmark"></span>
+                    <span class="item-text"
+                      >Redusert antall HTTP-forespørsler</span
+                    >
+                  </label>
+                  <label class="checklist-item">
+                    <input
+                      type="checkbox"
+                      data-category="frontend"
+                      value="css-optimization"
+                    />
+                    <span class="checkmark"></span>
+                    <span class="item-text"
+                      >Optimalisert CSS med effektive selektorer</span
+                    >
+                  </label>
+                  <label class="checklist-item">
+                    <input
+                      type="checkbox"
+                      data-category="frontend"
+                      value="minified-assets"
+                    />
+                    <span class="checkmark"></span>
+                    <span class="item-text">Minifisert JavaScript og CSS</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="checklist-category">
+                <div class="category-header">
+                  <h3><i class="fas fa-server"></i> Backend & Infrastruktur</h3>
+                </div>
+                <div class="checklist-items">
+                  <label class="checklist-item">
+                    <input
+                      type="checkbox"
+                      data-category="backend"
+                      value="db-optimization"
+                    />
+                    <span class="checkmark"></span>
+                    <span class="item-text"
+                      >Optimalisert databasespørringer</span
+                    >
+                  </label>
+                  <label class="checklist-item">
+                    <input
+                      type="checkbox"
+                      data-category="backend"
+                      value="caching"
+                    />
+                    <span class="checkmark"></span>
+                    <span class="item-text">Implementert effektiv caching</span>
+                  </label>
+                  <label class="checklist-item">
+                    <input
+                      type="checkbox"
+                      data-category="backend"
+                      value="compression"
+                    />
+                    <span class="checkmark"></span>
+                    <span class="item-text"
+                      >Aktivert GZIP/Brotli-kompresjon</span
+                    >
+                  </label>
+                  <label class="checklist-item">
+                    <input
+                      type="checkbox"
+                      data-category="backend"
+                      value="green-hosting"
+                    />
+                    <span class="checkmark"></span>
+                    <span class="item-text">Valgt grønn hostingleverandør</span>
+                  </label>
+                  <label class="checklist-item">
+                    <input
+                      type="checkbox"
+                      data-category="backend"
+                      value="cdn"
+                    />
+                    <span class="checkmark"></span>
+                    <span class="item-text"
+                      >Bruker CDN for global leveranse</span
+                    >
+                  </label>
+                </div>
+              </div>
+
+              <div class="checklist-category">
+                <div class="category-header">
+                  <h3><i class="fas fa-leaf"></i> Bærekraftig Design</h3>
+                </div>
+                <div class="checklist-items">
+                  <label class="checklist-item">
+                    <input
+                      type="checkbox"
+                      data-category="design"
+                      value="dark-mode"
+                    />
+                    <span class="checkmark"></span>
+                    <span class="item-text"
+                      >Tilbyr energieffektiv mørk modus</span
+                    >
+                  </label>
+                  <label class="checklist-item">
+                    <input
+                      type="checkbox"
+                      data-category="design"
+                      value="minimalist-design"
+                    />
+                    <span class="checkmark"></span>
+                    <span class="item-text">Bruker minimalistisk design</span>
+                  </label>
+                  <label class="checklist-item">
+                    <input
+                      type="checkbox"
+                      data-category="design"
+                      value="system-fonts"
+                    />
+                    <span class="checkmark"></span>
+                    <span class="item-text">Prioriterer systemfonter</span>
+                  </label>
+                  <label class="checklist-item">
+                    <input
+                      type="checkbox"
+                      data-category="design"
+                      value="static-content"
+                    />
+                    <span class="checkmark"></span>
+                    <span class="item-text"
+                      >Bruker statisk innhold hvor mulig</span
+                    >
+                  </label>
+                  <label class="checklist-item">
+                    <input
+                      type="checkbox"
+                      data-category="design"
+                      value="accessibility"
+                    />
+                    <span class="checkmark"></span>
+                    <span class="item-text"
+                      >Sikret god tilgjengelighet og lesbarhet</span
+                    >
+                  </label>
+                </div>
+              </div>
+
+              <div class="checklist-category">
+                <div class="category-header">
+                  <h3><i class="fas fa-tasks"></i> Testing & Måling</h3>
+                </div>
+                <div class="checklist-items">
+                  <label class="checklist-item">
+                    <input
+                      type="checkbox"
+                      data-category="testing"
+                      value="performance-testing"
+                    />
+                    <span class="checkmark"></span>
+                    <span class="item-text"
+                      >Utført ytelses- og belastningstesting</span
+                    >
+                  </label>
+                  <label class="checklist-item">
+                    <input
+                      type="checkbox"
+                      data-category="testing"
+                      value="energy-profiling"
+                    />
+                    <span class="checkmark"></span>
+                    <span class="item-text"
+                      >Gjennomført energiprofileringstester</span
+                    >
+                  </label>
+                  <label class="checklist-item">
+                    <input
+                      type="checkbox"
+                      data-category="testing"
+                      value="carbon-footprint"
+                    />
+                    <span class="checkmark"></span>
+                    <span class="item-text">Målt karbonfotavtrykk</span>
+                  </label>
+                  <label class="checklist-item">
+                    <input
+                      type="checkbox"
+                      data-category="testing"
+                      value="lighthouse"
+                    />
+                    <span class="checkmark"></span>
+                    <span class="item-text">Forbedret Lighthouse-score</span>
+                  </label>
+                  <label class="checklist-item">
+                    <input
+                      type="checkbox"
+                      data-category="testing"
+                      value="continuous-monitoring"
+                    />
+                    <span class="checkmark"></span>
+                    <span class="item-text"
+                      >Satt opp kontinuerlig miljøovervåking</span
+                    >
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="checklist-actions">
+              <button id="save-checklist" class="action-btn">
+                Lagre fremgang
+              </button>
+              <button id="reset-checklist" class="action-btn secondary">
+                Nullstill
+              </button>
+              <a href="#" id="export-checklist" class="action-btn"
+                >Eksporter som PDF</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+      <div class="container">
+        <h2>Hold Deg Oppdatert med Grønn Kodepraksis</h2>
+        <p>
+          Abonner på vårt nyhetsbrev og motta de nyeste oppdateringene, tips og
+          beste praksis for miljøvennlig koding.
+        </p>
+        <form class="newsletter-form">
+          <input
+            type="email"
+            placeholder="Skriv inn din e-postadresse"
+            required
+          />
+          <button type="submit">Abonner</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div class="modal" id="login-modal">
+      <div class="modal-content">
+        <span class="close-btn" id="close-login">&times;</span>
+        <div class="modal-header">
+          <h2>Logg inn</h2>
+        </div>
+        <form class="modal-form" id="login-form">
+          <div class="form-group">
+            <label for="login-email">E-post</label>
+            <input type="email" id="login-email" required />
+          </div>
+          <div class="form-group">
+            <label for="login-password">Passord</label>
+            <input type="password" id="login-password" required />
+          </div>
+          <button type="submit">Logg Inn</button>
+        </form>
+        <div class="switch-form">
+          <p>Har du ikke en konto? <a id="switch-to-register">Registrer</a></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal" id="register-modal">
+      <div class="modal-content">
+        <span class="close-btn" id="close-register">&times;</span>
+        <div class="modal-header">
+          <h2>Opprett konto</h2>
+        </div>
+        <form class="modal-form" id="register-form">
+          <div class="form-group">
+            <label for="register-name">Fullt navn</label>
+            <input type="text" id="register-name" required />
+          </div>
+          <div class="form-group">
+            <label for="register-email">E-post</label>
+            <input type="email" id="register-email" required />
+          </div>
+          <div class="form-group">
+            <label for="register-password">Passord</label>
+            <input type="password" id="register-password" required />
+          </div>
+          <div class="form-group">
+            <label for="register-confirm-password">Bekreft passord</label>
+            <input type="password" id="register-confirm-password" required />
+          </div>
+          <button type="submit">Registrer</button>
+        </form>
+        <div class="switch-form">
+          <p>Har du allerede en konto? <a id="switch-to-login">Logg Inn</a></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>GREEN<span>CODE</span></h3>
+            <p>
+              Vi fremmer bærekraftig og miljøvennlig kodepraksis for å bygge en
+              grønnere fremtid gjennom teknologi.
+            </p>
+            <div class="social-links">
+              <a href="#"><span></span></a>
+              <a href="#"><span></span></a>
+              <a href="#"><span></span></a>
+              <a href="#"><span></span></a>
+            </div>
+          </div>
+          <div class="footer-column">
+            <h3>Raske Lenker</h3>
+            <ul class="footer-links">
+              <li><a href="index.html">Hjem</a></li>
+              <li><a href="index.html#blog">Blogg</a></li>
+              <li><a href="forum.html">Forum</a></li>
+              <li><a href="verktoy.html">Verktøy</a></li>
+              <li><a href="om-oss.html">Om Oss</a></li>
+              <li><a href="contact.html">Kontakt</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Kontakt Oss</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="mailto:info@greencode.com">info@greencode.com</a>
+              </li>
+              <li><a href="tel:+1234567890">+47 123 45 678</a></li>
+              <li>Bøgata 6</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 GrønnKode. Alle rettigheter reservert.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../JS/script.js"></script>
+    <script src="../JS/verktoy.js"></script>
+    <!-- Add html2pdf.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="../JS/search.js"></script>
+  </body>
+</html>

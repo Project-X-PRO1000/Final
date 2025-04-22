@@ -18,12 +18,21 @@
         <nav>
           <ul>
             <li><a href="#">Hjem</a></li>
-            <li><a href="#features">Funksjoner</a></li>
             <li><a href="#blog">Blogg</a></li>
-            <li><a href="#quiz">Quiz</a></li>
-            <li><a href="#contact">Kontakt</a></li>
+            <li><a href="forum.html">Forum</a></li>
+            <li><a href="verktoy.html">Verktøy</a></li>
+            <li><a href="om-oss.html">Om Oss</a></li>
+            <li><a href="contact.html">Kontakt</a></li>
           </ul>
         </nav>
+        <!-- Add search bar -->
+        <div class="navbar-search">
+          <form id="navbar-search-form">
+            <input type="text" id="navbar-search-input" placeholder="Søk..." />
+            <button type="submit"><i class="fas fa-search"></i></button>
+          </form>
+          <div id="search-results-dropdown" class="search-results-dropdown"></div>
+        </div>
         <div class="auth-buttons">
           <button id="login-btn">Logg Inn</button>
           <button id="register-btn">Registrer</button>
@@ -33,9 +42,9 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" style="background-image: url('images/Bkgrunn\ ny.jpg'); background-size: cover; background-position: center; height: 100vh;">
       <div class="binary-overlay" id="binary-container"></div>
-      <div class="container">
+      <div class="container" style="padding-top: 30vh;"> <!-- Added padding-top to position content higher -->
         <div class="hero-content">
           <h1>Kode <span>Grønt</span>.<br />Bygg Fremtiden.</h1>
           <p>
@@ -107,7 +116,7 @@
         <div class="blog-grid">
           <div class="blog-card" data-article="article1">
             <div class="blog-image">
-              <img src="tast.jpg" alt="Blogg Bilde" />
+              <img src="images/tast.jpg" alt="Blogg Bilde" />
             </div>
             <div class="blog-content">
               <span class="blog-tag">Energieffektivitet</span>
@@ -119,7 +128,7 @@
               <div class="blog-footer">
                 <div class="blog-author">
                   <div class="author-avatar">
-                    <img src="portrett1.jpeg" alt="Emma Johnson" />
+                    <img src="images/portrett1.jpeg" alt="Emma Johnson" />
                   </div>
                   <span>Emma Johnson</span>
                 </div>
@@ -129,7 +138,7 @@
           </div>
           <div class="blog-card" data-article="article2">
             <div class="blog-image">
-              <img src="bilde.jpg" alt="Blogg Bilde" />
+              <img src="images/bilde.jpg" alt="Blogg Bilde" />
             </div>
             <div class="blog-content">
               <span class="blog-tag">Beste Praksis</span>
@@ -141,7 +150,7 @@
               <div class="blog-footer">
                 <div class="blog-author">
                   <div class="author-avatar">
-                    <img src="portrett3.jpeg" alt="Alex Chen" />
+                    <img src="images/portrett3.jpeg" alt="Alex Chen" />
                   </div>
                   <span>Alex Chen</span>
                 </div>
@@ -151,7 +160,7 @@
           </div>
           <div class="blog-card" data-article="article3">
             <div class="blog-image">
-              <img src="2.jpg" alt="Blogg Bilde" />
+              <img src="images/2.jpg" alt="Blogg Bilde" />
             </div>
             <div class="blog-content">
               <span class="blog-tag">Verktøy</span>
@@ -163,7 +172,7 @@
               <div class="blog-footer">
                 <div class="blog-author">
                   <div class="author-avatar">
-                    <img src="portrett2.jpeg" alt="Maria Garcia" />
+                    <img src="images/portrett2.jpeg" alt="Maria Garcia" />
                   </div>
                   <span>Maria Garcia</span>
                 </div>
@@ -185,7 +194,7 @@
           <div class="article-meta">
             <div class="blog-author">
               <div class="author-avatar">
-                <img src="portrett1.jpeg" alt="Emma Johnson" />
+                <img src="images/portrett1.jpeg" alt="Emma Johnson" />
               </div>
               <span>Emma Johnson</span>
             </div>
@@ -193,7 +202,7 @@
           </div>
         </div>
         <div class="article-body">
-          <img src="tast.jpg" alt="Blogg Bilde" class="article-main-image" />
+          <img src="images/tast.jpg" alt="Blogg Bilde" class="article-main-image" />
           <p>
             I dagens digitale verden har programvare en overraskende stor
             miljøpåvirkning. Hver linje kode vi skriver krever prosessorkraft,
@@ -285,7 +294,7 @@
           <div class="article-meta">
             <div class="blog-author">
               <div class="author-avatar">
-                <img src="portrett3.jpeg" alt="Alex Chen" />
+                <img src="images/portrett3.jpeg" alt="Alex Chen" />
               </div>
               <span>Alex Chen</span>
             </div>
@@ -293,7 +302,7 @@
           </div>
         </div>
         <div class="article-body">
-          <img src="bilde.jpg" alt="Blogg Bilde" class="article-main-image" />
+          <img src="images/bilde.jpg" alt="Blogg Bilde" class="article-main-image" />
           <p>
             Bærekraftig webdesign handler ikke bare om miljøvennlighet – det
             handler om å skape nettsteder som er effektive, tilgjengelige og
@@ -376,7 +385,7 @@
           <div class="article-meta">
             <div class="blog-author">
               <div class="author-avatar">
-                <img src="portrett2.jpeg" alt="Maria Garcia" />
+                <img src="images/portrett2.jpeg" alt="Maria Garcia" />
               </div>
               <span>Maria Garcia</span>
             </div>
@@ -384,7 +393,7 @@
           </div>
         </div>
         <div class="article-body">
-          <img src="2.jpg" alt="Blogg Bilde" class="article-main-image" />
+          <img src="images/2.jpg" alt="Blogg Bilde" class="article-main-image" />
           <p>
             I arbeidet med å skape mer miljøvennlig programvare er måling av
             miljøpåvirkning avgjørende. Heldigvis finnes det stadig flere
@@ -544,46 +553,37 @@
       <div class="container">
         <div class="footer-content">
           <div class="footer-column">
-            <h3>GRØNN<span>KODE</span></h3>
+            <h3>GREEN<span>CODE</span></h3>
             <p>
               Vi fremmer bærekraftig og miljøvennlig kodepraksis for å bygge en
               grønnere fremtid gjennom teknologi.
             </p>
             <div class="social-links">
-              <a href="#"><span>FB</span></a>
-              <a href="#"><span>TW</span></a>
-              <a href="#"><span>IG</span></a>
-              <a href="#"><span>LI</span></a>
+              <a href="#"><span></span></a>
+              <a href="#"><span></span></a>
+              <a href="#"><span></span></a>
+              <a href="#"><span></span></a>
             </div>
           </div>
           <div class="footer-column">
             <h3>Raske Lenker</h3>
             <ul class="footer-links">
-              <li><a href="#">Hjem</a></li>
-              <li><a href="#features">Funksjoner</a></li>
-              <li><a href="#blog">Blogg</a></li>
-              <li><a href="#quiz">Quiz</a></li>
-              <li><a href="#contact">Kontakt</a></li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h3>Ressurser</h3>
-            <ul class="footer-links">
-              <li><a href="#">Dokumentasjon</a></li>
-              <li><a href="#">Veiledninger</a></li>
-              <li><a href="#">Casestudier</a></li>
-              <li><a href="#">Forskningsartikler</a></li>
-              <li><a href="#">Samfunnsforum</a></li>
+              <li><a href="index.html">Hjem</a></li>
+              <li><a href="index.html#blog">Blogg</a></li>
+              <li><a href="forum.html">Forum</a></li>
+              <li><a href="verktoy.html">Verktøy</a></li>
+              <li><a href="om-oss.html">Om Oss</a></li>
+              <li><a href="contact.html">Kontakt</a></li>
             </ul>
           </div>
           <div class="footer-column">
             <h3>Kontakt Oss</h3>
             <ul class="footer-links">
               <li>
-                <a href="mailto:info@greencode.org">info@gronnkode.org</a>
+                <a href="mailto:info@greencode.com">info@greencode.com</a>
               </li>
               <li><a href="tel:+1234567890">+47 123 45 678</a></li>
-              <li>123 Grønn Gate, Øko By</li>
+              <li>Bøgata 6</li>
             </ul>
           </div>
         </div>

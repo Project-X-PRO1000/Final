@@ -1,4 +1,5 @@
 // Binary animation
+/* Commented out to remove binary background
 function createBinaryBackground() {
   const container = document.getElementById("binary-container");
   const containerWidth = container.offsetWidth;
@@ -69,6 +70,7 @@ function animateBinary(element, maxHeight) {
 
   requestAnimationFrame(frame);
 }
+*/
 
 // Quiz functionality
 document.addEventListener('DOMContentLoaded', function() {
@@ -192,7 +194,9 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function updateProgressBar() {
-    const progress = ((currentQuestion + 1) / quizQuestions.length) * 100;
+    // Start at 0% for the first question
+    // Only increase as user progresses through questions
+    const progress = (currentQuestion / quizQuestions.length) * 100;
     progressBar.style.width = `${progress}%`;
   }
 
@@ -233,7 +237,7 @@ document.addEventListener('DOMContentLoaded', function() {
     } else if (score >= quizQuestions.length * 0.5) {
       resultMessage.textContent = 'Bra innsats! Du er på vei til å forstå grønn koding.';
     } else {
-      resultMessage.textContent = 'Takk for at du tok quizen! Lær mer om grønn koding ved å utforske våre ressurser.';
+      resultMessage.textContent = 'Takk for at du tok quizen! Lær mer om grønn koding ved å utforske vår blogg og verktøy.';
     }
   }
 
@@ -264,7 +268,7 @@ function showNotification(message, icon = 'fa-check-circle') {
 }
 
 // Function to handle successful login
-function handleLoginSuccess(userData) {
+function handleLoginSuccess(userData, showLoginNotification = true) {
   // Hide login/register buttons
   document.getElementById('login-btn').style.display = 'none';
   document.getElementById('register-btn').style.display = 'none';
@@ -300,11 +304,16 @@ function handleLoginSuccess(userData) {
     document.querySelector('.user-name').textContent = userData.firstName;
   }
   
-  // Show login success notification
-  showNotification(`Velkommen, ${userData.firstName}! Du har logget inn.`);
+  // Show login success notification only for fresh logins
+  if (showLoginNotification) {
+    showNotification(`Velkommen, ${userData.firstName}! Du har logget inn.`);
+  }
   
   // Save user data to localStorage
   localStorage.setItem('userData', JSON.stringify(userData));
+  
+  // Dispatch login event
+  document.dispatchEvent(new Event('userLoggedIn'));
 }
 
 // Function to handle logout
@@ -321,6 +330,9 @@ function handleLogout() {
   if (userInfo) {
     userInfo.remove();
   }
+  
+  // Dispatch logout event
+  document.dispatchEvent(new Event('userLoggedOut'));
 }
 
 // Modal functions
@@ -354,11 +366,32 @@ function closeModal(modalId) {
   document.querySelector('footer').classList.remove('modal-blur');
 }
 
+// FAQ functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const faqItems = document.querySelectorAll('.faq-item');
+  
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    
+    question.addEventListener('click', () => {
+      // Close other open items
+      faqItems.forEach(otherItem => {
+        if (otherItem !== item && otherItem.classList.contains('active')) {
+          otherItem.classList.remove('active');
+        }
+      });
+      
+      // Toggle current item
+      item.classList.toggle('active');
+    });
+  });
+});
+
 // Event Listeners
 document.addEventListener("DOMContentLoaded", function () {
   // Initialize binary background
-  createBinaryBackground();
-
+  // createBinaryBackground(); // Removed binary background initialization
+  
   // Modal event listeners
   document
     .getElementById("login-btn")
@@ -539,7 +572,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Check if user is already logged in when page loads
   const userData = JSON.parse(localStorage.getItem('userData'));
   if (userData) {
-    handleLoginSuccess(userData);
+    handleLoginSuccess(userData, false); // Don't show notification for existing logins
   }
 });
 
